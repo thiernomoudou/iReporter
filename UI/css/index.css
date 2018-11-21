@@ -289,3 +289,31 @@ input[type=search] {
 /********************************************************/
 /*sign up  page*/
 /********************************************************/
+
+
+
+/********************************************************/
+/* view incidents on map*/
+/********************************************************/
+
+.map-description{
+	padding: 1% 1%;
+}
+
+.map-description h3{
+	color: #314CCD;
+	margin-left: 23%;
+}
+.map-description p{
+	margin-left: 20%;
+}
+
+.map-description span{
+	color: #314CCD;
+	font-weight: 600;
+}
+
+.incident-map {
+	height: 550px;
+	background-image: url("../img/google-map.png");
+}
