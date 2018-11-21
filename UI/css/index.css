@@ -116,6 +116,10 @@ input[type=search] {
 	
 }
 
+.platform-description{
+    padding-left: 20%;
+}
+
 .banner p:nth-of-type(1){
 	margin-bottom: 10%;
 }
