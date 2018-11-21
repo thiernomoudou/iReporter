@@ -201,16 +201,23 @@ input[type=search] {
 
 .statistics{
 	display: flex;
+	justify-content: center;
+	max-width: 700px;
 	padding: 1% 2%;
+	margin: 0 auto;
 }
 
 .statistics li{
     list-style-type: none;
     text-align: center;
-    margin-right: 1%;
+    /* mwork in conjunction with statistic max-width to round li elements*/
+    margin-right: 6%; 
     color: #1F3349;
     font-weight: 500;
     flex: 1;
+    border: 1px solid black;
+    width: 104px;
+    border-radius: 50%;
 }
 
 .statistics h3{
