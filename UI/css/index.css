@@ -72,49 +72,51 @@ input[type=search] {
 /*navbar*/
 /********************************************************/
 
+.facts{
+	font-weight: 600;
+	line-height: 1.5;
+}
+.facts p{
+	padding-left: 10%;
+}
+
+.facts p:nth-of-type(2){
+	padding-left: 12%;
+	margin-top: -0.5%;
+}
+
+.facts span{
+	color: #314CCD;
+	font-size: 17px;
+}
+
+
 /********************************************************/
-/*call to action*/
+/*banner*/
 /********************************************************/
 
-.call-to-action{
+.banner{
 	height: 600px;
 	background-image: url("../img/round-aboun-1.jpg");
 	
 }
 
+
 .banner{
-	font-weight: 600;
-	line-height: 1.5;
-}
-.banner p{
-	padding-left: 10%;
-}
-
-.banner p:nth-of-type(2){
-	padding-left: 12%;
-	margin-top: -0.5%;
-}
-
-.banner span{
-	color: #314CCD;
-	font-size: 17px;
-}
-
-.call-to-action{
    color: #ffffff;
    padding-left: 2%;
    font-weight: 800;
-   height: 420px;
+   height: 440px;
 
 }
-.call-to-action h3 {
+.banner h3 {
 	padding-top: 2%;
 	font-size: 25px;
 	margin-bottom: -1%;
 	
 }
 
-.call-to-action p:nth-of-type(1){
+.banner p:nth-of-type(1){
 	margin-bottom: 10%;
 }
 
@@ -135,3 +137,89 @@ input[type=search] {
 	width: 10%;
 	background-color: #314CCD;
 }
+
+/********************************************************/
+/*banner*/
+/********************************************************/
+
+/********************************************************/
+/*corruption figures*/
+/********************************************************/
+
+.corruption-figures{
+	margin-top: -0.1%;
+	background-color: #314CCD;
+	display: flex;
+	padding: 3% 2%;
+
+}
+
+.corruption-figures li{
+    list-style-type: none;
+    text-align: center;
+    margin-right: 1%;
+    padding: 2% 2%;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.corruption-figures span{
+	font-weight: 700;
+	font-size: 22px;
+}
+
+/********************************************************/
+/*corruption figures*/
+/********************************************************/
+
+.info-source{
+	font-size: 13px;
+	text-align: right;
+	margin-top: -3%;
+	margin-right: 2%;
+}
+.info-source a{
+	text-align: center;
+}
+
+.info-source span{
+	font-weight: 600;
+}
+
+/********************************************************/
+/*corruption figures*/
+/********************************************************/
+
+
+/********************************************************/
+/*statistics*/
+/********************************************************/
+
+.statistics{
+	display: flex;
+	padding: 1% 2%;
+}
+
+.statistics li{
+    list-style-type: none;
+    text-align: center;
+    margin-right: 1%;
+    color: #1F3349;
+    font-weight: 500;
+    flex: 1;
+}
+
+.statistics h3{
+	font-weight: 800;
+}
+
+.statistics p{
+	color: #314CCD;
+	font-weight: 600;
+}
+
+
+
+/********************************************************/
+/*statistics*/
+/********************************************************/
