@@ -2,14 +2,14 @@
 
 A platform for reporting corruption cases or anything that need government intervention.
 
-**Overview**
+###Overview
 Corruption is a huge bane to Africa’s development. African countries must develop novel and
 localised solutions that will curb this menace, hence the birth of iReporter. iReporter enables
 any/every citizen to bring any form of corruption to the notice of appropriate authorities and the
 general public. Users can also report on things that needs government intervention
 
-## THE UI
-the UIcontains the UI design with HTML/CSS/JAVASCRIPT
+## THE UI 
+the UI contains the UI design with HTML/CSS/JAVASCRIPT
 
 ### How to run project template locally
 
@@ -23,10 +23,7 @@ git clone https://github.com/thiernomoudou/iReporter.git
 ```
 - Get into the directory with the template
 ```bash 
-cd more-recipes/template
-```
-```bash 
-open index.html
+cd iReporter/template
 ```
 
 #### LICENSE
