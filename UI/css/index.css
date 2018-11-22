@@ -439,6 +439,16 @@ input[type=search] {
 /******************************************************************/
 /* incident creation*/
 /******************************************************************/
+.avatar{
+	font-size: 30px;
+	margin-right: 5%;
+	cursor: pointer;
+	color: white;
+}
+
+.incident-search{
+	margin-right: 13%;
+}
 
 .incident-page{
   height: 600px;
@@ -448,6 +458,23 @@ input[type=search] {
 	width: 50%;
 	margin-left: -20%;
 	margin-top: -2%;
+}
+
+.user-card{
+	padding: 2% 1%;
+	position: absolute;
+	top: 12%;
+	right: 1%;
+	width: 12%;
+	border-radius: 10px;
+	/*border: 1px solid white;*/
+	background-color: white;
+	visibility: hidden;
+}
+
+.user-card a {
+	color: #314CCD;
+	margin-left: 5%;
 }
 
 #label-1, #label-2{
@@ -509,4 +536,88 @@ input[type=radio]:checked{
 }
 /******************************************************************/
 /* incident creation*/
+/******************************************************************/
+
+/******************************************************************/
+/* All incidents for an individual user*/
+/******************************************************************/
+
+
+.all-incidents-intro{
+    margin-left: 2%;
+    font-weight: 500;
+    padding: 1% 4%;
+    font-size: 20px;
+}
+
+.all-incidents-intro span{
+	color: #314CCD;
+	font-weight: 600
+}
+
+#red-flag-11,
+#red-flag-12,
+#red-flag-13,
+#red-flag-14,
+#red-flag-15,
+#intervention-11,
+#intervention-12,
+#intervention-13,
+#intervention-14,
+#intervention-15{
+	position: absolute;
+}
+
+#red-flag-11{
+	top: 250px;
+	left: 70px;
+}
+
+#red-flag-12{
+	top: 400px;
+	left: 190px;
+}
+
+#red-flag-13{
+	top: 600px;
+	left: 400px;
+}
+
+#red-flag-14{
+	top: 500px;
+	left: 800px;
+}
+
+#red-flag-15{
+	top: 560px;
+	left: 1000px;
+}
+
+#intervention-11{
+	top: 500px;
+	left: 220px;
+}
+
+#intervention-12{
+	top: 300px;
+	left: 300px;
+}
+
+#intervention-13{
+	top: 400px;
+	left: 430px;
+}
+
+#intervention-14{
+	top: 600px;
+	left: 900px;
+}
+
+#intervention-15{
+	top: 500px;
+	left: 70px;
+}
+
+/******************************************************************/
+/* All incidents*/
 /******************************************************************/

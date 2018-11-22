@@ -111,3 +111,22 @@ function handleRedflagMouseLeave(event){
 	// restore the opacity of the the clicked element
 	clickedElement.style.opacity = 1;
 }
+
+// Handling user-profile toggle 
+let avatar = document.querySelector('.avatar');
+
+let userCard = document.querySelector('.user-card');
+
+avatar.addEventListener('click', handleToggleUserCard);
+
+function handleToggleUserCard(){
+    userCard.style.visibility = 'visible';
+}
+
+userCard.addEventListener('mouseenter', function(){
+	userCard.style.visibility = 'visible';
+});
+
+userCard.addEventListener('mouseleave', function(){
+	userCard.style.visibility = 'hidden';
+});
