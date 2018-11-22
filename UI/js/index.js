@@ -73,6 +73,11 @@ function handleRedflagClick (event){
 
     div.style.top = divTop + 'px';
     div.style.left = divLeft + 'px';
+
+    // extend the width of the red-flag so that it can fit the 
+    // size of the summary card
+
+    clickedElement.style.width = '20%';
 	
 }
 
