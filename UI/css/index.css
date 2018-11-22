@@ -120,7 +120,7 @@ input[type=search] {
 	margin-bottom: 10%;
 }
 
-.platform-description{
+.plat.signup-card-description{
     padding-left: 20%;
 }
 
@@ -222,4 +222,66 @@ input[type=search] {
 
 /********************************************************/
 /*statistics*/
+/********************************************************/
+
+
+/********************************************************/
+/*sign up  page*/
+/********************************************************/
+.signup-page{
+	margin-top: -1.3%;
+	background-color:  #314CCD;
+	height: 580px;
+}
+
+.signup-card{
+	background-color: #ffffff;
+	width: 40%;
+	padding: 2%  3% 2% 2%;
+	position: relative;
+	top: 8%;
+	left: 35%;
+	border-radius: 2%;
+}
+
+.signup-card p:nth-of-type(1){
+	font-weight: 800;
+	margin-bottom: 6%;
+	font-size: 23px;
+}
+
+.signup-card label{
+	display: block;
+	font-weight: 800;
+}
+
+.signup-card input{
+	-webkit-appearance: none;
+	border: 1px solid #1F3349;
+	padding: 1% 1%;
+	border-radius: 10px;
+	font-size: 16px;
+}
+
+.signup-card button{
+	cursor: pointer;
+	border: 0.5px solid white;
+	border-radius: 10px;
+	padding: 2% 2%;
+	width: 30%;
+	background-color: #314CCD;
+	text-align: center;
+	color: #ffffff;
+	font-size: 16px;
+	font-weight: 500;
+	margin-left: 4%;
+
+}
+
+.signup-card  a{
+	color: #314CCD ;
+}
+
+/********************************************************/
+/*sign up  page*/
 /********************************************************/
