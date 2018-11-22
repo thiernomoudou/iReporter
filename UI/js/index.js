@@ -51,8 +51,18 @@ function handleRedflagClick (event){
 
     div.appendChild(h5);
 
+
+    // let legend = document.querySelector('.legend');
+
     // insert the div after the clicked element
     clickedElement.parentNode.insertBefore(div, clickedElement);
+
+    // make the flag transparent so detail can be read properly
+    clickedElement.style.opacity = 0.3;
+
+
+
+
 
     // Add some styling
     div.style.position = 'absolute';
@@ -63,12 +73,19 @@ function handleRedflagClick (event){
 
     div.style.top = divTop + 'px';
     div.style.left = divLeft + 'px';
-
 	
 }
 
-function handleMouseLeave(){
+function handleMouseLeave(event){
     let parentSummaryCard = document.querySelector('.map');
     let summaryCard = document.querySelector('.red-flag-summary');
+
+    // capture the clicked element
+    let clickedElement = event.target;
+
+    // removing the summary card from the dom
 	parentSummaryCard.removeChild(summaryCard);
+
+	// restore the opacity of the the clicked element
+	clickedElement.style.opacity = 1;
 }

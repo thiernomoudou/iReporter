@@ -366,7 +366,7 @@ input[type=search] {
 	border-radius: 10px;
 	text-align: center;
 	font-weight: 800;
-	z-index: 100;
+	/*z-index: 2;*/
 }
 
 .red-flag-summary h5{
