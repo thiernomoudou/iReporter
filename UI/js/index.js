@@ -1,10 +1,18 @@
 
-// capturing all red flags
+// capturing all red flags and interventions
 let redFlags = document.getElementsByClassName('red-flag');
+let interventions = document.getElementsByClassName('intervention');
 
+// Add event listener for red flag hover
 for (let i = 0; i < redFlags.length; i++){
 	redFlags[i].addEventListener('mouseenter', handleRedflagClick);
-	redFlags[i].addEventListener('mouseleave', handleMouseLeave);
+	redFlags[i].addEventListener('mouseleave', handleRedflagMouseLeave);
+}
+
+// Add event listener for intervention hover
+for (let i = 0; i < interventions.length; i++){
+	interventions[i].addEventListener('mouseenter', handleRedflagClick);
+	interventions[i].addEventListener('mouseleave', handleRedflagMouseLeave);
 }
 
 // sample red-flag data
@@ -42,18 +50,22 @@ function handleRedflagClick (event){
 
 	// Create a div
 	let div = document.createElement('div');
-
-	// Adding div attributes
-	div.setAttribute('class', 'red-flag-summary');
-
 	// create h3
 	let h3 = document.createElement('h3');
-	h3.textContent = redFlagData[currentId].title;
-
 	// create h5
 	let h5 = document.createElement('h5');
-    h5.textContent = redFlagData[currentId].location;
-    
+
+	// Adding div attributes
+	if (clickedElement.id.startsWith('red')){
+		div.setAttribute('class', 'red-flag-summary');
+		h3.textContent = redFlagData[currentId].title;
+	    h5.textContent = redFlagData[currentId].location;
+	}else{
+		div.setAttribute('class', 'intervention-summary');
+		h3.textContent = interventionData[currentId].title;
+	    h5.textContent = interventionData[currentId].location;
+	}
+	
     // Add created element to the div
     div.appendChild(h3);
     div.appendChild(h5);
@@ -76,17 +88,22 @@ function handleRedflagClick (event){
 
     // extend the width of the red-flag so that it can fit the 
     // size of the summary card
-
     clickedElement.style.width = '5%';
 	
 }
 
-function handleMouseLeave(event){
+function handleRedflagMouseLeave(event){
     let parentSummaryCard = document.querySelector('.map');
-    let summaryCard = document.querySelector('.red-flag-summary');
+    let summaryCard;
 
     // capture the clicked element
     let clickedElement = event.target;
+
+    if (clickedElement.id.startsWith('red')){
+    	summaryCard = document.querySelector('.red-flag-summary');
+    }else{
+    	summaryCard = document.querySelector('.intervention-summary');
+    }
 
     // removing the summary card from the dom
 	parentSummaryCard.removeChild(summaryCard);

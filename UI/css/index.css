@@ -424,6 +424,14 @@ input[type=search] {
 	left: 1100px;
 }
 
+.intervention-summary{
+	border: 3px solid #314CCD;;
+}
+
+.intervention-summary h5{
+	color: black;
+}
+
 /******************************************************************/
 /* Intervention*/
 /******************************************************************/
