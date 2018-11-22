@@ -256,7 +256,7 @@ input[type=search] {
 	border-radius: 2%;
 }
 
-.signup-card p:nth-of-type(1){
+.signup-card .singup-header{
 	font-weight: 800;
 	margin-bottom: 6%;
 	font-size: 23px;
@@ -425,7 +425,7 @@ input[type=search] {
 }
 
 .intervention-summary{
-	border: 3px solid #314CCD;;
+	border: 3px solid #314CCD;
 }
 
 .intervention-summary h5{
@@ -434,4 +434,79 @@ input[type=search] {
 
 /******************************************************************/
 /* Intervention*/
+/******************************************************************/
+
+/******************************************************************/
+/* incident creation*/
+/******************************************************************/
+
+.incident-page{
+  height: 600px;
+}
+
+#incident-card{
+	width: 50%;
+	margin-left: -20%;
+	margin-top: -2%;
+}
+
+#label-1, #label-2{
+	display: inline;
+	font-weight: 500;
+}
+
+.select-type{
+	font-weight: 600;
+	margin-bottom: 1.5%;
+}
+
+input[type=radio]{
+	-webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+
+    border: 2px solid #999;
+    transition: 0.2s all linear;
+    outline: none;
+    margin-right: 5px;
+
+    position: relative;
+    top: 22px;
+    left: 45px;
+}
+
+input[type=radio]:checked{
+	border: 2px solid black;
+	background-color: #314CCD;
+}
+
+.incident-radios{
+	margin-bottom: 5%;
+}
+
+.incident-aside{
+	position: absolute;
+	top: 7%;
+	left: 48%;
+	font-weight: 300;
+	padding: 3% 3%;
+	line-height: 1.5;
+}
+
+.incident-aside span{
+	color: #314CCD;
+	font-weight: 600;
+}
+
+.call{
+	color: #314CCD;
+	padding-left: 5%;
+	font-weight: 400;
+}
+/******************************************************************/
+/* incident creation*/
 /******************************************************************/

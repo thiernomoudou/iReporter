@@ -25,33 +25,40 @@
 	</section>
 	<!-- navbar ends -->
 
-	<div class="signup-page">
+	<div class="signup-page incident-page">
 		
-		<form class="signup-card">
-			<p class="singup-header">Sign in</p>
-			<p>
-				<label for="username">Name</label>
-				<input type="text" name="username" id="username">
-			</p>
-			<p>
-				<label for="email">Email</label>
-				<input type="text" name="email" id="email">
-			</p>
-			<p>
-				<label for="password">Password</label>
-				<input type="password" name="password" id="password">
-			</p>
+		<form class="signup-card" id="incident-card">
+			<p class="singup-header">Create an incident</p>
+			<div class="incident-aside">
+				<p>Whether it is a <span>Redflag</span> which reports <span>corruption cases</span> or just <span>an incident </span>that needs the government <span>intervention</span></p>
+				<p class="call">Share it with the world!</p>
+		    </div>
+			<div class="incident-radios">
+				<div class="select-type">Select an incident type</div>
+			    <input type="radio" id="redflag-choice"
+			     name="incident_type" value="RedFlag">
+			    <label id="label-1" for="redflag-choice">Redflag</label>
 
-			<button type="submit" class="submit-button">Sing in</button>
-			<p>Don't get an Account yet? <a href="signup.html">sign up</a></p>
-			<p> <a href="">I forget my password!</a></p>
-
-			
+			    <input type="radio" id="intervention-choice"
+			     name="incident_type" value="incident">
+			    <label id="label-2" for="intervention-choice">Intervention</label>
+			</div>
+			<p>
+				<label for="incident-title">Title</label>
+				<input type="text" name="incident_title" id="incident-title">
+			</p>
+			<p>
+				<label for="incident-title">Location</label>
+				<input type="text" name="incident_location" id="incident-location">
+			</p>
+			<button type="submit" class="submit-button">Submit</button>
 		</form>
 		
 	</div>
 	
-		
+	
+	
+
 <script src='js/index.js'></script>
 </body>
 </html>
