@@ -2,6 +2,7 @@
 /* another main: deep blue #122580*/
 /* others:  white #FFFFFF*/
 /*custom black: #1F3349 */
+/* redish: #F9886C*/
 
 body{
 	font-family: 'Open Sans', sans-serif;
@@ -116,6 +117,10 @@ input[type=search] {
 	
 }
 
+.platform-description{
+    padding-left: 20%;
+}
+
 .banner p:nth-of-type(1){
 	margin-bottom: 10%;
 }
@@ -197,16 +202,23 @@ input[type=search] {
 
 .statistics{
 	display: flex;
+	justify-content: center;
+	max-width: 700px;
 	padding: 1% 2%;
+	margin: 2% auto;
 }
 
 .statistics li{
     list-style-type: none;
     text-align: center;
-    margin-right: 1%;
+    /* mwork in conjunction with statistic max-width to round li elements*/
+    margin-right: 6%; 
     color: #1F3349;
     font-weight: 500;
     flex: 1;
+    border: 1px solid black;
+    width: 104px;
+    border-radius: 50%;
 }
 
 .statistics h3{
@@ -285,3 +297,81 @@ input[type=search] {
 /********************************************************/
 /*sign up  page*/
 /********************************************************/
+
+
+
+/********************************************************/
+/* view incidents on map*/
+/********************************************************/
+
+.map {
+	height: 550px;
+	background-image: url("../img/google-map.png");
+}
+
+.map p{
+	padding-top: 4%;
+	margin-left: 70%;
+	font-weight: 600;
+}
+
+.map span{
+	color: #314CCD;
+	font-weight: 600;
+}
+
+/* Red flags*/
+.red-flag{
+	font-size: 80px;
+	color: red;
+	cursor: pointer;
+}
+
+#red-flag-1,
+#red-flag-2,
+#red-flag-3,
+#red-flag-4,
+#red-flag-5{
+	position: absolute;
+}
+
+#red-flag-1{
+	top: 1210px;
+	left: 70px;
+}
+
+#red-flag-2{
+	top: 1380px;
+	left: 800px;
+}
+
+#red-flag-3{
+	top: 1100px;
+	left: 150px;
+}
+
+#red-flag-4{
+	top: 1210px;
+	left: 340px;
+}
+
+#red-flag-5{
+	top: 1240px;
+	left: 700px;
+}
+
+.red-flag-summary{
+	width: 20%;
+	border: 3px solid #F9886C;
+	border-radius: 10px;
+	text-align: center;
+	font-weight: 800;
+	/*z-index: 2;*/
+}
+
+.red-flag-summary h3{
+	color:  #314CCD;
+}
+.red-flag-summary h5{
+   margin-top: -4%;
+}
