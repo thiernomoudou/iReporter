@@ -1,4 +1,4 @@
-/* main color: mpbox #314CCD*/
+ main color: mpbox #314CCD*/
 /* another main: deep blue #122580*/
 /* others:  white #FFFFFF*/
 /*custom black: #1F3349 */
@@ -618,6 +618,16 @@ input[type=radio]:checked{
 	left: 70px;
 }
 
+/* adding animation */
+.animate-icon{
+    animation: bounce .3s infinite alternate;
+}
+
+@keyframes bounce {
+  to { -webkit-transform: scale(1.2); }
+}
+
+
 /******************************************************************/
 /* All incidents*/
-/******************************************************************/
+/*****************************************************************
