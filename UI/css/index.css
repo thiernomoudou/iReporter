@@ -319,10 +319,11 @@ input[type=search] {
 	color: #314CCD;
 	font-weight: 600;
 }
-
+/******************************************************************/
 /* Red flags*/
+/******************************************************************/
 .red-flag{
-	font-size: 80px;
+	font-size: 60px;
 	color: red;
 	cursor: pointer;
 }
@@ -331,7 +332,12 @@ input[type=search] {
 #red-flag-2,
 #red-flag-3,
 #red-flag-4,
-#red-flag-5{
+#red-flag-5,
+#intervention-1,
+#intervention-2,
+#intervention-3,
+#intervention-4,
+#intervention-5{
 	position: absolute;
 }
 
@@ -360,8 +366,9 @@ input[type=search] {
 	left: 700px;
 }
 
-.red-flag-summary{
-	width: 20%;
+.red-flag-summary,
+.intervention-summary{
+	width: 10%;
 	border: 3px solid #F9886C;
 	border-radius: 10px;
 	text-align: center;
@@ -369,9 +376,54 @@ input[type=search] {
 	/*z-index: 2;*/
 }
 
-.red-flag-summary h3{
+.red-flag-summary h3,
+.intervention-summary, h3{
 	color:  #314CCD;
+	font-size: 14px;
 }
-.red-flag-summary h5{
+.red-flag-summary h5,
+.intervention-summary h5{
    margin-top: -4%;
 }
+
+/******************************************************************/
+/* Red flags*/
+/******************************************************************/
+
+/******************************************************************/
+/* Intervention*/
+/******************************************************************/
+.intervention{
+	font-size: 60px;
+	color:  #314CCD;
+	cursor: pointer;
+}
+
+#intervention-1{
+	top: 1300px;
+	left: 220px;
+}
+
+#intervention-2{
+	top: 1300px;
+	left: 500px;
+}
+
+#intervention-3{
+	top: 1100px;
+	left: 430px;
+}
+
+#intervention-4{
+	top: 1250px;
+	left: 900px;
+}
+
+#intervention-5{
+	top: 1400px;
+	left: 1100px;
+}
+
+/******************************************************************/
+/* Intervention*/
+/******************************************************************/
