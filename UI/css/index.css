@@ -11,7 +11,7 @@ body{
 
 body a{
 	text-decoration: none;
-	color: #ffffff;
+	/*color: #ffffff;*/
 }
 
 /********************************************************/
@@ -27,6 +27,10 @@ body a{
 	margin: 0;
 	color: #1F3349;
 
+}
+
+.custom-navbar a{
+	color: #ffffff;
 }
 
 .logo{
@@ -141,6 +145,7 @@ input[type=search] {
 	padding: 1% 1%;
 	width: 10%;
 	background-color: #314CCD;
+	color: #ffffff;
 }
 
 /********************************************************/
@@ -185,6 +190,7 @@ input[type=search] {
 }
 .info-source a{
 	text-align: center;
+	color: #ffffff;
 }
 
 .info-source span{
@@ -631,3 +637,23 @@ input[type=radio]:checked{
 /******************************************************************/
 /* All incidents*/
 /*****************************************************************
+
+/* view pages */
+
+.view-intro{
+	margin-bottom: -1%;
+}
+
+.view-report-button{
+	color: blue;
+}
+
+.view-button{
+	margin-left: -60%;
+}
+
+.view-button a{
+	font-weight: 400;
+	font-size: 16px;
+	padding: 0.5% 0.5%;
+}
