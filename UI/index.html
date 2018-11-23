@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/index.css">
+	<title>iReporter</title>
+</head>
+<body>
+	<!-- navbar begins -->
+	<section class="custom-navbar">
+		<a class="logo" href="index.html">iReporter</a>
+        <form class="nav-search">
+        	<input type="search" class="search-input"  aria-label="search" placeholder="search"/>
+        </form>
+		<div class="search-icon"  href=""><i class="fas fa-search"></i></div>
+		<a class="login" href="login.html">Sign in</a>
+		<a class="signup" href="signup.html">Sign up</a>
+
+	</section>
+	<!-- navbar ends -->
+	
+	<div class="facts">
+		<p><span>Corruption</span> continues to harm Africa, hampering democracy, development and the ability to bring people out of poverty.</p>
+		<p>Let's fight it together and <span>contribute to the development </span> of our country. And the fight begins by <span>Reporting</span> it.</p>
+	</div>
+	<!-- banner start-->
+	<div class="banner">
+		<div class="platform-description">
+		<h3> Welcome to iReporter</h3>
+		<p> A platform for reporting corruption incidents and anything that needs government intervention</p>
+		</div>
+		<p class="incident-buttons">
+		   <span>
+		   	<a href="incident-form.html" role="button">Report an incident</a>
+		   	or simply
+		   	<a href="#map-id" role="button">View incidents</a>
+		   </span> 
+	    </p>
+		
+	</div>
+	<!-- banner ends -->
+
+	<ul class="corruption-figures">
+		<li>
+		<span>43 percent</span> of africans are living in poverty
+		</li>
+		<li><span>over US$50 billion</span> worth of stolen assets flow out of africa every year</li>
+		<li>Misapropriated funds account for a <span>25 percent loss</span> of development ressources in Africa</li>
+		<li>In sub-saharan Africa, <span>One in two citizens</span> reported paying a bribe for land services</li>
+	</ul>
+	<p class="info-source"><span>source</span>: <a target="_blank" rel="noopener noreferrer" href="https://www.transparency.org/news/feature/how_to_win_the_fight_against_corruption_in_africa">Transparency International</a></p>
+
+	<!-- statistics -->
+	<ul class="statistics">
+		<li>
+		    <h3>1934</h3>
+		    <p>Ceated</p>
+		</li>
+		<li>
+			<h3>945</h3>
+		    <p>Resolved </p>
+		</li>
+		<li>
+			<h3>361</h3>
+		    <p>Inquiry</p>
+		</li>
+		<li>
+			<h3>628</h3>
+		    <p>Pending </p>
+		</li>
+	</ul>
+	
+	
+	<!-- <div class="map-description">
+		<h3>Incidents posted by users</h3>
+		<p>They are two type of incidents: <span>red-flags</span>(Corruptions) and <span>interventions</span></p>
+    </div> -->
+
+	<div class="map" id="map-id">
+		<p class="legend">They are two type of incidents: <span>red-flags</span>(Corruptions) and <span>interventions</span>
+		</p>
+		<!-- red-flags -->
+		<!-- <i class="fas fa-map-marker-alt red-flag"></i> -->
+		<div class= "red-flag animate-icon" id="red-flag-1" ><i class="fas fa-flag" ></i></div>
+		<div class= "red-flag animate-icon" id="red-flag-2" ><i class="fas fa-flag" ></i></div>
+		<div class= "red-flag animate-icon" id="red-flag-3" ><i class="fas fa-flag" ></i></div>
+		<div class= "red-flag animate-icon" id="red-flag-4" ><i class="fas fa-flag" ></i></div>
+		<div class= "red-flag animate-icon" id="red-flag-5" ><i class="fas fa-flag" ></i></div>
+	
+        <!-- Interventions -->
+	    <div class= "intervention animate-icon" id="intervention-1" ><i class="fas fa-hammer"></i></div>
+		<div class= "intervention animate-icon" id="intervention-2" ><i class="fas fa-hammer"></i></div>
+		<div class= "intervention animate-icon" id="intervention-3" ><i class="fas fa-hammer"></i></div>
+		<div class= "intervention animate-icon" id="intervention-4" ><i class="fas fa-hammer"></i></div>
+		<div class= "intervention animate-icon" id="intervention-5" ><i class="fas fa-hammer"></i></div>
+    </div>
+
+
+<script src='js/index.js'></script>
+</body>
+</html>

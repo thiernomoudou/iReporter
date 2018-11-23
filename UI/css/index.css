@@ -1,0 +1,633 @@
+ /*main color: mpbox #314CCD*/
+/* another main: deep blue #122580*/
+/* others:  white #FFFFFF*/
+/*custom black: #1F3349 */
+/* redish: #F9886C*/
+
+body{
+	font-family: 'Open Sans', sans-serif;
+	margin: 0;
+}
+
+body a{
+	text-decoration: none;
+	color: #ffffff;
+}
+
+/********************************************************/
+/*navbar*/
+/********************************************************/
+.custom-navbar{
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	margin-top: 2%;
+	background-color: #314CCD;
+	height: 100px;
+	margin: 0;
+	color: #1F3349;
+
+}
+
+.logo{
+  flex: 2;
+  margin-left: 2%;
+  font-weight: 600;
+  font-size: 24px;
+}
+
+.nav-search,
+.login,
+.signup{
+	flex: 1;
+}
+
+/* Search bar*/
+.nav-search{
+	margin-left: 40%;
+}
+
+
+/*search bar*/
+input[type=search] {
+	padding: 2% 5%;
+    border: 0.4px solid #1F3349;
+    border-radius: 10px;
+    -webkit-appearance: none;
+}
+
+/*search icon*/
+.search-icon{
+ color: #314CCD;
+}
+
+.login{
+   margin-left: 10%;
+   margin-right: -2%;
+}
+
+.login, .signup{
+	font-size: 14px;
+}
+/********************************************************/
+/*navbar*/
+/********************************************************/
+
+.facts{
+	font-weight: 600;
+	line-height: 1.5;
+}
+.facts p{
+	padding-left: 10%;
+}
+
+.facts p:nth-of-type(2){
+	padding-left: 12%;
+	margin-top: -0.5%;
+}
+
+.facts span{
+	color: #314CCD;
+	font-size: 17px;
+}
+
+
+/********************************************************/
+/*banner*/
+/********************************************************/
+
+.banner{
+	height: 600px;
+	background-image: url("../img/round-aboun-1.jpg");
+	
+}
+
+
+.banner{
+   color: #ffffff;
+   padding-left: 2%;
+   font-weight: 800;
+   height: 440px;
+
+}
+.banner h3 {
+	padding-top: 2%;
+	font-size: 25px;
+	margin-bottom: -1%;
+	
+}
+
+.platform-description{
+    padding-left: 20%;
+}
+
+.banner p:nth-of-type(1){
+	margin-bottom: 10%;
+}
+
+.plat.signup-card-description{
+    padding-left: 20%;
+}
+
+/* red-flag or intervention buttons*/
+
+.incident-buttons{
+	text-align: center;
+}
+
+.incident-buttons a{
+	border: 0.5px solid white;
+	border-radius: 10px;
+	padding: 1% 1%;
+	width: 10%;
+	background-color: #314CCD;
+}
+
+/********************************************************/
+/*banner*/
+/********************************************************/
+
+/********************************************************/
+/*corruption figures*/
+/********************************************************/
+
+.corruption-figures{
+	margin-top: -0.1%;
+	background-color: #314CCD;
+	display: flex;
+	padding: 3% 2%;
+
+}
+
+.corruption-figures li{
+    list-style-type: none;
+    text-align: center;
+    margin-right: 1%;
+    padding: 2% 2%;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.corruption-figures span{
+	font-weight: 700;
+	font-size: 22px;
+}
+
+/********************************************************/
+/*corruption figures*/
+/********************************************************/
+
+.info-source{
+	font-size: 13px;
+	text-align: right;
+	margin-top: -3%;
+	margin-right: 2%;
+}
+.info-source a{
+	text-align: center;
+}
+
+.info-source span{
+	font-weight: 600;
+}
+
+/********************************************************/
+/*corruption figures*/
+/********************************************************/
+
+
+/********************************************************/
+/*statistics*/
+/********************************************************/
+
+.statistics{
+	display: flex;
+	justify-content: center;
+	max-width: 700px;
+	padding: 1% 2%;
+	margin: 2% auto;
+}
+
+.statistics li{
+    list-style-type: none;
+    text-align: center;
+    /* mwork in conjunction with statistic max-width to round li elements*/
+    margin-right: 6%; 
+    color: #1F3349;
+    font-weight: 500;
+    flex: 1;
+    border: 1px solid black;
+    width: 104px;
+    border-radius: 50%;
+}
+
+.statistics h3{
+	font-weight: 800;
+}
+
+.statistics p{
+	color: #314CCD;
+	font-weight: 600;
+}
+
+
+
+/********************************************************/
+/*statistics*/
+/********************************************************/
+
+
+/********************************************************/
+/*sign up  page*/
+/********************************************************/
+.signup-page{
+	margin-top: -1.3%;
+	background-color:  #314CCD;
+	height: 580px;
+}
+
+.signup-card{
+	background-color: #ffffff;
+	width: 40%;
+	padding: 2%  3% 2% 2%;
+	position: relative;
+	top: 8%;
+	left: 35%;
+	border-radius: 2%;
+}
+
+.signup-card .singup-header{
+	font-weight: 800;
+	margin-bottom: 6%;
+	font-size: 23px;
+}
+
+.signup-card label{
+	display: block;
+	font-weight: 800;
+}
+
+.signup-card input{
+	-webkit-appearance: none;
+	border: 1px solid #1F3349;
+	padding: 1% 1%;
+	border-radius: 10px;
+	font-size: 16px;
+}
+
+.signup-card button{
+	cursor: pointer;
+	border: 0.5px solid white;
+	border-radius: 10px;
+	padding: 2% 2%;
+	width: 30%;
+	background-color: #314CCD;
+	text-align: center;
+	color: #ffffff;
+	font-size: 16px;
+	font-weight: 500;
+	margin-left: 4%;
+
+}
+
+.signup-card  a{
+	color: #314CCD ;
+}
+
+/********************************************************/
+/*sign up  page*/
+/********************************************************/
+
+
+
+/********************************************************/
+/* view incidents on map*/
+/********************************************************/
+
+.map {
+	height: 600px;
+	background-image: url("../img/google-map.png");
+}
+
+.map p{
+	padding-top: 4%;
+	margin-left: 70%;
+	font-weight: 60;
+}
+
+.map span{
+	color: #314CCD;
+	font-weight: 600;
+}
+/******************************************************************/
+/* Red flags*/
+/******************************************************************/
+.red-flag{
+	font-size: 60px;
+	color: red;
+	cursor: pointer;
+}
+
+#red-flag-1,
+#red-flag-2,
+#red-flag-3,
+#red-flag-4,
+#red-flag-5,
+#intervention-1,
+#intervention-2,
+#intervention-3,
+#intervention-4,
+#intervention-5{
+	position: absolute;
+}
+
+#red-flag-1{
+	top: 1210px;
+	left: 70px;
+}
+
+#red-flag-2{
+	top: 1380px;
+	left: 800px;
+}
+
+#red-flag-3{
+	top: 1100px;
+	left: 150px;
+}
+
+#red-flag-4{
+	top: 1210px;
+	left: 340px;
+}
+
+#red-flag-5{
+	top: 1240px;
+	left: 700px;
+}
+
+.red-flag-summary,
+.intervention-summary{
+	width: 10%;
+	border: 3px solid #F9886C;
+	border-radius: 10px;
+	text-align: center;
+	font-weight: 800;
+	/*z-index: 2;*/
+}
+
+.red-flag-summary h3,
+.intervention-summary, h3{
+	color:  #314CCD;
+	font-size: 14px;
+}
+.red-flag-summary h5,
+.intervention-summary h5{
+   margin-top: -4%;
+}
+
+/******************************************************************/
+/* Red flags*/
+/******************************************************************/
+
+/******************************************************************/
+/* Intervention*/
+/******************************************************************/
+.intervention{
+	font-size: 60px;
+	color:  #314CCD;
+	cursor: pointer;
+}
+
+#intervention-1{
+	top: 1300px;
+	left: 220px;
+}
+
+#intervention-2{
+	top: 1300px;
+	left: 500px;
+}
+
+#intervention-3{
+	top: 1100px;
+	left: 430px;
+}
+
+#intervention-4{
+	top: 1250px;
+	left: 900px;
+}
+
+#intervention-5{
+	top: 1400px;
+	left: 1100px;
+}
+
+.intervention-summary{
+	border: 3px solid #314CCD;
+}
+
+.intervention-summary h5{
+	color: black;
+}
+
+/******************************************************************/
+/* Intervention*/
+/******************************************************************/
+
+/******************************************************************/
+/* incident creation*/
+/******************************************************************/
+.avatar{
+	font-size: 30px;
+	margin-right: 5%;
+	cursor: pointer;
+	color: white;
+}
+
+.incident-search{
+	margin-right: 13%;
+}
+
+.incident-page{
+  height: 600px;
+}
+
+#incident-card{
+	width: 50%;
+	margin-left: -20%;
+	margin-top: -2%;
+}
+
+.user-card{
+	padding: 2% 1%;
+	position: absolute;
+	top: 12%;
+	right: 1%;
+	width: 12%;
+	border-radius: 10px;
+	/*border: 1px solid white;*/
+	background-color: white;
+	visibility: hidden;
+}
+
+.user-card a {
+	color: #314CCD;
+	margin-left: 5%;
+}
+
+#label-1, #label-2{
+	display: inline;
+	font-weight: 500;
+}
+
+.select-type{
+	font-weight: 600;
+	margin-bottom: 1.5%;
+}
+
+input[type=radio]{
+	-webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+
+    border: 2px solid #999;
+    transition: 0.2s all linear;
+    outline: none;
+    margin-right: 5px;
+
+    position: relative;
+    top: 22px;
+    left: 45px;
+}
+
+input[type=radio]:checked{
+	border: 2px solid black;
+	background-color: #314CCD;
+}
+
+.incident-radios{
+	margin-bottom: 5%;
+}
+
+.incident-aside{
+	position: absolute;
+	top: 7%;
+	left: 48%;
+	font-weight: 300;
+	padding: 3% 3%;
+	line-height: 1.5;
+}
+
+.incident-aside span{
+	color: #314CCD;
+	font-weight: 600;
+}
+
+.call{
+	color: #314CCD;
+	padding-left: 5%;
+	font-weight: 400;
+}
+/******************************************************************/
+/* incident creation*/
+/******************************************************************/
+
+/******************************************************************/
+/* All incidents for an individual user*/
+/******************************************************************/
+
+
+.all-incidents-intro{
+    margin-left: 2%;
+    font-weight: 500;
+    padding: 1% 4%;
+    font-size: 20px;
+}
+
+.all-incidents-intro span{
+	color: #314CCD;
+	font-weight: 600
+}
+
+#red-flag-11,
+#red-flag-12,
+#red-flag-13,
+#red-flag-14,
+#red-flag-15,
+#intervention-11,
+#intervention-12,
+#intervention-13,
+#intervention-14,
+#intervention-15{
+	position: absolute;
+}
+
+#red-flag-11{
+	top: 250px;
+	left: 70px;
+}
+
+#red-flag-12{
+	top: 400px;
+	left: 190px;
+}
+
+#red-flag-13{
+	top: 600px;
+	left: 400px;
+}
+
+#red-flag-14{
+	top: 500px;
+	left: 800px;
+}
+
+#red-flag-15{
+	top: 560px;
+	left: 1000px;
+}
+
+#intervention-11{
+	top: 500px;
+	left: 220px;
+}
+
+#intervention-12{
+	top: 300px;
+	left: 300px;
+}
+
+#intervention-13{
+	top: 400px;
+	left: 430px;
+}
+
+#intervention-14{
+	top: 600px;
+	left: 900px;
+}
+
+#intervention-15{
+	top: 500px;
+	left: 70px;
+}
+
+/* adding animation */
+.animate-icon{
+    animation: bounce .3s infinite alternate;
+}
+
+@keyframes bounce {
+  to { -webkit-transform: scale(1.2); }
+}
+
+
+/******************************************************************/
+/* All incidents*/
+/*****************************************************************
