@@ -89,6 +89,10 @@ function handleRedflagClick (event){
     // extend the width of the red-flag so that it can fit the 
     // size of the summary card
     clickedElement.style.width = '5%';
+
+    // remove animations
+    removeClass('.red-flag', 'animate-icon');
+    removeClass('.intervention', 'animate-icon');
 	
 }
 
@@ -110,4 +114,51 @@ function handleRedflagMouseLeave(event){
 
 	// restore the opacity of the the clicked element
 	clickedElement.style.opacity = 1;
+
+	// Add animation
+	addClass('.red-flag', 'animate-icon');
+    addClass('.intervention', 'animate-icon');
+}
+
+// Handling user-profile toggle 
+let avatar = document.querySelector('.avatar');
+
+let userCard = document.querySelector('.user-card');
+
+avatar.addEventListener('click', handleToggleUserCard);
+
+function handleToggleUserCard(){
+    userCard.style.visibility = 'visible';
+}
+
+userCard.addEventListener('mouseenter', function(){
+	userCard.style.visibility = 'visible';
+});
+
+userCard.addEventListener('mouseleave', function(){
+	userCard.style.visibility = 'hidden';
+});
+
+// add css class
+function addClass(selector, myClass) {
+
+  // get all elements that match our selector
+  elements = document.querySelectorAll(selector);
+
+  // add class to all chosen elements
+  for (let i=0; i<elements.length; i++) {
+    elements[i].classList.add(myClass);
+  }
+}
+
+// remove css class
+function removeClass(selector, myClass) {
+
+  // get all elements that match our selector
+  elements = document.querySelectorAll(selector);
+
+  // remove class from all chosen elements
+  for (let i=0; i<elements.length; i++) {
+    elements[i].classList.remove(myClass);
+  }
 }
