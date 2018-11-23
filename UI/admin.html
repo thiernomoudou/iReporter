@@ -20,6 +20,7 @@
         </form>
 		<div class="search-icon incident-search"  href=""><i class="fas fa-search"></i></div>
 		<i class="fas fa-user avatar"></i>
+		<span class="username">admin</span>
 
 	</section>
 	<!-- navbar ends -->
@@ -31,9 +32,13 @@
 		<p><a href="">Settings</a></p>
 	</div>
 
-	<div class="all-incidents-intro view-intro">
-        <p><span>Great people </span>are contributing to the <span>development</span> of their country by reporting <span>corruption cases </span> and Make the government know things that need <span>intervention</span></p>
-	    <p class="view-button incident-buttons"><span>Join</span> the movement and <span id="view-report-button"><a href="incident-form.html" role="button">Report an incident</a><span></p>	
+	<div class="all-incidents-intro dashboard-intro">
+        <p>Hi Souleymane Welcome to the <span>Admin Dashboard</span>.</p>
+	    <p class="filters">
+	    	Filter by user <input type="text" id="input-filter-1"/> Filter by Date <input type="text" id="input-filter-2" />
+	    	Filter by status <input type="text" id="input-filter-3" />
+
+	    </p>	
 	</div>
 
 	<div class="map" id="map-id">
@@ -41,18 +46,18 @@
 		</p>
 		<!-- red-flags -->
 		<!-- <i class="fas fa-map-marker-alt red-flag"></i> -->
-		<div class= "red-flag animate-icon" id="red-flag-11" ><i class="fas fa-flag" ></i></div>
-		<div class= "red-flag animate-icon" id="red-flag-12" ><i class="fas fa-flag" ></i></div>
-		<div class= "red-flag animate-icon" id="red-flag-13" ><i class="fas fa-flag" ></i></div>
-		<div class= "red-flag animate-icon" id="red-flag-14" ><i class="fas fa-flag" ></i></div>
-		<div class= "red-flag animate-icon" id="red-flag-15" ><i class="fas fa-flag" ></i></div>
+		<div class= "red-flag" id="red-flag-11" ><i class="fas fa-flag" ></i></div>
+		<div class= "red-flag" id="red-flag-12" ><i class="fas fa-flag" ></i></div>
+		<div class= "red-flag" id="red-flag-13" ><i class="fas fa-flag" ></i></div>
+		<div class= "red-flag" id="red-flag-14" ><i class="fas fa-flag" ></i></div>
+		<div class= "red-flag" id="red-flag-15" ><i class="fas fa-flag" ></i></div>
 	
         <!-- Interventions -->
-	    <div class= "intervention animate-icon" id="intervention-11" ><i class="fas fa-hammer"></i></div>
-		<div class= "intervention animate-icon" id="intervention-12" ><i class="fas fa-hammer"></i></div>
-		<div class= "intervention animate-icon" id="intervention-13" ><i class="fas fa-hammer"></i></div>
-		<div class= "intervention animate-icon" id="intervention-14" ><i class="fas fa-hammer"></i></div>
-		<div class= "intervention animate-icon" id="intervention-15" ><i class="fas fa-hammer"></i></div>
+	    <div class= "intervention" id="intervention-11" ><i class="fas fa-hammer"></i></div>
+		<div class= "intervention" id="intervention-12" ><i class="fas fa-hammer"></i></div>
+		<div class= "intervention" id="intervention-13" ><i class="fas fa-hammer"></i></div>
+		<div class= "intervention" id="intervention-14" ><i class="fas fa-hammer"></i></div>
+		<div class= "intervention" id="intervention-15" ><i class="fas fa-hammer"></i></div>
     </div>
     <div id="overlay"></div>
     <div class="incident-detail-card">
@@ -72,7 +77,6 @@
     	<i class="far fa-times-circle close-button"></i>
     	
     </div>
-
 <script src='js/index.js'></script>
 </body>
 </html>
