@@ -273,7 +273,8 @@ input[type=search] {
 	font-weight: 800;
 }
 
-.signup-card input{
+input[type=text],
+input[type=password]{
 	-webkit-appearance: none;
 	border: 1px solid #1F3349;
 	padding: 1% 1%;
@@ -457,7 +458,7 @@ input[type=search] {
 }
 
 .incident-page{
-  height: 600px;
+  height: 800px;
 }
 
 #incident-card{
@@ -731,4 +732,22 @@ input[type=radio]:checked{
 	font-size: 40px;
 	color: #e3e3e3;
 	cursor: pointer;
+}
+
+/* Add image and video */
+/*.upload-button-wrapper{
+	position: relative;
+	overflow: hidden;
+	display: inline-block;
+}*/
+
+.upload-media{
+	border: 1px solid #314CCD;
+	color: #314CCD;
+	width: 25%;
+	font-size: 14px;
+	border-radius: 10px;
+	padding: 1% 1%;
+	color: white;
+	background-color:  rgb(49,76,205,0.8);;
 }
