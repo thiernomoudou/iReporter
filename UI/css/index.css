@@ -760,15 +760,15 @@ input[type=radio]:checked{
 
 /* Admin Dashboard */
 .filters{
-	font-size: 14px;
+	font-size: 12px;
 }
 
 #input-filter-1{
-	margin-right: 4%;
+	margin-right: 2%;
 }
 
 #input-filter-2{
-	margin-right: 4%;
+	margin-right: 2%;
 }
 
 /* Profile page */
