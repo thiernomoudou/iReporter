@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/index.css">
+	<title>iReporter</title>
+</head>
+<body>
+	<!-- navbar begins -->
+	<section class="custom-navbar">
+		<a class="logo" href="index.html">iReporter</a>
+        <form class="nav-search">
+        	<input type="search" class="search-input"  aria-label="search" placeholder="search"/>
+        </form>
+		<div class="search-icon incident-search"  href=""><i class="fas fa-search"></i></div>
+		<i class="fas fa-user avatar"></i>
+		<span class="username">admin</span>
+
+	</section>
+	<!-- navbar ends -->
+
+	<div class="user-card" id="user-card-id">
+		<p><a href="admin.html">Admin Dashboard</a></p>
+		<p><a href="profile.html">My profile</a></p>
+		<p><a href="all-incidents.html">incidents created</a></p>
+		<p><a href="">Settings</a></p>
+	</div>
+
+	<div class="all-incidents-intro dashboard-intro">
+        <p>Hi Souleymane Welcome to the <span>Admin Dashboard</span>.</p>
+	    <p class="filters">
+	    	Filter by user <input type="text" id="input-filter-1"/> Filter by Date <input type="text" id="input-filter-2" />
+	    	Filter by status <input type="text" id="input-filter-3" />
+
+	    </p>	
+	</div>
+
+	<div class="map" id="map-id">
+		<p class="legend">They are two type of incidents: <span>red-flags</span>(Corruptions) and <span>interventions</span>
+		</p>
+		<!-- red-flags -->
+		<!-- <i class="fas fa-map-marker-alt red-flag"></i> -->
+		<div class= "red-flag" id="red-flag-11" ><i class="fas fa-flag" ></i></div>
+		<div class= "red-flag" id="red-flag-12" ><i class="fas fa-flag" ></i></div>
+		<div class= "red-flag" id="red-flag-13" ><i class="fas fa-flag" ></i></div>
+		<div class= "red-flag" id="red-flag-14" ><i class="fas fa-flag" ></i></div>
+		<div class= "red-flag" id="red-flag-15" ><i class="fas fa-flag" ></i></div>
+	
+        <!-- Interventions -->
+	    <div class= "intervention" id="intervention-11" ><i class="fas fa-hammer"></i></div>
+		<div class= "intervention" id="intervention-12" ><i class="fas fa-hammer"></i></div>
+		<div class= "intervention" id="intervention-13" ><i class="fas fa-hammer"></i></div>
+		<div class= "intervention" id="intervention-14" ><i class="fas fa-hammer"></i></div>
+		<div class= "intervention" id="intervention-15" ><i class="fas fa-hammer"></i></div>
+    </div>
+    <div id="overlay"></div>
+    <div class="incident-detail-card">
+    	<img class="detail-card-image" src="img/fancycrave.jpg">
+    	<h3>Corrupted Judge</h3>
+    	<p class="detail-card-info">
+    		<span class="created-by">Create By: </span>thierno:ss
+    		<span class="created-at">Created At: </span>11/19/2018
+    		<span class="status">Status:</span> Under inquiry
+    	</p>
+    	<p class="modification">
+    		<span class="edit"><a href="">Edit</a><i class="fas fa-pen pen"></i></span>
+    		<span class="change-status"><a href="">Change status</a><i class="fas fa-pen pen"></i></span>
+    		<span class="delete"><a href="">Delete</a><i class="fas fa-trash-alt trash"></i></span>
+    		
+    	</p>
+    	<i class="far fa-times-circle close-button"></i>
+    	
+    </div>
+<script src='js/index.js'></script>
+</body>
+</html>
