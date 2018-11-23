@@ -5,45 +5,73 @@ let interventions = document.getElementsByClassName('intervention');
 
 // Add event listener for red flag hover
 for (let i = 0; i < redFlags.length; i++){
-	redFlags[i].addEventListener('mouseenter', handleRedflagClick);
-	redFlags[i].addEventListener('mouseleave', handleRedflagMouseLeave);
-}
+	redFlags[i].addEventListener('mouseenter', handleIncidentHover);
+	redFlags[i].addEventListener('mouseleave', handleIncidentMouseLeave);
 
+    // handle click event
+    redFlags[i].addEventListener('click', handleIncidentClick);
+}
 // Add event listener for intervention hover
 for (let i = 0; i < interventions.length; i++){
-	interventions[i].addEventListener('mouseenter', handleRedflagClick);
-	interventions[i].addEventListener('mouseleave', handleRedflagMouseLeave);
+	interventions[i].addEventListener('mouseenter', handleIncidentHover);
+	interventions[i].addEventListener('mouseleave', handleIncidentMouseLeave);
+
+    // handle click event
+    interventions[i].addEventListener('click', handleIncidentClick);
 }
 
 // sample red-flag data
 const redFlagData = [
-    {title: 'Police Bribery', location:'13 Ikorodu Road, Lagos'},
-    {title: 'Corrupted Jugde', location:'65, kanku street, Lagos'},
-    {title: 'Corrupted Teacher', location:'105, Ulateju street, Lagos'},
-    {title: 'funds misappropriation', location:'18, Ilepeju , Lagos '},
-    {title: 'nepotism', location:'16, Ulateju street, Lagos'},
+    {title: 'Police Bribery', location:'13 Ikorodu Road, Lagos',
+     imgUrl:'../img/fancycrave.jpg', createdAt: '10/11/2018',
+     createBy:'Thierno-ss', status: 'under inquiry'
+    },
+    {title: 'Corrupted Jugde', location:'65, kanku street, Lagos',
+     imgUrl:'../img/fancycrave.jpg', createdAt: '10/11/2018',
+     createBy:'Thierno-ss', status: 'under inquiry'},
+    {title: 'Corrupted Teacher', location:'105, Ulateju street, Lagos',
+    imgUrl:'../img/fancycrave.jpg', createdAt: '10/11/2018',
+     createBy:'Thierno-ss', status: 'under inquiry'},
+    {title: 'funds misappropriation', location:'18, Ilepeju , Lagos',
+    imgUrl:'../img/fancycrave.jpg', createdAt: '10/11/2018',
+     createBy:'Thierno-ss', status: 'under inquiry'},
+    {title: 'nepotism', location:'16, Ulateju street, Lagos',
+    imgUrl:'../img/fancycrave.jpg', createdAt: '10/11/2018',
+     createBy:'Thierno-ss', status: 'under inquiry'},
 ]; 
 
 // sample intervention data
 const interventionData = [
-    {title: 'Bridge collapse', location:'19 Ikorodu Road, Lagos'},
-    {title: 'Flooding', location:'45, kanku street, Lagos'},
-    {title: 'Bad road', location:'15, Ulateju street, Lagos'},
-    {title: 'water shortage', location:'18, Ilepeju , Lagos '},
-    {title: 'Blackout', location:'16, Ulateju street, Lagos'},
+    {title: 'Bridge collapse', location:'19 Ikorodu Road, Lagos',
+    imgUrl:'../img/fancycrave.jpg', createdAt: '10/11/2018',
+     createBy:'Thierno-ss', status: 'under inquiry'
+    },
+    {title: 'Flooding', location:'45, kanku street, Lagos',
+    imgUrl:'../img/fancycrave.jpg', createdAt: '10/11/2018',
+     createBy:'Thierno-ss', status: 'under inquiry'},
+    {title: 'Bad road', location:'15, Ulateju street, Lagos',
+    imgUrl:'../img/fancycrave.jpg', createdAt: '10/11/2018',
+     createBy:'Thierno-ss', status: 'under inquiry'
+    },
+    {title: 'water shortage', location:'18, Ilepeju , Lagos',
+    imgUrl:'../img/fancycrave.jpg', createdAt: '10/11/2018',
+     createBy:'Thierno-ss', status: 'under inquiry'},
+    {title: 'Blackout', location:'16, Ulateju street, Lagos',
+    imgUrl:'../img/fancycrave.jpg', createdAt: '10/11/2018',
+     createBy:'Thierno-ss', status: 'under inquiry'},
 ]; 
 
-function handleRedflagClick (event){
+function handleIncidentHover (event){
 
-	let clickedElement = event.target;
+	let hoveredElement = event.target;
 	// capture the name of the clicked element and extract the number;
-	let clickedElementId = parseInt(event.target.id.slice(-1));
+	let hoveredElementId = parseInt(event.target.id.slice(-1));
 	
 	// match id to indexes of sample data array
-	let currentId = clickedElementId - 1;
+	let currentId = hoveredElementId - 1;
 
 	// capturing the computed style of the current element
-	currentStyles = window.getComputedStyle(clickedElement, null);
+	currentStyles = window.getComputedStyle(hoveredElement, null);
 
 	let top = currentStyles.getPropertyValue('top');
 	let left = currentStyles.getPropertyValue('left');
@@ -56,7 +84,7 @@ function handleRedflagClick (event){
 	let h5 = document.createElement('h5');
 
 	// Adding div attributes
-	if (clickedElement.id.startsWith('red')){
+	if (hoveredElement.id.startsWith('red')){
 		div.setAttribute('class', 'red-flag-summary');
 		h3.textContent = redFlagData[currentId].title;
 	    h5.textContent = redFlagData[currentId].location;
@@ -71,10 +99,10 @@ function handleRedflagClick (event){
     div.appendChild(h5);
 
     // insert the div after the clicked element
-    clickedElement.parentNode.insertBefore(div, clickedElement);
+    hoveredElement.parentNode.insertBefore(div, hoveredElement);
 
     // make the flag transparent so detail can be read properly
-    clickedElement.style.opacity = 0.3;
+    hoveredElement.style.opacity = 0.3;
 
     // Add some styling
     div.style.position = 'absolute';
@@ -88,7 +116,7 @@ function handleRedflagClick (event){
 
     // extend the width of the red-flag so that it can fit the 
     // size of the summary card
-    clickedElement.style.width = '5%';
+    hoveredElement.style.width = '5%';
 
     // remove animations
     removeClass('.red-flag', 'animate-icon');
@@ -96,14 +124,16 @@ function handleRedflagClick (event){
 	
 }
 
-function handleRedflagMouseLeave(event){
+
+// handle mouseleave
+function handleIncidentMouseLeave(event){
     let parentSummaryCard = document.querySelector('.map');
     let summaryCard;
 
     // capture the clicked element
-    let clickedElement = event.target;
+    let hoveredElement = event.target;
 
-    if (clickedElement.id.startsWith('red')){
+    if (hoveredElement.id.startsWith('red')){
     	summaryCard = document.querySelector('.red-flag-summary');
     }else{
     	summaryCard = document.querySelector('.intervention-summary');
@@ -113,7 +143,7 @@ function handleRedflagMouseLeave(event){
 	parentSummaryCard.removeChild(summaryCard);
 
 	// restore the opacity of the the clicked element
-	clickedElement.style.opacity = 1;
+	hoveredElement.style.opacity = 1;
 
 	// Add animation
 	addClass('.red-flag', 'animate-icon');
@@ -127,6 +157,7 @@ let userCard = document.querySelector('.user-card');
 
 avatar.addEventListener('click', handleToggleUserCard);
 
+// handle toggle user card
 function handleToggleUserCard(){
     userCard.style.visibility = 'visible';
 }
@@ -138,6 +169,31 @@ userCard.addEventListener('mouseenter', function(){
 userCard.addEventListener('mouseleave', function(){
 	userCard.style.visibility = 'hidden';
 });
+
+// handle detail 
+   let overlay = document.querySelector('#overlay');
+   let detailCard = document.querySelector('.incident-detail-card');
+   let close = document.querySelector('.close-button');
+   close.addEventListener('click', handleCloseClick);  
+
+// Handle click 
+function handleIncidentClick(event){
+
+    // add blue color on top of the document
+    overlay.style.visibility = 'visible';
+
+    // show the detail-page
+    detailCard.style.visibility = 'visible';
+
+}
+
+// handle close
+function handleCloseClick(){
+    overlay.style.visibility = 'hidden';
+    detailCard.style.visibility = 'hidden';
+}
+
+// helper functions
 
 // add css class
 function addClass(selector, myClass) {

@@ -25,6 +25,7 @@
 	<!-- navbar ends -->
 
 	<div class="user-card" id="user-card-id">
+		<p><a href="admin.html">Admin Dashboard</a></p>
 		<p><a href="profile.html">My profile</a></p>
 		<p><a href="all-incidents.html">incidents created</a></p>
 		<p><a href="">Settings</a></p>
@@ -53,9 +54,17 @@
 				<input type="text" name="incident_title" id="incident-title">
 			</p>
 			<p>
-				<label for="incident-title">Location</label>
+				<label for="incident-location">Location</label>
 				<input type="text" name="incident_location" id="incident-location">
 			</p>
+			<p>
+			    <label for="image_uploads" class="upload-media">Choose images</label>
+			    <input type="file" id="image_uploads" name="image_uploads" accept=".jpg, .jpeg, .png" multiple>
+			 </p>
+			 <p>
+			    <label for="video_uploads" class="upload-media">Choose videos</label>
+			    <input type="file" id="video_uploads" name="video_uploads" accept=".jpg, .jpeg, .png" multiple>
+			 </p>
 			<button type="submit" class="submit-button">Submit</button>
 		</form>
 		
