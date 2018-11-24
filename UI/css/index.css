@@ -114,9 +114,9 @@ input[type=search] {
    height: 440px;
 
 }
-.banner h3 {
+.banner .welcome-message {
 	padding-top: 2%;
-	font-size: 25px;
+	/*font-size: 25px;*/
 	margin-bottom: -1%;
 	
 }
@@ -748,7 +748,9 @@ input[type=radio]:checked{
 	border-radius: 10px;
 	padding: 1% 1%;
 	color: white;
-	background-color:  rgb(49,76,205,0.8);;
+	background-color:  rgb(49,76,205,0.8);
+	cursor: pointer;
+	text-align: center;
 }
 
 /* Userame */
