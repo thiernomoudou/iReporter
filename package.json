@@ -1,0 +1,48 @@
+{
+  "name": "ireporter",
+  "version": "1.0.0",
+  "description": "A platform for reporting corruption incidents and anythings that needs government intervention ",
+  "main": "server/index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "build-server": "babel server -d dist ",
+    "start": "babel-watch server/index.js",
+    "serve": "node  dist/index.js",
+    "test": "mocha --require babel-register"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thiernomoudou/iReporter.git"
+  },
+  "keywords": [
+    "corruption",
+    "intervention",
+    "node",
+    "express"
+  ],
+  "author": "Thierno Souleymane Diallo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thiernomoudou/iReporter/issues"
+  },
+  "homepage": "https://github.com/thiernomoudou/iReporter#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-watch": "^2.0.7",
+    "eslint": "^5.9.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.11.1",
+    "prettier": "^1.15.2"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "morgan": "^1.9.1"
+  }
+}
