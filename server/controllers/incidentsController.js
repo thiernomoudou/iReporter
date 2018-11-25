@@ -14,7 +14,7 @@ class IncidentsController {
    */
   getAllIncidents(req, res) {
     // return all incidents from the database
-    res.send(incidentsData);
+    res.send({ status: 200, data: incidentsData });
   }
 }
 

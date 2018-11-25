@@ -14,7 +14,7 @@ describe('GET /api/v1/incidents route', () => {
         if (err) { return done(err); }
         expect(response).to.have.status(200);
   
-        const incidents = response.body;
+        const incidents = response.body.data;
 
         expect(Array.isArray(incidents)).to.be.true;
         expect(incidents.length).to.equal(3);

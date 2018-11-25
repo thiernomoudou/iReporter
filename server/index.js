@@ -14,9 +14,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/api/v1/incidents', incidentsRoutes);
-// app.get('/incidents', (req, res) => {
-//   res.send('hello world');
-// });
 
 // port
 app.listen(port, () => {
