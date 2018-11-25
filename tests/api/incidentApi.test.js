@@ -7,7 +7,6 @@ import app from '../../server/index';
 chai.use(chaiHttp);
 
 describe('/incidents api route', () => {
-
   describe('GET /api/v1/incidents route', () => {
     it('Should responds with a 200 and all incidents', (done) => {
       chai.request(app)
@@ -40,6 +39,17 @@ describe('/incidents api route', () => {
           expect(incident.length).to.equal(1);
           expect(incident[0].id).to.equal(3);
           expect(incident[0].type).to.equal('Intervention');
+          done();
+        });
+    });
+
+    it('Should return a 404 if the incident is not found', (done) => {
+      chai.request(app)
+        .get('/api/v1/incidents/10')
+        .end((error, response) => {
+          expect(response).to.have.status(404);
+          
+          expect(response.body.error).to.equal('Red-flag not found');
           done();
         });
     });

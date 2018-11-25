@@ -33,6 +33,9 @@ class IncidentsController {
     // pick the parameter passed to the request and parsing it
     const incidentId = parseInt(req.params.id, 10);
     const incident = incidentsData.filter(item => item.id === incidentId);
+    if (incident.length === 0) {
+      res.status(404).send({ status: 404, error: 'Red-flag not found' });
+    }
     res.send({ status: 200, data: incident });
   }
 
