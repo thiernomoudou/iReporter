@@ -10,7 +10,8 @@
     "build-server": "babel server -d dist ",
     "start": "babel-watch server/index.js",
     "serve": "node  dist/index.js",
-    "test": "mocha --require babel-register"
+    "test": "mocha tests/**/**.test.js --exit --compilers js:babel-core/register",
+    "lint": "eslint server"
   },
   "repository": {
     "type": "git",
@@ -31,13 +32,17 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0",
     "babel-watch": "^2.0.7",
     "chai": "^4.2.0",
+    "chai-http": "^4.2.0",
     "eslint": "^5.9.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-prettier": "^3.0.0",
     "eslint-plugin-react": "^7.11.1",
+    "nock": "^10.0.2",
     "prettier": "^1.15.2"
   },
   "dependencies": {
