@@ -54,9 +54,37 @@ class IncidentsController {
       images: reqBody.images,
       title: reqBody.title,
       comment: reqBody.comment,
+      status: reqBody.status
     };
 
     res.status(201).send({ status: 201, data: [newIncident] });
+  }
+
+  /**
+   * Update a specifc incident into the database
+   *
+   * @param {object} req express request object
+   * @param {object} res express response object
+   * @returns {json} json of newly created incident
+   * @memberof incidentsController
+   */
+
+  updateIncident(req, res) {
+    const reqBody = req.body;
+    const incidentId = parseInt(req.params.id, 10);
+    const currentIncident = incidentsData.filter(item => item.id === incidentId);
+
+    const updatedIncident = {
+      id: incidentId,
+      type: reqBody.type || currentIncident[0].type,
+      location: reqBody.location || currentIncident[0].location,
+      images: reqBody.images || currentIncident[0].images,
+      title: reqBody.title || currentIncident[0].title,
+      comment: reqBody.comment || currentIncident[0].comment,
+      status: reqBody.status || currentIncident[0].status
+    };
+
+    res.send({ status: 200, data: [updatedIncident] });
   }
 }
 

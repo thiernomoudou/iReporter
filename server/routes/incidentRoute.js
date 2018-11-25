@@ -13,4 +13,7 @@ incidentsRoutes.get('/:id', incidentsController.getSpecificIncident);
 // Create an incident
 incidentsRoutes.post('/', incidentsController.createIncident);
 
+// Update an incident
+incidentsRoutes.put('/:id', incidentsController.updateIncident);
+
 export default incidentsRoutes;
