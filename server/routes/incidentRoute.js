@@ -4,7 +4,10 @@ import IncidentsController from '../controllers/incidentsController';
 const incidentsRoutes = new Router();
 const incidentsController = new IncidentsController();
 
-// get all incident api routes
+// get all incidents api routes
 incidentsRoutes.get('/', incidentsController.getAllIncidents);
+
+// get a specifict incident
+incidentsRoutes.get('/:id', incidentsController.getSpecificIncident);
 
 export default incidentsRoutes;
