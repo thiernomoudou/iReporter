@@ -16,4 +16,7 @@ incidentsRoutes.post('/', incidentsController.createIncident);
 // Update an incident
 incidentsRoutes.put('/:id', incidentsController.updateIncident);
 
+// Patch an incident
+incidentsRoutes.patch('/:id/:attribute', incidentsController.performantIncidentUpdate);
+
 export default incidentsRoutes;

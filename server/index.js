@@ -17,7 +17,6 @@ app.use('/api/v1/incidents', incidentsRoutes);
 
 // port
 app.listen(port, () => {
-  console.log('listening on port 3100');
 });
 
 export default app;

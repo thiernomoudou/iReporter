@@ -98,8 +98,29 @@ class IncidentsController {
       status: 200,
       data: [
         {
-          id: incidentId,
+          id: updatedIncident.id,
           message: 'Redflag updated'
+        }
+      ]
+    };
+
+    res.status(200).send(returnedData);
+  }
+
+  performantIncidentUpdate(req, res) {
+    const reqBody = req.body;
+    const incidentId = parseInt(req.params.id, 10);
+    const currentIncident = incidentsData.filter(item => item.id === incidentId);
+    const attributeToUpdate = req.params.attribute;
+    const incidentToPacth = currentIncident[0];
+    // Apply the patch
+    incidentToPacth[attributeToUpdate] = reqBody[attributeToUpdate];
+    const returnedData = {
+      status: 200,
+      data: [
+        {
+          id: incidentToPacth.id,
+          message: 'Updated red-flag record’s comment',
         }
       ]
     };
