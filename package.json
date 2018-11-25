@@ -11,7 +11,8 @@
     "start": "babel-watch server/index.js",
     "serve": "node  dist/index.js",
     "test": "mocha tests/**/**.test.js --exit --compilers js:babel-core/register",
-    "lint": "eslint server"
+    "lint": "eslint server",
+    "lint-fix": "eslint server --fix"
   },
   "repository": {
     "type": "git",
