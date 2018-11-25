@@ -72,7 +72,7 @@ describe('/incidents api route', () => {
     });
   });
 
-  describe('incident:id /PUT endpoint', () => {
+  describe('incident/:id /PUT endpoint', () => {
     it('Should return the updated incident id and a message', (done) => {
       chai.request(app)
         .put('/api/v1/incidents/3')
@@ -91,6 +91,28 @@ describe('/incidents api route', () => {
           expect(incident.length).to.equal(1);
           expect(incident[0].id).to.equal(3);
           expect(incident[0].message).to.equal('Redflag updated');
+          done();
+        });
+    });
+  });
+
+  describe('incident/:id/:attribute /PATCH endpoint', () => {
+    it('Should return the updated incident id and a message', (done) => {
+      chai.request(app)
+        .patch('/api/v1/incidents/1/comment')
+        .send({
+          comment: 'a really bad road'
+        })
+        .end((err, response) => {
+          if (err) { return done(err); }
+          expect(response).to.have.status(200);
+
+          const incident = response.body.data;
+
+          expect(Array.isArray(incident)).to.be.true;
+          expect(incident.length).to.equal(1);
+          expect(incident[0].id).to.equal(1);
+          expect(incident[0].message).to.equal('Updated red-flag record’s comment');
           done();
         });
     });
