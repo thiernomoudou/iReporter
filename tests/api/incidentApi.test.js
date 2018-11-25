@@ -46,7 +46,7 @@ describe('/incidents api route', () => {
   });
 
   describe('Incident /POST endpoint', () => {
-    it('Should return the newly created incident', (done) => {
+    it('Should return the newly created incident id and a custom message', (done) => {
       chai.request(app)
         .post('/api/v1/incidents')
         .send({
@@ -66,14 +66,14 @@ describe('/incidents api route', () => {
           expect(Array.isArray(incident)).to.be.true;
           expect(incident.length).to.equal(1);
           expect(incident[0].id).to.equal(4);
-          expect(incident[0].type).to.equal('Redflag');
+          expect(incident[0].message).to.equal('Created Redflag record');
           done();
         });
     });
   });
 
   describe('incident:id /PUT endpoint', () => {
-    it('Should update the incident, and return the updated incident', (done) => {
+    it('Should return the updated incident id and a message', (done) => {
       chai.request(app)
         .put('/api/v1/incidents/3')
         .send({
@@ -90,8 +90,7 @@ describe('/incidents api route', () => {
           expect(Array.isArray(incident)).to.be.true;
           expect(incident.length).to.equal(1);
           expect(incident[0].id).to.equal(3);
-          expect(incident[0].status).to.equal('Under inquiry');
-          expect(incident[0].type).to.equal('Intervention');
+          expect(incident[0].message).to.equal('Redflag updated');
           done();
         });
     });
