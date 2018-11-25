@@ -57,7 +57,17 @@ class IncidentsController {
       status: reqBody.status
     };
 
-    res.status(201).send({ status: 201, data: [newIncident] });
+    const returnedData = {
+      status: 201,
+      data: [
+        {
+          id: newIncident.id,
+          message: 'Created Redflag record'
+        }
+      ]
+    }
+
+    res.status(201).send(returnedData);
   }
 
   /**

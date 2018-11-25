@@ -66,7 +66,7 @@ describe('/incidents api route', () => {
           expect(Array.isArray(incident)).to.be.true;
           expect(incident.length).to.equal(1);
           expect(incident[0].id).to.equal(4);
-          expect(incident[0].type).to.equal('Redflag');
+          expect(incident[0].message).to.equal('Created Redflag record');
           done();
         });
     });
