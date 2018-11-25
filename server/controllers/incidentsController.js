@@ -14,6 +14,7 @@ class IncidentsController {
    * @returns {json} json
    * @memberof IncidentsController
    */
+
   getAllIncidents(req, res) {
     // return all incidents from the database
     res.send({ status: 200, data: incidentsData });
@@ -27,11 +28,35 @@ class IncidentsController {
    * @returns {json} incident
    * @memberof incidentsController
    */
+
   getSpecificIncident(req, res) {
     // pick the parameter passed to the request and parsing it
     const incidentId = parseInt(req.params.id, 10);
     const incident = incidentsData.filter(item => item.id === incidentId);
     res.send({ status: 200, data: incident });
+  }
+
+  /**
+   * Save a new incident into the database
+   *
+   * @param {object} req express request object
+   * @param {object} res express response object
+   * @returns {json} json of newly created incident
+   * @memberof incidentsController
+   */
+
+  createIncident(req, res) {
+    const reqBody = req.body;
+    const newIncident = {
+      id: reqBody.id,
+      type: reqBody.type,
+      location: reqBody.location,
+      images: reqBody.images,
+      title: reqBody.title,
+      comment: reqBody.comment,
+    };
+
+    res.status(201).send({ status: 201, data: [newIncident] });
   }
 }
 
