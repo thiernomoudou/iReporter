@@ -71,4 +71,29 @@ describe('/incidents api route', () => {
         });
     });
   });
+
+  describe('incident:id /PUT endpoint', () => {
+    it('Should update the incident, and return the updated incident', (done) => {
+      chai.request(app)
+        .put('/api/v1/incidents/3')
+        .send({
+          location: '73, Sani Abacha Street, Lagos',
+          status: 'Under inquiry'
+         
+        })
+        .end((err, response) => {
+          if (err) { return done(err); }
+          expect(response).to.have.status(200);
+
+          const incident = response.body.data;
+
+          expect(Array.isArray(incident)).to.be.true;
+          expect(incident.length).to.equal(1);
+          expect(incident[0].id).to.equal(3);
+          expect(incident[0].status).to.equal('Under inquiry');
+          expect(incident[0].type).to.equal('Intervention');
+          done();
+        });
+    });
+  });
 });
