@@ -65,7 +65,7 @@ class IncidentsController {
           message: 'Created Redflag record'
         }
       ]
-    }
+    };
 
     res.status(201).send(returnedData);
   }
@@ -106,6 +106,14 @@ class IncidentsController {
 
     res.status(200).send(returnedData);
   }
+  /**
+   * Patch a specifc incident into the database
+   *
+   * @param {object} req express request object
+   * @param {object} res express response object
+   * @returns {json} json of newly created incident
+   * @memberof incidentsController
+   */
 
   performantIncidentUpdate(req, res) {
     const reqBody = req.body;
@@ -121,6 +129,34 @@ class IncidentsController {
         {
           id: incidentToPacth.id,
           message: 'Updated red-flag record’s comment',
+        }
+      ]
+    };
+
+    res.status(200).send(returnedData);
+  }
+
+  /**
+   * Delete a specifc incident into the database
+   *
+   * @param {object} req express request object
+   * @param {object} res express response object
+   * @returns {json} json of newly created incident
+   * @memberof incidentsController
+   */
+
+  deleteIncident(req, res) {
+    const incidentId = parseInt(req.params.id, 10);
+
+    // Delete the incident
+    incidentsData.filter(item => item.id !== incidentId);
+
+    const returnedData = {
+      status: 200,
+      data: [
+        {
+          id: incidentId,
+          message: 'red-flag record has been deleted',
         }
       ]
     };
