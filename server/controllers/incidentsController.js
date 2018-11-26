@@ -35,8 +35,9 @@ class IncidentsController {
     const incident = incidentsData.filter(item => item.id === incidentId);
     if (incident.length === 0) {
       res.status(404).send({ status: 404, error: 'Red-flag not found' });
+    } else {
+      res.send({ status: 200, data: incident });
     }
-    res.send({ status: 200, data: incident });
   }
 
   /**
