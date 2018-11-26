@@ -54,7 +54,7 @@ describe('/incidents api route', () => {
           if (err) { return done(err); }
           expect(response).to.have.status(404);
 
-          expect(response.body.error).to.equal('User does not exist');
+          expect(response.body.error).to.equal('Unauthorized');
           done();
         });
     });
@@ -70,7 +70,7 @@ describe('/incidents api route', () => {
           if (err) { return done(err); }
           expect(response).to.have.status(401);
 
-          expect(response.body.error).to.equal('Password does not match');
+          expect(response.body.error).to.equal('Unauthenticated');
           done();
         });
     });
