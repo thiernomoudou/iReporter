@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 
 import incidentsRoutes from './routes/incidentRoute';
+import usersRoutes from './routes/userRoute';
 
 // Set up the express app
 const app = express();
@@ -19,6 +20,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/api/v1/incidents', incidentsRoutes);
+app.use('/api/v1/users/incidents', usersRoutes);
 
 // Unmatched routes
 app.get('*', (req, res) => {

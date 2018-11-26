@@ -38,7 +38,7 @@ const incidentsData = [
   },
 ];
 
-const userData = [
+const usersData = [
   {
     id: 1,
     firstName: 'Thierno Souleymane',
@@ -52,7 +52,7 @@ const userData = [
     isAdmin: true
   },
   {
-    id: 1,
+    id: 2,
     firstName: 'Nkwanko',
     lastName: 'Kanu',
     otherName: '',
@@ -65,4 +65,4 @@ const userData = [
   }
 ];
 
-export { incidentsData, userData };
+export { incidentsData, usersData };
