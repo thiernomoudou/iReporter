@@ -1,6 +1,6 @@
 /* eslint-disable no-return-assign */
 
-import incidentsData from '../database';
+import { incidentsData } from '../database';
 
 /**
  * Controller to handle all incidents endpoint routes

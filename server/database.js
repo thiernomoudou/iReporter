@@ -38,4 +38,31 @@ const incidentsData = [
   },
 ];
 
-export default incidentsData;
+const userData = [
+  {
+    id: 1,
+    firstName: 'Thierno Souleymane',
+    lastName: 'Diallo',
+    otherName: '',
+    email: 'souleymane@gmail.com',
+    password: 'password',
+    phoneNumber: '2269873612',
+    userName: 'thierno',
+    registered: '12/18/2018',
+    isAdmin: true
+  },
+  {
+    id: 1,
+    firstName: 'Nkwanko',
+    lastName: 'Kanu',
+    otherName: '',
+    email: 'kwanko@gmail.com',
+    password: 'pkwanko',
+    phoneNumber: '2269873612',
+    userName: 'nkwanko',
+    registered: '11/18/2018',
+    isAdmin: false
+  }
+];
+
+export { incidentsData, userData };
