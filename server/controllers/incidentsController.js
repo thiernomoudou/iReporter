@@ -1,6 +1,6 @@
 /* eslint-disable no-return-assign */
 
-import incidentsData from '../database';
+import { incidentsData } from '../database';
 
 /**
  * Controller to handle all incidents endpoint routes
@@ -33,7 +33,11 @@ class IncidentsController {
     // pick the parameter passed to the request and parsing it
     const incidentId = parseInt(req.params.id, 10);
     const incident = incidentsData.filter(item => item.id === incidentId);
-    res.send({ status: 200, data: incident });
+    if (incident.length === 0) {
+      res.status(404).send({ status: 404, error: 'Red-flag not found' });
+    } else {
+      res.send({ status: 200, data: incident });
+    }
   }
 
   /**

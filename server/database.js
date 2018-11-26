@@ -4,7 +4,7 @@ const incidentsData = [
     id: 1,
     type: 'Redflag',
     createdOn: '11/03/2018',
-    createdBy: 'thierno souleymane Diallo',
+    createdBy: 1,
     location: '23, Ikorodu Road, Lagos',
     status: '',
     images: ['image1', 'image2'],
@@ -16,7 +16,7 @@ const incidentsData = [
     id: 2,
     type: 'Redflag',
     createdOn: '11/10/2018',
-    createdBy: 'Mickel Moore',
+    createdBy: 2,
     location: '23, Itoko Road, Lagos',
     status: '',
     images: ['image3', 'image4'],
@@ -28,7 +28,7 @@ const incidentsData = [
     id: 3,
     type: 'Intervention',
     createdOn: '11/10/2018',
-    createdBy: 'Esso Awoko',
+    createdBy: 1,
     location: '23, Itoko Road, Lagos',
     status: '',
     images: ['image6', 'image8'],
@@ -38,4 +38,31 @@ const incidentsData = [
   },
 ];
 
-export default incidentsData;
+const userData = [
+  {
+    id: 1,
+    firstName: 'Thierno Souleymane',
+    lastName: 'Diallo',
+    otherName: '',
+    email: 'souleymane@gmail.com',
+    password: 'password',
+    phoneNumber: '2269873612',
+    userName: 'thierno',
+    registered: '12/18/2018',
+    isAdmin: true
+  },
+  {
+    id: 1,
+    firstName: 'Nkwanko',
+    lastName: 'Kanu',
+    otherName: '',
+    email: 'kwanko@gmail.com',
+    password: 'pkwanko',
+    phoneNumber: '2269873612',
+    userName: 'nkwanko',
+    registered: '11/18/2018',
+    isAdmin: false
+  }
+];
+
+export { incidentsData, userData };
