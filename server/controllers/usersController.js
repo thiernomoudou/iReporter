@@ -18,9 +18,16 @@ class UsersController {
 
   getAllUserIncidents(req, res) {
     // getting the id of the user
-    const userId = req.user.id;
+    const userId = parseInt(req.params.id, 10);
     const userIncidents = incidentsData.filter(item => item.createdBy === userId);
-    res.send({ status: 200, data: userIncidents });
+    if (userIncidents.length === 0) {
+      res.status(404).send({
+        status: 404,
+        error: 'User not found'
+      });
+    } else {
+      res.send({ status: 200, data: userIncidents });
+    }
   }
 }
 

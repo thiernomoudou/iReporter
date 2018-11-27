@@ -20,7 +20,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/api/v1/incidents', incidentsRoutes);
-app.use('/api/v1/users/incidents', usersRoutes);
+app.use('/api/v1/users/', usersRoutes);
 
 // Unmatched routes
 app.get('*', (req, res) => {

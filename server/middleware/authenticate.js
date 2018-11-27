@@ -24,7 +24,7 @@ function authMiddleware(req, res, next) {
   if (indUser.length === 0) {
     res.status(404).send({
       status: 404,
-      error: 'Unauthorized'
+      error: 'Unauthenticated'
     });
   } else {
     if (password !== indUser[0].password) {
