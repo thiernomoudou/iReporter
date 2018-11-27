@@ -1,7 +1,7 @@
 /* eslint-disable no-return-assign */
 /* eslint-disable no-lonely-if */
 
-import { usersData, incidentsData } from '../database';
+import { usersData } from '../database';
 
 
 /**

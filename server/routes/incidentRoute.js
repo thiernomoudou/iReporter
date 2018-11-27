@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import IncidentsController from '../controllers/incidentsController';
+import incidentMiddleware from '../middleware/incidentMiddleware';
 
 const incidentsRoutes = new Router();
 const incidentsController = new IncidentsController();
@@ -8,18 +9,18 @@ const incidentsController = new IncidentsController();
 incidentsRoutes.get('/', incidentsController.getAllIncidents);
 
 // get a specifict incident
-incidentsRoutes.get('/:id', incidentsController.getSpecificIncident);
+incidentsRoutes.get('/:id', incidentMiddleware, incidentsController.getSpecificIncident);
 
 // Create an incident
 incidentsRoutes.post('/', incidentsController.createIncident);
 
 // Update an incident
-incidentsRoutes.put('/:id', incidentsController.updateIncident);
+incidentsRoutes.put('/:id', incidentMiddleware, incidentsController.updateIncident);
 
 // Patch an incident
-incidentsRoutes.patch('/:id/:attribute', incidentsController.performantIncidentUpdate);
+incidentsRoutes.patch('/:id/:attribute', incidentMiddleware, incidentsController.performantIncidentUpdate);
 
 // Delete  an incident
-incidentsRoutes.delete('/:id', incidentsController.deleteIncident);
+incidentsRoutes.delete('/:id', incidentMiddleware, incidentsController.deleteIncident);
 
 export default incidentsRoutes;
