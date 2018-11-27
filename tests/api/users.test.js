@@ -54,4 +54,22 @@ describe('/users api route', () => {
         });
     });
   });
+
+  describe('GET /api/v1/users/:id/profile route', () => {
+    it('Should return 200 and the user profile', (done) => {
+      chai.request(app)
+        .get(`/api/v1/users/${mockUsers.testUser1.id}/profile`)
+        .end((err, response) => {
+          if (err) { return done(err); }
+          expect(response).to.have.status(200);
+
+          const userIncidents = response.body.data;
+  
+          expect(Array.isArray(userIncidents)).to.be.true;
+          expect(userIncidents.length).to.equal(1);
+          expect(userIncidents[0].id).to.equal(1);
+          done();
+        });
+    });
+  });
 });

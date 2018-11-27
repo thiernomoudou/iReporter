@@ -5,8 +5,11 @@ import UsersController from '../controllers/usersController';
 const usersRoutes = new Router();
 const usersController = new UsersController();
 
-// get all Users api routes for an individual user
+// get all incidents for an individual user
 usersRoutes.get('/:id/incidents', usersController.getAllUserIncidents);
+
+// get a user profile
+usersRoutes.get('/:id/profile', usersController.getUserProfile);
 
 // usersRoutes.post('/', authMiddleware, usersController.getAllUserIncidents);
 
