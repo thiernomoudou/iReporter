@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/thiernomoudou/iReporter.svg?branch=develop)](https://travis-ci.org/thiernomoudou/iReporter)
 [![Coverage Status](https://coveralls.io/repos/github/thiernomoudou/iReporter/badge.svg?branch=develop)](https://coveralls.io/github/thiernomoudou/iReporter?branch=develop)
+[![Maintainability](https://api.codeclimate.com/v1/badges/ed50e3f23e561bb9fac8/maintainability)](https://codeclimate.com/github/thiernomoudou/iReporter/maintainability)
 # iReporter
 
 A platform for reporting corruption cases or anything that need government intervention.
