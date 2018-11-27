@@ -4,7 +4,7 @@ branches:
     - develop
     - master
 node_js:
-  - "10.13"
+  - stable
 install:
   - npm install
 script:
@@ -12,4 +12,4 @@ script:
 cache: 
   - npm install
 after_success:
-  - npm run coveralls
+  - npm run coverage
