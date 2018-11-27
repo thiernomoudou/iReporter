@@ -30,14 +30,9 @@ class IncidentsController {
    */
 
   getSpecificIncident(req, res) {
-    // pick the parameter passed to the request and parsing it
-    const incidentId = parseInt(req.params.id, 10);
-    const incident = incidentsData.filter(item => item.id === incidentId);
-    if (incident.length === 0) {
-      res.status(404).send({ status: 404, error: 'Red-flag not found' });
-    } else {
-      res.send({ status: 200, data: incident });
-    }
+    // pick the incident passed to the request by the incident middleware
+    const { incident } = req;
+    res.send({ status: 200, data: [incident] });
   }
 
   /**
@@ -85,7 +80,9 @@ class IncidentsController {
 
   updateIncident(req, res) {
     const reqBody = req.body;
-    const incidentId = parseInt(req.params.id, 10);
+
+    // incident object added by the incident middleware
+    const incidentId = req.incident.id;
     const currentIncident = incidentsData.filter(item => item.id === incidentId);
 
     const updatedIncident = {
@@ -121,7 +118,9 @@ class IncidentsController {
 
   performantIncidentUpdate(req, res) {
     const reqBody = req.body;
-    const incidentId = parseInt(req.params.id, 10);
+   
+    // incident object added by the incident middleware
+    const incidentId = req.incident.id;
     const currentIncident = incidentsData.filter(item => item.id === incidentId);
     const attributeToUpdate = req.params.attribute;
     const incidentToPacth = currentIncident[0];
@@ -150,7 +149,8 @@ class IncidentsController {
    */
 
   deleteIncident(req, res) {
-    const incidentId = parseInt(req.params.id, 10);
+    // incident object added by the incident middleware
+    const incidentId = req.incident.id;
 
     // Delete the incident
     incidentsData.filter(item => item.id !== incidentId);
