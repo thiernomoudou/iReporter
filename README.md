@@ -1,5 +1,7 @@
 # iReporter
 
+[![Build Status](https://travis-ci.org/thiernomoudou/iReporter.svg?branch=develop)](https://travis-ci.org/thiernomoudou/iReporter)
+
 A platform for reporting corruption cases or anything that need government intervention.
 
 ### Overview
@@ -24,6 +26,23 @@ git clone https://github.com/thiernomoudou/iReporter.git
 - Get into the directory UI
 ```bash 
 cd iReporter/UI
+```
+
+## THE SERVER 
+contains the project API developed in Node/express
+
+- Clone repository
+- Install dependencies:
+```bash
+  npm install
+```
+- Run server: 
+```bash
+  npm run start
+```
+- Run tests:
+```bash
+  npm run test
 ```
 
 #### LICENSE
