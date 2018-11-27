@@ -10,7 +10,7 @@
     "build-server": "babel server -d dist ",
     "start": "babel-watch server/index.js",
     "serve": "node  dist/index.js",
-    "test": "mocha tests/**/**.test.js --exit --compilers js:babel-core/register",
+    "test": "nyc --reporter=html --reporter=text mocha tests/**/**.test.js --exit --compilers js:babel-core/register",
     "lint": "eslint server",
     "lint-fix": "eslint server --fix",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
@@ -46,6 +46,7 @@
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-prettier": "^3.0.0",
     "eslint-plugin-react": "^7.11.1",
+    "mocha": "^5.2.0",
     "nock": "^10.0.2",
     "nyc": "^13.1.0",
     "prettier": "^1.15.2"
