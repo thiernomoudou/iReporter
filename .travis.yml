@@ -1,7 +1,8 @@
 language: node_js
 branches:
   only:
-   - CI-temp
+    - develop
+    - master
 node_js:
   - stable
 install:
