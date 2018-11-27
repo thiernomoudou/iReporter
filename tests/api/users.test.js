@@ -48,7 +48,6 @@ describe('/users api route', () => {
         .end((err, response) => {
           if (err) { return done(err); }
           expect(response).to.have.status(404);
-
           expect(response.body.error).to.equal('User not found');
           done();
         });
@@ -68,6 +67,18 @@ describe('/users api route', () => {
           expect(Array.isArray(userIncidents)).to.be.true;
           expect(userIncidents.length).to.equal(1);
           expect(userIncidents[0].id).to.equal(1);
+          done();
+        });
+    });
+
+    it('Should return 404 and an error message if userId does not exist', (done) => {
+      const invalidId = 10;
+      chai.request(app)
+        .get(`/api/v1/users/${invalidId}/incidents`)
+        .end((err, response) => {
+          if (err) { return done(err); }
+          expect(response).to.have.status(404);
+          expect(response.body.error).to.equal('User not found');
           done();
         });
     });
