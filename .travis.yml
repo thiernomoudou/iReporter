@@ -11,7 +11,5 @@ script:
   - npm test
 cache: 
   - npm install
-after_script: 
-  - nyc npm test && nyc report --reporter=text-lcov | coveralls
 after_success:
   - npm run coveralls

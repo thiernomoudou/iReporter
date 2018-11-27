@@ -1,7 +1,5 @@
 # iReporter
 
-[![Build Status](https://travis-ci.org/thiernomoudou/iReporter.svg?branch=develop)](https://travis-ci.org/thiernomoudou/iReporter)
-
 A platform for reporting corruption cases or anything that need government intervention.
 
 ### Overview
