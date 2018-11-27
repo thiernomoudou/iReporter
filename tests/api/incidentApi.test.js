@@ -61,7 +61,6 @@ describe('/incidents api route', () => {
         .get(`/api/v1/incidents/${invalidId}`)
         .end((error, response) => {
           expect(response).to.have.status(404);
-          
           expect(response.body.error).to.equal('Red-flag not found');
           done();
         });
@@ -117,6 +116,17 @@ describe('/incidents api route', () => {
           done();
         });
     });
+
+    it('Should return a 404 if the incident is not found', (done) => {
+      const invalidId = 10;
+      chai.request(app)
+        .get(`/api/v1/incidents/${invalidId}`)
+        .end((error, response) => {
+          expect(response).to.have.status(404);
+          expect(response.body.error).to.equal('Red-flag not found');
+          done();
+        });
+    });
   });
 
   describe('incident/:id/:attribute /PATCH endpoint', () => {
@@ -139,6 +149,17 @@ describe('/incidents api route', () => {
           done();
         });
     });
+
+    it('Should return a 404 if the incident is not found', (done) => {
+      const invalidId = 10;
+      chai.request(app)
+        .get(`/api/v1/incidents/${invalidId}`)
+        .end((error, response) => {
+          expect(response).to.have.status(404);
+          expect(response.body.error).to.equal('Red-flag not found');
+          done();
+        });
+    });
   });
 
   describe('incident/:id /DELETE endpoint', () => {
@@ -158,5 +179,30 @@ describe('/incidents api route', () => {
           done();
         });
     });
+
+    it('Should return a 404 if the incident is not found', (done) => {
+      const invalidId = 10;
+      chai.request(app)
+        .get(`/api/v1/incidents/${invalidId}`)
+        .end((error, response) => {
+          expect(response).to.have.status(404);
+          expect(response.body.error).to.equal('Red-flag not found');
+          done();
+        });
+    });
+  });
+});
+
+
+describe('Unmatched route', () => {
+  it('Should return a 404 if the route is not found', (done) => {
+    const invalidPath = 'invalid path';
+    chai.request(app)
+      .get(`/api/v1/${invalidPath}`)
+      .end((error, response) => {
+        expect(response).to.have.status(404);
+        expect(response.body.error).to.equal('Route not found');
+        done();
+      });
   });
 });
