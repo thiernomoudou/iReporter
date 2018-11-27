@@ -4,14 +4,12 @@ branches:
     - develop
     - master
 node_js:
-  - "10.13"
+  - stable
 install:
   - npm install
 script:
   - npm test
 cache: 
   - npm install
-after_script: 
-  - nyc npm test && nyc report --reporter=text-lcov | coveralls
 after_success:
-  - npm run coveralls
+  - npm run coverage
