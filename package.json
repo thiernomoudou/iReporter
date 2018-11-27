@@ -10,7 +10,7 @@
     "build-server": "babel server -d dist ",
     "start": "babel-watch server/index.js",
     "serve": "node  dist/index.js",
-    "test": "mocha tests/**/**.test.js --exit --compilers js:babel-core/register",
+    "test": "nyc mocha tests/**/**.test.js --exit --compilers js:babel-core/register",
     "lint": "eslint server",
     "lint-fix": "eslint server --fix"
   },
@@ -44,6 +44,7 @@
     "eslint-plugin-prettier": "^3.0.0",
     "eslint-plugin-react": "^7.11.1",
     "nock": "^10.0.2",
+    "nyc": "^13.1.0",
     "prettier": "^1.15.2"
   },
   "dependencies": {
