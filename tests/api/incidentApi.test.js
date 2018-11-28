@@ -1,5 +1,6 @@
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
+import { incidentsData } from '../../server/database';
 
 import app from '../../server/index';
 
@@ -89,6 +90,7 @@ describe('/incidents api route', () => {
           expect(incident.length).to.equal(1);
           expect(incident[0].id).to.equal(4);
           expect(incident[0].message).to.equal('Created Redflag record');
+          expect(incidentsData.length).to.equal(4);
           done();
         });
     });
