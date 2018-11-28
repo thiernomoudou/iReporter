@@ -206,3 +206,16 @@ describe('Unmatched route', () => {
       });
   });
 });
+
+// Api root route welcome message
+describe('Root rout', () => {
+  it('Should return with a 200 and welcome message in json', (done) => {
+    chai.request(app)
+      .get('/api/v1')
+      .end((error, response) => {
+        expect(response).to.have.status(200);
+        expect(response.body.data).to.equal('Welcome to iReporter');
+        done();
+      });
+  });
+});
