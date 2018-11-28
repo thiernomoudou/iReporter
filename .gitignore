@@ -1,6 +1,6 @@
 node_modules/
-server/dist
+dist/
 .env
-.vscode
+.vscode/
 .nyc_output
 coverage/

@@ -8,7 +8,7 @@ import usersRoutes from './routes/userRoute';
 
 // Set up the express app
 const app = express();
-const port = process.env.port || 3100;
+const port = process.env.PORT || 3100;
 // const env = process.env.NODE_ENV || 'development';
 
 //  Enable CORS for the express server
