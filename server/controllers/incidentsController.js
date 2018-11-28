@@ -55,6 +55,8 @@ class IncidentsController {
       comment: reqBody.comment,
       status: reqBody.status
     };
+    // Add the created incident to the database
+    incidentsData.push(newIncident);
 
     const returnedData = {
       status: 201,
