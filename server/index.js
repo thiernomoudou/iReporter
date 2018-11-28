@@ -8,7 +8,7 @@ import usersRoutes from './routes/userRoute';
 
 // Set up the express app
 const app = express();
-const port = process.env.port || 3100;
+const port = process.env.PORT || 3100;
 // const env = process.env.NODE_ENV || 'development';
 
 //  Enable CORS for the express server
@@ -21,6 +21,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/api/v1/incidents', incidentsRoutes);
 app.use('/api/v1/users/', usersRoutes);
+
+// Welcome message
+app.get('/api/v1', (req, res) => {
+  res.status(200).send({
+    status: 200,
+    data: 'Welcome to iReporter'
+  });
+});
 
 // Unmatched routes
 app.get('*', (req, res) => {
