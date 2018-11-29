@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import IncidentsController from '../controllers/incidentsController';
 import incidentMiddleware from '../middleware/incidentMiddleware';
+import addIncidentMiddleware from '../middleware/addIncidentValidatorMiddleware';
 
 const incidentsRoutes = new Router();
 const incidentsController = new IncidentsController();
@@ -12,7 +13,7 @@ incidentsRoutes.get('/', incidentsController.getAllIncidents);
 incidentsRoutes.get('/:id', incidentMiddleware, incidentsController.getSpecificIncident);
 
 // Create an incident
-incidentsRoutes.post('/', incidentsController.createIncident);
+incidentsRoutes.post('/', addIncidentMiddleware, incidentsController.createIncident);
 
 // Update an incident
 incidentsRoutes.put('/:id', incidentMiddleware, incidentsController.updateIncident);
