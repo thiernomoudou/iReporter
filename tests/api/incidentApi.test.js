@@ -105,11 +105,11 @@ describe('/incidents api route', () => {
         })
         .end((error, response) => {
           expect(response).to.have.status(422);
-          expect(response.body.error.length).to.equal(1);
-          // expect(response.body.error).to.have.members([
-          //   'The type is required',
-          //   'The location is required',
-          // ]);
+          expect(response.body.error.length).to.equal(2);
+          expect(response.body.error).to.have.members([
+            'The type is required',
+            'The location is required',
+          ]);
           done();
         });
     });

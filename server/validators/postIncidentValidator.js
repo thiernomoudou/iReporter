@@ -20,7 +20,7 @@ export default class PostincidentValidator {
   
   isValid() {
     if (this.incident) {
-      // this.validateType();
+      this.validateType();
       this.validateLocation();
     } else {
       this.error.push('No incident was provided');
@@ -40,7 +40,7 @@ export default class PostincidentValidator {
    */
   validateType() {
     if (this.incident.type) {
-      if (this.incident.type !== 'Red-flag' || this.incident.type !== 'Intervention') {
+      if (!(this.incident.type === 'Red-flag' || this.incident.type === 'Intervention')) {
         this.error.push('An incident must be a Red-flag or an Intervention');
       }
     } else {
