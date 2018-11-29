@@ -227,21 +227,21 @@ function handleCloseClick() {
 // add css class
 function addClass(selector, myClass) {
   // get all elements that match our selector
-  const elements = document.querySelectorAll(selector);
+  const elementsToAdd = document.querySelectorAll(selector);
 
   // add class to all chosen elements
-  for (let i = 0; i < elements.length; i++) {
-    elements[i].classList.add(myClass);
+  for (let i = 0; i < elementsToAdd.length; i++) {
+    elementsToAdd[i].classList.add(myClass);
   }
 }
 
 // remove css class
 function removeClass(selector, myClass) {
   // get all elements that match our selector
-  const elements = document.querySelectorAll(selector);
+  const elementsToRemove = document.querySelectorAll(selector);
 
   // remove class from all chosen elements
-  for (let i = 0; i < elements.length; i++) {
-    elements[i].classList.remove(myClass);
+  for (let i = 0; i < elementsToRemove.length; i++) {
+    elementsToRemove[i].classList.remove(myClass);
   }
 }

@@ -14,7 +14,7 @@ const incidentsData = [
   },
   {
     id: 2,
-    type: 'Redflag',
+    type: 'redflag',
     createdOn: '11/10/2018',
     createdBy: 2,
     location: '46, Itoko Road, Lagos',
