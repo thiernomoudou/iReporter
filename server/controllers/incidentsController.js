@@ -133,7 +133,7 @@ class IncidentsController {
       data: [
         {
           id: incidentToPacth.id,
-          message: 'Updated red-flag record’s comment',
+          message: `Updated red-flag record’s ${attributeToUpdate}`,
         }
       ]
     };
