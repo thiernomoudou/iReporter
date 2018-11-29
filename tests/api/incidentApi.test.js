@@ -235,7 +235,9 @@ describe('Root rout', () => {
       .get('/api/v1')
       .end((error, response) => {
         expect(response).to.have.status(200);
-        expect(response.body.data).to.equal('Welcome to iReporter');
+
+        const res = response.body.data[0];
+        expect(res.message).to.equal('Welcome to iReporter');
         done();
       });
   });

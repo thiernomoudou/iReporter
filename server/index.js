@@ -26,7 +26,14 @@ app.use('/api/v1/users/', usersRoutes);
 app.get('/api/v1', (req, res) => {
   res.status(200).send({
     status: 200,
-    data: 'Welcome to iReporter'
+    data: [
+      {
+        message: 'Welcome to iReporter',
+        all_incident: '/api/v1/incidents',
+        specific_incident: '/api/v1/incidens/:id',
+        all_user_incidents: '/api/v1/users/:id/incidents'
+      }
+    ]
   });
 });
 
