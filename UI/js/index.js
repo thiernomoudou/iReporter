@@ -20,20 +20,21 @@ for (let i = 0; i < redFlags.length; i++) {
   interventions[i].addEventListener('click', handleIncidentClick);
 }
 
+const imagePath = '../img/fancycrave';
 // sample red-flag data
 const redFlagData = [
   {
     title: 'Police Bribery',
     location: '13 Ikorodu Road, Lagos',
-    imgUrl: '../img/fancycrave.jpg', 
+    imgUrl: imagePath,
     createdAt: '10/11/2018',
-    createBy: 'Thierno-ss',
+    createBy: 'Thierno-soul',
     status: 'under inquiry',
   },
   {
     title: 'Corrupted Jugde',
     location: '65, kanku street, Lagos',
-    imgUrl: '../img/fancycrave.jpg',
+    imgUrl: imagePath,
     createdAt: '10/12/2018',
     createdBy: 'Thierno-Mama',
     status: ''
@@ -41,7 +42,7 @@ const redFlagData = [
   {
     title: 'Corrupted Teacher',
     location: '105, Ulateju street, Lagos',
-    imgUrl: '../img/fancycrave.jpg',
+    imgUrl: imagePath,
     createdAt: '10/18/2018',
     createBy: 'Thierno-ss',
     status: 'Resolved'
@@ -49,7 +50,7 @@ const redFlagData = [
   {
     title: 'funds misappropriation',
     location: '18, Ilepeju , Lagos',
-    imgUrl: '../img/fancycrave.jpg',
+    imgUrl: imagePath,
     createdAt: '10/19/2018',
     createBy: 'Umar aAta',
     status: 'Pending'
@@ -57,56 +58,58 @@ const redFlagData = [
   {
     title: 'nepotism',
     location: '16, Ulateju street, Lagos',
-    imgUrl: '../img/fancycrave.jpg',
+    imgUrl: imagePath,
     createdAt: '10/20/2018',
     createBy: 'Assu Ekoto',
     status: 'Resolved'
   },
 ];
 
+const interventionImage = '../img/flooding.jpg';
 // sample intervention data
 const interventionData = [
   {
     title: 'Bridge collapse',
-    location: '19 Ikorodu Road, Lagos',
-    imgUrl: '../img/fancycrave.jpg',
+    location: '19 Atola Road, Lagos',
+    imgUrl: interventionImage,
     createdAt: '10/18/2018',
-    createBy: 'Diallo Ts',
+    createBy: 'Seedy Mohamed',
     status: ''
   },
   {
     title: 'Flooding',
-    location: '450, kanku street, Lagos',
-    imgUrl: '../img/fancycrave.jpg',
+    location: '450, Adama Howe street, Lagos',
+    imgUrl: interventionImage,
     createdAt: '11/11/2018',
-    createBy: 'Thierno-ss',
+    createBy: 'Mo Ibrahim',
     status: 'pending'
   },
   {
     title: 'Bad road',
-    location: '15, Ulateju street, Lagos',
-    imgUrl: '../img/fancycrave.jpg',
+    location: '15, Sam Samuel street, Lagos',
+    imgUrl: interventionImage,
     createdAt: '11/29/2018',
     createBy: 'Mamadu Atol',
     status: 'Resolved'
   },
   {
     title: 'water shortage',
-    location: '90, Ilepeju , Lagos',
-    imgUrl: '../img/fancycrave.jpg',
+    location: '90, Sanoh Alo , Lagos',
+    imgUrl: interventionImage,
     createdAt: '12/09/2018',
     createBy: 'Maria Salvador',
     status: 'Rejected'
   },
   {
     title: 'Blackout',
-    location: '16, Ulateju street, Lagos',
-    imgUrl: '../img/fancycrave.jpg',
+    location: '16, Idumagbo, Lagos',
+    imgUrl: interventionImage,
     createdAt: '10/01/2018',
     createBy: 'Ilawu Atuja',
     status: 'Pending'
   },
 ];
+
 
 function handleIncidentHover(event) {
   const hoveredElement = event.target;
