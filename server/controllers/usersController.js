@@ -22,7 +22,7 @@ class UsersController {
     const userId = req.user.id;
 
     const userIncidents = incidentsData.filter(item => item.createdBy === userId);
-    
+
     if (userIncidents.length === 0) {
       res.status(404).send({
         status: 404,

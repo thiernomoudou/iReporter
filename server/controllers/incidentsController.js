@@ -120,7 +120,7 @@ class IncidentsController {
 
   performantIncidentUpdate(req, res) {
     const reqBody = req.body;
-   
+
     // incident object added by the incident middleware
     const incidentId = req.incident.id;
     const currentIncident = incidentsData.filter(item => item.id === incidentId);

@@ -74,7 +74,7 @@ describe('/incidents api route', () => {
         .post('/api/v1/incidents')
         .send({
           id: 4,
-          type: 'Redflag',
+          type: 'Red-flag',
           location: '73, Samuel Lewis Road, Lagos',
           images: ['beautifu-image.jpg'],
           title: 'police bribery',
@@ -91,6 +91,25 @@ describe('/incidents api route', () => {
           expect(incident[0].id).to.equal(4);
           expect(incident[0].message).to.equal('Created Redflag record');
           expect(incidentsData.length).to.equal(4);
+          done();
+        });
+    });
+
+    it('Should return the correct validation errors if there are any', (done) => {
+      chai.request(app)
+        .post('/api/v1/incidents')
+        .send({
+          images: ['beautifu-image.jpg'],
+          title: 'police bribery',
+          comment: 'They are asking me 3 bucks',
+        })
+        .end((error, response) => {
+          expect(response).to.have.status(422);
+          expect(response.body.error.length).to.equal(1);
+          // expect(response.body.error).to.have.members([
+          //   'The type is required',
+          //   'The location is required',
+          // ]);
           done();
         });
     });
