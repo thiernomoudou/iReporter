@@ -52,6 +52,18 @@ describe('/users api route', () => {
           done();
         });
     });
+
+    it('Should return 404 and a message', (done) => {
+      const userWithNoIncidentId = 3;
+      chai.request(app)
+        .get(`/api/v1/users/${userWithNoIncidentId}/incidents`)
+        .end((err, response) => {
+          if (err) { return done(err); }
+          expect(response).to.have.status(404);
+          expect(response.body.error).to.equal('User does not have redflags or interventions yet');
+          done();
+        });
+    });
   });
 
   describe('GET /api/v1/users/:id/profile route', () => {

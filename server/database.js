@@ -14,10 +14,10 @@ const incidentsData = [
   },
   {
     id: 2,
-    type: 'Redflag',
+    type: 'redflag',
     createdOn: '11/10/2018',
     createdBy: 2,
-    location: '23, Itoko Road, Lagos',
+    location: '46, Itoko Road, Lagos',
     status: '',
     images: ['image3', 'image4'],
     videos: ['video3', 'video4'],
@@ -27,9 +27,9 @@ const incidentsData = [
   {
     id: 3,
     type: 'Intervention',
-    createdOn: '11/10/2018',
+    createdOn: '10/24/2018',
     createdBy: 1,
-    location: '23, Itoko Road, Lagos',
+    location: '23, Samuel Lewis Road, Lagos',
     status: '',
     images: ['image6', 'image8'],
     videos: ['video6', 'video10'],
@@ -60,7 +60,19 @@ const usersData = [
     password: 'pkwanko',
     phoneNumber: '2269873612',
     userName: 'nkwanko',
-    registered: '11/18/2018',
+    registered: '11/15/2018',
+    isAdmin: false
+  },
+  {
+    id: 3,
+    firstName: 'Mary ',
+    lastName: 'Umo',
+    otherName: 'Amad',
+    email: 'mary@gmail.com',
+    password: 'psmary',
+    phoneNumber: '2349873612',
+    userName: 'mary',
+    registered: '10/18/2018',
     isAdmin: false
   }
 ];
