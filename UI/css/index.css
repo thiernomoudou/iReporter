@@ -11,7 +11,6 @@ body{
 
 body a{
 	text-decoration: none;
-	/*color: #ffffff;*/
 }
 
 /********************************************************/
@@ -22,6 +21,7 @@ body a{
 	align-items: center;
 	justify-content: space-around;
 	margin-top: 2%;
+	padding-bottom: 2%;
 	background-color: #314CCD;
 	height: 100px;
 	margin: 0;
@@ -158,7 +158,7 @@ input[type=search] {
 
 .corruption-figures{
 	margin-top: -0.1%;
-	background-color: #314CCD;
+	background-color: white;
 	display: flex;
 	padding: 3% 2%;
 
@@ -169,7 +169,7 @@ input[type=search] {
     text-align: center;
     margin-right: 1%;
     padding: 2% 2%;
-    color: #ffffff;
+    color: #1F3349;
     font-weight: 500;
 }
 
@@ -190,7 +190,7 @@ input[type=search] {
 }
 .info-source a{
 	text-align: center;
-	color: #ffffff;
+	color: #314CCD;
 }
 
 .info-source span{
@@ -209,9 +209,11 @@ input[type=search] {
 .statistics{
 	display: flex;
 	justify-content: center;
-	max-width: 700px;
-	padding: 1% 2%;
-	margin: 2% auto;
+	/* max-width: 700px; */
+	padding: 2% 2%;
+	margin-top: -0.7%;
+	margin-bottom: -0.7%;
+	background-color: #314CCD;
 }
 
 .statistics li{
@@ -222,17 +224,18 @@ input[type=search] {
     color: #1F3349;
     font-weight: 500;
     flex: 1;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     width: 104px;
-    border-radius: 50%;
+		border-radius: 50%;
+		color: white;
 }
 
-.statistics h3{
+.statistics > h3{
 	font-weight: 800;
 }
 
 .statistics p{
-	color: #314CCD;
+	color: white;
 	font-weight: 600;
 }
 
@@ -257,7 +260,7 @@ input[type=search] {
 	width: 28%;
 	padding: 3%  3% 4% 8%;
 	position: relative;
-	top: 8%;
+	top: -1%;
 	left: 30%;
 	border-radius: 2%;
 }
@@ -383,8 +386,8 @@ input[type=password]{
 	/*z-index: 2;*/
 }
 
-.red-flag-summary h3,
-.intervention-summary, h3{
+.red-flag-summary > h3,
+.intervention-summary > h3{
 	color:  #314CCD;
 	font-size: 14px;
 }
@@ -458,13 +461,13 @@ input[type=password]{
 }
 
 .incident-page{
-  height: 800px;
+  height: 650px;
 }
 
 #incident-card{
 	width: 50%;
 	margin-left: -10%;
-	margin-top: -5%;
+	margin-top: -2%;
 }
 
 .user-card{
@@ -807,4 +810,39 @@ input[type=radio]:checked{
 /* LF feedback */
 .hide {
 	visibility: hidden;
+}
+
+/* Footer */
+.footer{
+	background-color: #314CCD;
+	padding: 1% 2%;
+	text-align: center;
+	color: white;
+}
+
+.footer a{
+	color: white;
+}
+
+.twitter{
+	margin: 0 10%;
+}
+
+.footer-brand{
+	font-weight: 600;
+}
+
+.second-footer{
+  background-color: white;
+	padding: 1% 2%;
+	text-align: center;
+	color:#314CCD;
+}
+
+.second-footer a {
+	color: #314CCD;
+}
+
+.footer-media{
+	font-weight: 600;
 }
