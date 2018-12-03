@@ -254,11 +254,11 @@ input[type=search] {
 
 .signup-card{
 	background-color: #ffffff;
-	width: 40%;
-	padding: 2%  3% 2% 2%;
+	width: 28%;
+	padding: 3%  3% 4% 8%;
 	position: relative;
 	top: 8%;
-	left: 35%;
+	left: 30%;
 	border-radius: 2%;
 }
 
@@ -463,8 +463,8 @@ input[type=password]{
 
 #incident-card{
 	width: 50%;
-	margin-left: -20%;
-	margin-top: -2%;
+	margin-left: -10%;
+	margin-top: -5%;
 }
 
 .user-card{
