@@ -27,7 +27,7 @@
 	<div class="user-card" id="user-card-id">
 		<p><a href="admin.html">Admin Dashboard</a></p>
 		<p><a href="profile.html">My profile</a></p>
-		<p><a href="all-incidents.html">incidents created</a></p>
+		<p><a href="all-incidents.html">Incidents created</a></p>
 		<p><a href="">Settings</a></p>
 	</div>
 
@@ -36,42 +36,109 @@
 	    <p class="view-button incident-buttons"><span>Join</span> the movement and <span id="view-report-button"><a href="incident-form.html" role="button">Report an incident</a><span></p>	
 	</div>
 
-	<div class="map" id="map-id">
-		<p class="legend">They are two type of incidents: <span>red-flags</span>(Corruptions) and <span>interventions</span>
+	<div class="cards-incidents">
+	   <h1 class="red-flag-card-heading">Red flags</h1>
+	   <ul class="red-flag-cards">
+		    <li>
+			    <img class="red-flag-card-img" src="img/policeman1.jpg" alt="money"/>
+			    <p class="red-flag-card-title"><a href="">Police bribery</a></p>
+				<p class="red-flag-creator">By
+					<span class="red-flag-by">Thierno souleymane</span>
+					<span class="red-flag-date">11/19/2018</span>
+				</p>
+				<p class="red-flag-card-info">
+					<span class="red-flag-location">Location </span>
+					<span class="red-flag-location-v">235, Ikorodu Road</span>
+					<span class="red-flag-status">Status</span>
+					<span class="red-flag-status-v">Under inquiry</span>
+				</p>
+		    </li>
+		    <li>
+				<img class="red-flag-card-img" src="img/teacher1.jpg" alt="money"/>
+				<p class="red-flag-card-title"><a href="">Corrupted Teacher</a></p>
+				<p class="red-flag-creator">By
+					<span class="red-flag-by">Thierno souleymane</span>
+					<span class="red-flag-date">11/19/2018</span>
+				</p>
+				<p class="red-flag-card-info">
+					<span class="red-flag-location">Location </span>
+					<span class="red-flag-location-v">235, Ikorodu Road</span>
+					<span class="red-flag-status">Status</span>
+					<span class="red-flag-status-v">Under inquiry</span>
+				</p>
+		    </li>
+		    <li>
+				<img class="red-flag-card-img" src="img/fancycrave1.jpg" alt="money"/>
+				<p class="red-flag-card-title"><a href="">Corrupted Judge</a></p>
+				<p class="red-flag-creator">By
+					<span class="red-flag-by">Thierno souleymane</span>
+					<span class="red-flag-date">11/19/2018</span>
+				</p>
+				<p class="red-flag-card-info">
+					<span class="red-flag-location">Location </span>
+					<span class="red-flag-location-v">235, Ikorodu Road</span>
+					<span class="red-flag-status">Status</span>
+					<span class="red-flag-status-v">Under inquiry</span>
+				</p>
+			</li>
+	   </ul>
+	</div>
+	<!-- intervention cards -->
+	<div class="cards-incidents cards-interventions">
+		<h1 class="red-flag-card-heading intervention-heading">Interventions</h1>
+		<ul class="red-flag-cards">
+			 <li>
+				 <img class="red-flag-card-img" src="img/flooding.jpg" alt="money"/>
+				 <p class="red-flag-card-title"><a href="">Flooding</a></p>
+			 <p class="red-flag-creator">By
+				 <span class="red-flag-by">Thierno souleymane</span>
+				 <span class="red-flag-date">11/19/2018</span>
+			 </p>
+			 <p class="red-flag-card-info">
+				 <span class="red-flag-location">Location </span>
+				 <span class="red-flag-location-v">235, Ikorodu Road</span>
+				 <span class="red-flag-status">Status</span>
+				 <span class="red-flag-status-v">Under inquiry</span>
+			 </p>
+			 </li>
+			 <li>
+			 <img class="red-flag-card-img" src="img/road1.jpg" alt="money"/>
+			 <p class="red-flag-card-title"><a href="">Bad Road</a></p>
+			 <p class="red-flag-creator">By
+				 <span class="red-flag-by">Thierno souleymane</span>
+				 <span class="red-flag-date">11/19/2018</span>
+			 </p>
+			 <p class="red-flag-card-info">
+				 <span class="red-flag-location">Location </span>
+				 <span class="red-flag-location-v">235, Ikorodu Road</span>
+				 <span class="red-flag-status">Status</span>
+				 <span class="red-flag-status-v">Under inquiry</span>
+			 </p>
+			 </li>
+			 <li>
+			 <img class="red-flag-card-img" src="img/bridge1.jpg" alt="money"/>
+			 <p class="red-flag-card-title"><a href="">Bridge collapse</a></p>
+			 <p class="red-flag-creator">By
+				 <span class="red-flag-by">Thierno souleymane</span>
+				 <span class="red-flag-date">11/19/2018</span>
+			 </p>
+			 <p class="red-flag-card-info">
+				 <span class="red-flag-location">Location </span>
+				 <span class="red-flag-location-v">235, Ikorodu Road</span>
+				 <span class="red-flag-status">Status</span>
+				 <span class="red-flag-status-v">Under inquiry</span>
+			 </p>
+		 </li>
+		</ul>
+ </div>
+	<footer class="footer">
+		<p class="footer-media">
+			<a href="" class="facebook">FaceBook</a>
+			<a href="" class="twitter">Twitter</a>
+			<a href="" class="linkedin">LinkedIn</a>
 		</p>
-		<!-- red-flags -->
-		<!-- <i class="fas fa-map-marker-alt red-flag"></i> -->
-		<div class= "red-flag animate-icon" id="red-flag-11" ><i class="fas fa-flag" ></i></div>
-		<div class= "red-flag animate-icon" id="red-flag-12" ><i class="fas fa-flag" ></i></div>
-		<div class= "red-flag animate-icon" id="red-flag-13" ><i class="fas fa-flag" ></i></div>
-		<div class= "red-flag animate-icon" id="red-flag-14" ><i class="fas fa-flag" ></i></div>
-		<div class= "red-flag animate-icon" id="red-flag-15" ><i class="fas fa-flag" ></i></div>
-	
-        <!-- Interventions -->
-	    <div class= "intervention animate-icon" id="intervention-11" ><i class="fas fa-hammer"></i></div>
-		<div class= "intervention animate-icon" id="intervention-12" ><i class="fas fa-hammer"></i></div>
-		<div class= "intervention animate-icon" id="intervention-13" ><i class="fas fa-hammer"></i></div>
-		<div class= "intervention animate-icon" id="intervention-14" ><i class="fas fa-hammer"></i></div>
-		<div class= "intervention animate-icon" id="intervention-15" ><i class="fas fa-hammer"></i></div>
-    </div>
-    <div id="overlay"></div>
-    <div class="incident-detail-card">
-    	<img class="detail-card-image" src="img/fancycrave.jpg">
-    	<h3>Corrupted Judge</h3>
-    	<p class="detail-card-info">
-    		<span class="created-by">Create By: </span>thierno:ss
-    		<span class="created-at">Created At: </span>11/19/2018
-    		<span class="status">Status:</span> Under inquiry
-    	</p>
-    	<p class="modification">
-    		<span class="edit"><a href="">Edit</a><i class="fas fa-pen pen"></i></span>
-    		<span class="change-status"><a href="">Change status</a><i class="fas fa-pen pen"></i></span>
-    		<span class="delete"><a href="">Delete</a><i class="fas fa-trash-alt trash"></i></span>
-    		
-    	</p>
-    	<i class="far fa-times-circle close-button"></i>
-    	
-    </div>
+		<p class="copyright">© 2018 <a class="footer-brand" href="index.html">iReporter</a>. All rights reserved</p>
+	</footer>
 
 <script src='js/index.js'></script>
 </body>

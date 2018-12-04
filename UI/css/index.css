@@ -846,3 +846,94 @@ input[type=radio]:checked{
 .footer-media{
 	font-weight: 600;
 }
+/* *************************************************** */
+/* Red flag card list */
+/* *************************************************** */
+
+.cards-incidents{
+	background-color: #3C2BE4;
+	padding-top: 2%;
+	padding-bottom: 2%;
+}
+
+.red-flag-card-heading{
+	text-align: center;
+	color: white;
+	margin-bottom: 2%;
+}
+.red-flag-cards{
+	display: flex;
+	justify-content: space-around;
+	padding-left: 10%;
+	padding-right: 10%;
+}
+
+.red-flag-cards > li{
+	list-style-type: none;
+	border: 1px solid black;
+	border-radius: 10px;
+	margin-right: 1%;
+	margin: 0 2%;
+	background-color: white;
+	
+}
+
+.red-flag-card-img{
+	height: 300px;
+	width: 300px;
+}
+
+.red-flag-card-title{
+	text-align: center;
+	font-size: 23px;
+}
+
+.red-flag-creator{
+	margin: 1% 2%;
+
+}
+
+.red-flag-by{
+	margin-left: 1%;
+	color: #314CCD;
+}
+
+.red-flag-date{
+	font-weight: 600;
+	font-size: 10px;
+	margin-left: 10%;
+}
+
+.red-flag-card-info{
+	font-size: 12px;
+}
+
+.red-flag-location{
+	margin-left: 2%;
+	font-weight: 600;
+}
+
+.red-flag-location-v,
+.red-flag-status-v{
+	color: #314CCD;
+	margin-left: 1%;
+}
+
+.red-flag-status{
+	margin-left: 3%;
+	font-weight: 600;
+}
+
+.red-flag-status-v{
+	font-size: 10px;
+}
+
+/* Personalise intervetion card */
+
+.cards-interventions{
+	background-color: white;
+}
+
+.intervention-heading{
+	color: #314CCD;
+}
