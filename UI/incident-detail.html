@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/index.css">
+	<title>iReporter</title>
+</head>
+<body>
+	<!-- navbar begins -->
+	<section class="custom-navbar">
+		<a class="logo" href="index.html">iReporter</a>
+        <form class="nav-search">
+        	<input type="search" class="search-input"  aria-label="search" placeholder="search"/>
+        </form>
+		<div class="search-icon incident-search"  href=""><i class="fas fa-search"></i></div>
+		<i class="fas fa-user avatar"></i>
+
+	</section>
+	<!-- navbar ends -->
+
+	<div class="user-card" id="user-card-id">
+		<p><a href="admin.html">Admin Dashboard</a></p>
+		<p><a href="profile.html">My profile</a></p>
+		<p><a href="all-incidents.html">Incidents created</a></p>
+		<p><a href="">Settings</a></p>
+	</div>
+  
+  <div class="detail-incidents-page">
+    <div class="incident-main-part">
+      <div class="incident-detail-card">
+        <img class="detail-card-image" src="img/fancycrave.jpg">
+        <h3>Corrupted Judge</h3>
+        <p class="detail-card-info">
+          <span class="created-by">Create By: </span>thierno:ss
+          <span class="created-at">Created At: </span>11/19/2018
+          <span class="status">Status:</span> Under inquiry
+        </p>
+        <p class="detail-card-info additionnal-info">
+          <span class="created-by incid-location">Location: </span>18 Ikorodu Road
+          <span class="created-at incid-type">Type: </span>Red-flag
+          <span class="status incid-coordinate">Coordinates:</span> -12.9372, 11.3766
+        </p>
+        <p class="modification">
+          <span class="edit"><a href="">Edit</a><i class="fas fa-pen pen"></i></span>
+          <span class="change-status"><a href="">Change status</a><i class="fas fa-pen pen"></i></span>
+          <span class="delete"><a href="">Delete</a><i class="fas fa-trash-alt trash"></i></span>
+          
+        </p>
+        <p class="button-map">
+          <a href="" class="view-map-button">View on map</a>
+        </p>
+      </div>  
+    </div>
+    <div class="sidebar">
+      <h2>Similar incidents</h2>
+      <div class="aside-card-1">
+        <img class="aside-img" src="img/policeman3.jpg" alt="policeman"/>
+        <p class="red-flag-card-title"><a href="incident-detail.html">Police bribery</a></p>
+      </div>
+      <div class="aside-card-1">
+        <img class="aside-img" src="img/teacher2.jpg" alt="policeman"/>
+        <p class="red-flag-card-title"><a href="incident-detail.html">Corrupted teacher</a></p>
+      </div>
+    </div>
+
+  </div>
+
+	<footer class="footer">
+		<p class="footer-media">
+			<a href="" class="facebook">FaceBook</a>
+			<a href="" class="twitter">Twitter</a>
+			<a href="" class="linkedin">LinkedIn</a>
+		</p>
+		<p class="copyright">© 2018 <a class="footer-brand" href="index.html">iReporter</a>. All rights reserved</p>
+	</footer>
+
+<script src='js/index.js'></script>
+</body>
+</html>
