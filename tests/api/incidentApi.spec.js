@@ -30,7 +30,7 @@ describe('/incidents api route', () => {
 
           const incidents = response.body.data;
   
-          expect(Array.isArray(incidents)).to.be.true;
+          expect(incidents).to.be.an('array');
           expect(incidents.length).to.equal(3);
           expect(incidents[0].type).to.equal(mockData.testIncident.type);
           done();
@@ -48,7 +48,7 @@ describe('/incidents api route', () => {
 
           const incident = response.body.data;
 
-          expect(Array.isArray(incident)).to.be.true;
+          expect(incident).to.be.an('array');
           expect(incident.length).to.equal(1);
           expect(incident[0].id).to.equal(mockData.testIncident.id);
           expect(incident[0].type).to.equal(mockData.testIncident.type);
@@ -86,7 +86,7 @@ describe('/incidents api route', () => {
 
           const incident = response.body.data;
 
-          expect(Array.isArray(incident)).to.be.true;
+          expect(incident).to.be.an('array');
           expect(incident.length).to.equal(1);
           expect(incident[0].id).to.equal(4);
           expect(incident[0].message).to.equal('Created Redflag record');
@@ -130,7 +130,7 @@ describe('/incidents api route', () => {
 
           const incident = response.body.data;
 
-          expect(Array.isArray(incident)).to.be.true;
+          expect(incident).to.be.an('array');
           expect(incident.length).to.equal(1);
           expect(incident[0].id).to.equal(mockData.testIncident.id);
           expect(incident[0].message).to.equal('Redflag updated');
@@ -163,7 +163,7 @@ describe('/incidents api route', () => {
 
           const incident = response.body.data;
 
-          expect(Array.isArray(incident)).to.be.true;
+          expect(incident).to.be.an('array');
           expect(incident.length).to.equal(1);
           expect(incident[0].id).to.equal(mockData.testIncident.id);
           expect(incident[0].message).to.equal('Updated red-flag record’s comment');
@@ -193,7 +193,7 @@ describe('/incidents api route', () => {
 
           const incident = response.body.data;
 
-          expect(Array.isArray(incident)).to.be.true;
+          expect(incident).to.be.an('array');
           expect(incident.length).to.equal(1);
           expect(incident[0].id).to.equal(mockData.testIncident.id);
           expect(incident[0].message).to.equal('red-flag record has been deleted');

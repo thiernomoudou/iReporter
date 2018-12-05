@@ -35,7 +35,7 @@ describe('/users api route', () => {
 
           const userIncidents = response.body.data;
   
-          expect(Array.isArray(userIncidents)).to.be.true;
+          expect(userIncidents).to.be.an('array');
           expect(userIncidents.length).to.equal(2);
           done();
         });
@@ -76,7 +76,7 @@ describe('/users api route', () => {
 
           const userIncidents = response.body.data;
   
-          expect(Array.isArray(userIncidents)).to.be.true;
+          expect(userIncidents).to.be.an('array');
           expect(userIncidents.length).to.equal(1);
           expect(userIncidents[0].id).to.equal(1);
           done();
