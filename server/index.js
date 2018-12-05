@@ -3,8 +3,8 @@ import logger from 'morgan';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 
-import incidentsRoutes from './routes/incidentRoute';
-import usersRoutes from './routes/userRoute';
+import incidentsRoutes from './routes/incidentsRoute';
+import usersRoutes from './routes/usersRoute';
 
 // Set up the express app
 const app = express();

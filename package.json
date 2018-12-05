@@ -10,7 +10,7 @@
     "build": "babel server -d dist ",
     "start-dev": "babel-watch server/index.js",
     "start": "node  dist/index.js",
-    "test": "nyc --reporter=html --reporter=text mocha tests/**/**.test.js --exit --compilers js:babel-core/register",
+    "test": "nyc --reporter=html --reporter=text mocha tests/**/**.spec.js --exit --compilers js:babel-core/register",
     "lint": "eslint server",
     "lint-fix": "eslint server --fix",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
