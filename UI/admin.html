@@ -19,7 +19,7 @@
         	<input type="search" class="search-input"  aria-label="search" placeholder="search"/>
         </form>
 		<div class="search-icon incident-search"  href=""><i class="fas fa-search"></i></div>
-		<i class="fas fa-user avatar"></i>
+		<img src="img/profile.jpeg" class="avatar"	/>
 		<span class="username">admin</span>
 
 	</section>
@@ -28,7 +28,7 @@
 	<div class="user-card" id="user-card-id">
 		<p><a href="admin.html">Admin Dashboard</a></p>
 		<p><a href="profile.html">My profile</a></p>
-		<p><a href="all-incidents.html">incidents created</a></p>
+		<p><a href="view.html">Incidents created</a></p>
 		<p><a href="">Settings</a></p>
 	</div>
 
@@ -38,45 +38,76 @@
 	    	Filter by user <input type="text" id="input-filter-1"/> Filter by Date <input type="text" id="input-filter-2" />
 	    	Filter by status <input type="text" id="input-filter-3" />
 
-	    </p>	
+			</p>	
 	</div>
+	<div class="admin-table">
+			<table>
+				<thead>
+						<tr>
+								<th>No</th>
+								<th>Title</th>
+								<th>Type</th>
+								<th>Location</th>
+								<th>Status</th>
+								<th>Update</th>
 
-	<div class="map" id="map-id">
-		<p class="legend">They are two type of incidents: <span>red-flags</span>(Corruptions) and <span>interventions</span>
+						</tr>
+				</thead>
+				<tbody>
+						<tr>
+								<td>1</td>
+								<td><a href="incident-detail.html">Corrupted Judge</a></td>
+								<td>Red-flag</td>
+								<td>13 Ikorodu Road</td>
+								<td>Under inquiry</td>
+								<td><a href="" class="admin-status">Change status</a></td>
+						</tr>
+						<tr>
+								<td>2</td>
+								<td><a href="incident-detail.html">Police Bribery</a></td>
+								<td>Red-flag</td>
+								<td>13 Samuel Lewis Road</td>
+								<td>Resolved</td>
+								<td><a href="" class="admin-status">Change status</a></td>
+						</tr>
+						<tr>
+								<td>3</td>
+								<td><a href="incident-detail.html">Bad road</a></td>
+								<td>Intervention</td>
+								<td>29 Ikorodu Road</td>
+								<td>Pending</td>
+								<td><a href="" class="admin-status">Change status</a></td>
+						</tr>
+						<tr>
+								<td>4</td>
+								<td><a href="incident-detail.html">Flooding</a></td>
+								<td>Intervention</td>
+								<td>19 Kamo village</td>
+								<td>Under inquiry</td>
+								<td><a href="" class="admin-status">Change status</a></td>	
+						</tr>
+				</tbody>
+			</table>
+	</div>
+	<div class="pagination">
+			<a href="">&laquo;</a>
+			<a href="" class="active">1</a>
+			<a href="">2</a>
+			<a href="">3</a>
+			<a href="">4</a>
+			<a href="">5</a>
+			<a href="">6</a>
+			<a href="">&raquo;</a>
+		</div>
+	<footer class="footer">
+		<p class="footer-media">
+			<a href="" class="facebook">FaceBook</a>
+			<a href="" class="twitter">Twitter</a>
+			<a href="" class="linkedin">LinkedIn</a>
 		</p>
-		<!-- red-flags -->
-		<!-- <i class="fas fa-map-marker-alt red-flag"></i> -->
-		<div class= "red-flag" id="red-flag-11" ><i class="fas fa-flag" ></i></div>
-		<div class= "red-flag" id="red-flag-12" ><i class="fas fa-flag" ></i></div>
-		<div class= "red-flag" id="red-flag-13" ><i class="fas fa-flag" ></i></div>
-		<div class= "red-flag" id="red-flag-14" ><i class="fas fa-flag" ></i></div>
-		<div class= "red-flag" id="red-flag-15" ><i class="fas fa-flag" ></i></div>
+		<p class="copyright">© 2018 <a class="footer-brand" href="index.html">iReporter</a>. All rights reserved</p>
+	</footer>
 	
-        <!-- Interventions -->
-	    <div class= "intervention" id="intervention-11" ><i class="fas fa-hammer"></i></div>
-		<div class= "intervention" id="intervention-12" ><i class="fas fa-hammer"></i></div>
-		<div class= "intervention" id="intervention-13" ><i class="fas fa-hammer"></i></div>
-		<div class= "intervention" id="intervention-14" ><i class="fas fa-hammer"></i></div>
-		<div class= "intervention" id="intervention-15" ><i class="fas fa-hammer"></i></div>
-    </div>
-    <div id="overlay"></div>
-    <div class="incident-detail-card">
-    	<img class="detail-card-image" src="img/fancycrave.jpg">
-    	<h3>Corrupted Judge</h3>
-    	<p class="detail-card-info">
-    		<span class="created-by">Create By: </span>thierno:ss
-    		<span class="created-at">Created At: </span>11/19/2018
-    		<span class="status">Status:</span> Under inquiry
-    	</p>
-    	<p class="modification">
-    		<span class="edit"><a href="">Edit</a><i class="fas fa-pen pen"></i></span>
-    		<span class="change-status"><a href="">Change status</a><i class="fas fa-pen pen"></i></span>
-    		<span class="delete"><a href="">Delete</a><i class="fas fa-trash-alt trash"></i></span>
-    		
-    	</p>
-    	<i class="far fa-times-circle close-button"></i>
-    	
-    </div>
 <script src='js/index.js'></script>
 </body>
 </html>

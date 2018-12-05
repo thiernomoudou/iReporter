@@ -315,8 +315,9 @@ input[type=password]{
 /********************************************************/
 
 .map {
-	height: 600px;
+	height: 500px;
 	background-image: url("../img/google-map.png");
+	margin-bottom: 2%;
 }
 
 .map p{
@@ -454,6 +455,7 @@ input[type=password]{
 	margin-right: 5%;
 	cursor: pointer;
 	color: white;
+	border-radius: 50%;
 }
 
 .incident-search{
@@ -941,7 +943,7 @@ input[type=radio]:checked{
 
 
 /* *************************************************** */
-/* incident detai-card */
+/* Incident detai-card */
 /* *************************************************** */
 
 .additionnal-info{
@@ -983,3 +985,106 @@ input[type=radio]:checked{
 	margin-top: 10%;
 	border-radius: 5px;
 }
+
+/* *************************************************** */
+/* Incident detai-card */
+/* *************************************************** */
+
+/* *************************************************** */
+/*  */
+/* *************************************************** */
+
+.admin-table{
+	margin: 3% 2%;
+}
+
+table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  border: 2px solid #314CCD;
+}
+
+/* table heading */
+thead{
+	background-color: #314CCD;
+	color: white;
+}
+
+thead th:nth-child(1) {
+  width: 10%;
+}
+
+thead th:nth-child(2) {
+  width: 25%;
+}
+thead th:nth-child(3) {
+  width: 10%;
+}
+thead th:nth-child(4) {
+  width: 25%;
+}
+thead th:nth-child(5) {
+  width: 15%;
+}
+
+thead th:nth-child(6) {
+  width: 15%;
+}
+
+th, td {
+  padding: 20px;
+}
+
+/* Table body */
+th {
+  letter-spacing: 2px;
+}
+
+td {
+  letter-spacing: 1px;
+}
+
+tbody td {
+  text-align: center;
+}
+
+tbody  a{
+	color: #314CCD;
+}
+/* Zebra striping */
+
+tbody tr:nth-child(odd) {
+  background-color: white;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #eee;
+}
+
+.admin-status{
+	background-color: #314CCD;
+	color: white;
+	border-radius: 5px;
+	padding: 2% 3%;
+}
+
+/* Pagination */
+.pagination {
+	display: inline-block;
+	margin: 2% 35%;
+}
+
+.pagination a {
+	color: black;
+	float: left;
+	padding: 8px 16px;
+	text-decoration: none;
+}
+
+.pagination a.active {
+	background-color: #314CCD;
+	color: white;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
