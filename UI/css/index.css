@@ -776,8 +776,10 @@ input[type=radio]:checked{
 
 /* Profile page */
 
-#my-profile-parent{
+.my-profile-parent{
 	background-color: #314CCD;
+	margin-top: -6%;
+	padding-bottom: 1%;
 }
 
 .my-profile{
@@ -785,26 +787,39 @@ input[type=radio]:checked{
 	visibility: visible;
 	border: 3px solid #314CCD;
 	top: 100px;
-	height: 600px;
+	height: 550px;
+	width: 35%;
 }
 
 .img-profile{
 	margin-top: 3%;
 	margin-bottom: 3%;
-	margin-left: 30%;
+	margin-left: 15%;
+	border-radius: 50%;
 }
 
 .create-count{
-	margin-left: 170px;
+	margin-left: 70px;
 }
 
 .set{
 	margin-left: 1%;
 }
 .edit-profile{
-	margin-left: 100px;
+	margin-left: 20px;
 }
 
+.profile-settings > a{
+	margin-left: 20px;
+}
+
+.profile-inquiry{
+  margin-left: 20px;
+}
+
+.badge-count{
+	margin-left: 20px;
+}
 /* LF feedback */
 .hide {
 	visibility: hidden;
