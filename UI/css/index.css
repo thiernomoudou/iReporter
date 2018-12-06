@@ -11,7 +11,6 @@ body{
 
 body a{
 	text-decoration: none;
-	/*color: #ffffff;*/
 }
 
 /********************************************************/
@@ -22,6 +21,7 @@ body a{
 	align-items: center;
 	justify-content: space-around;
 	margin-top: 2%;
+	padding-bottom: 2%;
 	background-color: #314CCD;
 	height: 100px;
 	margin: 0;
@@ -158,7 +158,7 @@ input[type=search] {
 
 .corruption-figures{
 	margin-top: -0.1%;
-	background-color: #314CCD;
+	background-color: white;
 	display: flex;
 	padding: 3% 2%;
 
@@ -169,7 +169,7 @@ input[type=search] {
     text-align: center;
     margin-right: 1%;
     padding: 2% 2%;
-    color: #ffffff;
+    color: #1F3349;
     font-weight: 500;
 }
 
@@ -190,7 +190,7 @@ input[type=search] {
 }
 .info-source a{
 	text-align: center;
-	color: #ffffff;
+	color: #314CCD;
 }
 
 .info-source span{
@@ -209,9 +209,11 @@ input[type=search] {
 .statistics{
 	display: flex;
 	justify-content: center;
-	max-width: 700px;
-	padding: 1% 2%;
-	margin: 2% auto;
+	/* max-width: 700px; */
+	padding: 2% 2%;
+	margin-top: -0.7%;
+	margin-bottom: -0.7%;
+	background-color: #314CCD;
 }
 
 .statistics li{
@@ -222,17 +224,18 @@ input[type=search] {
     color: #1F3349;
     font-weight: 500;
     flex: 1;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     width: 104px;
-    border-radius: 50%;
+		border-radius: 50%;
+		color: white;
 }
 
-.statistics h3{
+.statistics > h3{
 	font-weight: 800;
 }
 
 .statistics p{
-	color: #314CCD;
+	color: white;
 	font-weight: 600;
 }
 
@@ -254,11 +257,11 @@ input[type=search] {
 
 .signup-card{
 	background-color: #ffffff;
-	width: 40%;
-	padding: 2%  3% 2% 2%;
+	width: 28%;
+	padding: 3%  3% 4% 8%;
 	position: relative;
-	top: 8%;
-	left: 35%;
+	top: -1%;
+	left: 30%;
 	border-radius: 2%;
 }
 
@@ -312,8 +315,9 @@ input[type=password]{
 /********************************************************/
 
 .map {
-	height: 600px;
+	height: 500px;
 	background-image: url("../img/google-map.png");
+	margin-bottom: 2%;
 }
 
 .map p{
@@ -383,8 +387,8 @@ input[type=password]{
 	/*z-index: 2;*/
 }
 
-.red-flag-summary h3,
-.intervention-summary, h3{
+.red-flag-summary > h3,
+.intervention-summary > h3{
 	color:  #314CCD;
 	font-size: 14px;
 }
@@ -451,6 +455,7 @@ input[type=password]{
 	margin-right: 5%;
 	cursor: pointer;
 	color: white;
+	border-radius: 50%;
 }
 
 .incident-search{
@@ -458,12 +463,12 @@ input[type=password]{
 }
 
 .incident-page{
-  height: 800px;
+  height: 650px;
 }
 
 #incident-card{
 	width: 50%;
-	margin-left: -20%;
+	margin-left: -10%;
 	margin-top: -2%;
 }
 
@@ -676,32 +681,28 @@ input[type=radio]:checked{
 
 
 .incident-detail-card{
-	position: absolute;
-	top: 10%;
-	left: 10%;
+  border: 2px solid black;
 	background-color: #ffffff;
-	width: 700px;
-	height: 700px;
-	visibility: hidden;
-	z-index: 3;
+	width: 600px;
 	border-radius: 10px;
+	margin: 3% auto;
 }
 
 .detail-card-image{
-	margin: 1% 6%;
+	margin: auto auto;
 }
 
 .incident-detail-card h3{
 	text-align: center;
 	font-weight: 600;
-	margin-top: 3%;
-	margin-bottom: 4%;
+	margin-top: 6%;
+	margin-bottom: 7%;
 
 }
 
 .created-by, .created-at, .status{
 	color: #314CCD;
-	margin-left: 7%;
+	margin-left: 3%;
 }
 
 .modification{
@@ -775,8 +776,10 @@ input[type=radio]:checked{
 
 /* Profile page */
 
-#my-profile-parent{
+.my-profile-parent{
 	background-color: #314CCD;
+	margin-top: -6%;
+	padding-bottom: 1%;
 }
 
 .my-profile{
@@ -784,22 +787,319 @@ input[type=radio]:checked{
 	visibility: visible;
 	border: 3px solid #314CCD;
 	top: 100px;
-	height: 600px;
+	height: 550px;
+	width: 35%;
 }
 
 .img-profile{
 	margin-top: 3%;
 	margin-bottom: 3%;
-	margin-left: 30%;
+	margin-left: 15%;
+	border-radius: 50%;
 }
 
 .create-count{
-	margin-left: 170px;
+	margin-left: 70px;
 }
 
 .set{
 	margin-left: 1%;
 }
 .edit-profile{
-	margin-left: 100px;
+	margin-left: 20px;
 }
+
+.profile-settings > a{
+	margin-left: 20px;
+}
+
+.profile-inquiry{
+  margin-left: 20px;
+}
+
+.badge-count{
+	margin-left: 20px;
+}
+/* LF feedback */
+.hide {
+	visibility: hidden;
+}
+
+/* Footer */
+.footer{
+	background-color: #314CCD;
+	padding: 1% 2%;
+	text-align: center;
+	color: white;
+}
+
+.footer a{
+	color: white;
+}
+
+.twitter{
+	margin: 0 10%;
+}
+
+.footer-brand{
+	font-weight: 600;
+}
+
+.second-footer{
+  background-color: white;
+	padding: 1% 2%;
+	text-align: center;
+	color:#314CCD;
+}
+
+.second-footer a {
+	color: #314CCD;
+}
+
+.footer-media{
+	font-weight: 600;
+}
+/* *************************************************** */
+/* Red flag card list */
+/* *************************************************** */
+
+.cards-incidents{
+	background-color: #3C2BE4;
+	padding-top: 2%;
+	padding-bottom: 2%;
+}
+
+.red-flag-card-heading{
+	text-align: center;
+	color: white;
+	margin-bottom: 2%;
+}
+.red-flag-cards{
+	display: flex;
+	justify-content: space-around;
+	padding-left: 10%;
+	padding-right: 10%;
+}
+
+.red-flag-cards > li{
+	list-style-type: none;
+	border: 1px solid black;
+	border-radius: 10px;
+	margin-right: 1%;
+	margin: 0 2%;
+	background-color: white;
+	
+}
+
+.red-flag-card-img{
+	height: 300px;
+	width: 300px;
+}
+
+.red-flag-card-title{
+	text-align: center;
+	font-size: 23px;
+}
+
+.red-flag-creator{
+	margin: 1% 2%;
+
+}
+
+.red-flag-by{
+	margin-left: 1%;
+	color: #314CCD;
+}
+
+.red-flag-date{
+	font-weight: 600;
+	font-size: 10px;
+	margin-left: 10%;
+}
+
+.red-flag-card-info{
+	font-size: 12px;
+}
+
+.red-flag-location{
+	margin-left: 2%;
+	font-weight: 600;
+}
+
+.red-flag-location-v,
+.red-flag-status-v{
+	color: #314CCD;
+	margin-left: 1%;
+}
+
+.red-flag-status{
+	margin-left: 3%;
+	font-weight: 600;
+}
+
+.red-flag-status-v{
+	font-size: 10px;
+}
+
+/* Personalise intervetion card */
+
+.cards-interventions{
+	background-color: white;
+}
+
+.intervention-heading{
+	color: #314CCD;
+}
+
+
+/* *************************************************** */
+/* Red flag card list */
+/* *************************************************** */
+
+
+/* *************************************************** */
+/* Incident detai-card */
+/* *************************************************** */
+
+.additionnal-info{
+	margin-top: 10%;
+}
+
+.button-map{
+	margin: 7% 0;
+}
+
+.view-map-button{
+	background-color: #314CCD;
+	padding: 1% 2%;
+	margin-left: 40%;
+	color: white;
+	border-radius: 10px;
+}
+
+/* Adding sidebar */
+.detail-incidents-page{
+	display: flex;
+	justify-content: space-around;
+}
+
+/* Sidebar */
+.sidebar{
+
+	margin-top: 5%;
+	margin-right: 5%;
+}
+
+.sidebar > h2{
+	color: #314CCD;
+	text-align: center;
+}
+
+.aside-card-1{
+	border: 1px solid black;
+	margin-top: 10%;
+	border-radius: 5px;
+}
+
+/* *************************************************** */
+/* Incident detai-card */
+/* *************************************************** */
+
+/* *************************************************** */
+/*  */
+/* *************************************************** */
+
+.admin-table{
+	margin: 3% 2%;
+}
+
+table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  border: 2px solid #314CCD;
+}
+
+/* table heading */
+thead{
+	background-color: #314CCD;
+	color: white;
+}
+
+thead th:nth-child(1) {
+  width: 10%;
+}
+
+thead th:nth-child(2) {
+  width: 25%;
+}
+thead th:nth-child(3) {
+  width: 10%;
+}
+thead th:nth-child(4) {
+  width: 25%;
+}
+thead th:nth-child(5) {
+  width: 15%;
+}
+
+thead th:nth-child(6) {
+  width: 15%;
+}
+
+th, td {
+  padding: 20px;
+}
+
+/* Table body */
+th {
+  letter-spacing: 2px;
+}
+
+td {
+  letter-spacing: 1px;
+}
+
+tbody td {
+  text-align: center;
+}
+
+tbody  a{
+	color: #314CCD;
+}
+/* Zebra striping */
+
+tbody tr:nth-child(odd) {
+  background-color: white;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #eee;
+}
+
+.admin-status{
+	background-color: #314CCD;
+	color: white;
+	border-radius: 5px;
+	padding: 2% 3%;
+}
+
+/* Pagination */
+.pagination {
+	display: inline-block;
+	margin: 2% 35%;
+}
+
+.pagination a {
+	color: black;
+	float: left;
+	padding: 8px 16px;
+	text-decoration: none;
+}
+
+.pagination a.active {
+	background-color: #314CCD;
+	color: white;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
