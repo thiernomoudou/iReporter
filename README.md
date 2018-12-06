@@ -11,6 +11,9 @@ localised solutions that will curb this menace, hence the birth of iReporter. iR
 any/every citizen to bring any form of corruption to the notice of appropriate authorities and the
 general public. Users can also report on things that needs government intervention
 
+## PROJECT MANAGEMENT TOOL
+You can see the [Pivotal tracker board](https://www.pivotaltracker.com/n/projects/2226789) used for developing the application.
+
 ## THE UI 
 the UI contains the UI design with HTML/CSS/JAVASCRIPT
 
@@ -31,6 +34,8 @@ cd iReporter/UI
 
 ## THE SERVER 
 contains the project API developed in Node/express
+
+visit the [Api hosted on heroku](https://ireporter-backend.herokuapp.com/api/v1/)
 
 - Clone repository
 - Install dependencies:
