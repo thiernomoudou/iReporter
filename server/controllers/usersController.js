@@ -1,8 +1,4 @@
-/* eslint-disable no-return-assign */
-/* eslint-disable no-lonely-if */
-
 import { incidentsData } from '../database';
-
 
 /**
  * Controller to handle all users endpoint routes

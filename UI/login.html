@@ -8,24 +8,31 @@
    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/index.css">
+	 <link rel="stylesheet" media="all" href="css/index.css">
+	 <link rel="stylesheet" media="(min-width: 1400px)" href="css/larger.css" />
+	 <link rel="stylesheet" media="(max-width: 780px)" href="css/tablet.css" />
+	 <link rel="stylesheet" media="(max-width: 480px)" href="css/largerphone.css" />
+	 <link rel="stylesheet" media="(max-width: 375px)" href="css/mediumphone.css" />
+	 <link rel="stylesheet" media="(max-width: 340px)" href="css/smallphone.css" />
 	<title>iReporter</title>
 </head>
 <body>
 	<!-- navbar begins -->
-	<section class="custom-navbar">
-		<a class="logo" href="index.html">iReporter</a>
-        <form class="nav-search">
-        	<input type="search" class="search-input hide"  aria-label="search" placeholder="search"/>
-        </form>
-		<div class="search-icon hide"  href=""><i class="fas fa-search"></i></div>
-		<a class="login hide" href="login.html">SIGN IN</a>
-		<a class="signup hide" href="signup.html">SIGN UP</a>
+	<ul class="custom-navbar">
+		<li><a class="logo" href="index.html">iReporter</a></li>
+				<li>
+			<form class="nav-search">
+			<input type="search" class="search-input hide"  aria-label="search" 
+			placeholder="search"/>
+				</form>
+			</li>
+		<!-- <li><div class="search-icon"  href=""><i class="fas fa-search"></i></div></li> -->
+		<li><a class="login hide" href="login.html">SIGN IN</a></li>
+		<li><a class="signup hide" href="signup.html">SIGN UP</a></li>
 
-	</section>
+	</ul>
 	<!-- navbar ends -->
-
-	<div class="signup-page">
+	<div class="signup-page signin-page">
 		
 		<form class="signup-card">
 			<p class="singup-header">Sign in</p>
@@ -35,22 +42,22 @@
 			</p> -->
 			<p>
 				<label for="email">Email</label>
-				<input type="text" name="email" id="email">
+				<input type="text" name="email" id="email" class="input-text">
 			</p>
 			<p>
 				<label for="password">Password</label>
-				<input type="password" name="password" id="password">
+				<input type="password" name="password" id="password" class="input-text">
 			</p>
 
 			<button type="submit" class="submit-button">SIGN IN</button>
-			<p>Don't get an Account yet? <a href="signup.html">SIGN UP</a></p>
+			<p class="forget-pass-para">Don't get an Account yet? <a href="signup.html">SIGN UP</a></p>
 			<p> <a href="">I forgot my password!</a></p>
 
 			
 		</form>
 		
 	</div>
-	<footer class="footer second-footer">
+	<footer class="footer">
 		<p class="footer-media">
 			<a href="" class="facebook">FaceBook</a>
 			<a href="" class="twitter">Twitter</a>

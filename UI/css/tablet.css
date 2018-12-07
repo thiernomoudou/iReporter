@@ -1,0 +1,126 @@
+/* For ipad  */
+@media (max-width: 780px){
+	.custom-navbar{
+		padding-top: 5%;
+	}
+  .custom-navbar > li:nth-of-type(5){
+		margin-left: -5%;
+	}
+	/* Signup page */
+	.signin-page{
+		height: 465px;
+	}
+
+	.signin-page > .signup-card{
+		top: 8%;
+	}
+
+	.signup-card{
+		width: 75%;
+		left: 9%;
+	}
+
+	/* Signup card button */
+	.signup-card button{
+		width: 60%;
+		margin-left: 20%;
+		padding-top: 4%;
+	}
+
+	/* User card */
+	.user-card{
+		top: 5%;
+		width: 40%;
+		z-index: 1;
+	}
+	#input-filter-1,
+	#input-filter-2{
+		margin-left: 2%;
+	}
+	#input-filter-3{
+		margin-left: 1%;
+	}
+	.admin-filters{
+		font-size: 16px;
+	}
+	table{
+		table-layout: fixed;
+	}
+
+	thead th:nth-child(1) {
+		width: 10%;
+	}
+
+	thead th:nth-child(2) {
+		width: 30%;
+	}
+	thead th:nth-child(3) {
+		width: 0;
+	}
+	thead th:nth-child(4) {
+		width: 0;
+	}
+	thead th:nth-child(5) {
+		width: 30;
+	}
+
+	thead th:nth-child(6) {
+		width: 30%;
+	}
+	thead th:nth-child(3),
+	thead th:nth-child(4),
+	/* thead th:nth-child(5), */
+	tbody td:nth-child(3),
+	tbody td:nth-child(4){
+		visibility: hidden;
+	}
+	/* Pagination */
+	.pagination{
+		margin: 2% 25%;
+	}
+
+	.admin-table{
+		margin-bottom: 9%;
+	}
+	.my-profile{
+		margin-top: 12%;
+		margin-bottom: 20%;
+	}
+	.my-profile{
+		width: 80%;
+		
+	}
+	.img-profile{
+		margin-top: 3%;
+		margin-bottom: 3%;
+		margin-left: 35%;
+		border-radius: 50%;
+		width: 30%;
+		height: 30%;
+	}
+	.create-count{
+		margin-left: 3%;
+	}
+
+	.create-count{
+		margin-left: 8%;
+	}
+	.incident-page{
+		padding-top: 15%;
+		padding-bottom: 13%;
+	}
+	#incident-card{
+		width: 78%;
+		margin-left: -1%;
+		margin-top: -2%;
+		
+	}
+
+	.sidebar{
+		visibility: hidden;
+		margin-left: -95%;
+	}
+	.incident-detail-card{
+		margin-left: -5%;
+	}
+}

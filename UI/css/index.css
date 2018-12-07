@@ -17,62 +17,68 @@ body a{
 /*navbar*/
 /********************************************************/
 .custom-navbar{
-	display: flex;
-	align-items: center;
-	justify-content: space-around;
-	margin-top: 2%;
 	padding-bottom: 2%;
 	background-color: #314CCD;
-	height: 100px;
-	margin: 0;
+  height: 100px;
 	color: #1F3349;
+	background-color: #314CCD;
+	margin-top: -1%;
 
+}
+
+.custom-navbar > li{
+	list-style-type: none;
+	display: inline-block;
+	margin-top: 3%;
 }
 
 .custom-navbar a{
 	color: #ffffff;
 }
 
-.logo{
-  flex: 2;
+/* Logo */
+.custom-navbar > li:nth-of-type(1){
   margin-left: 2%;
   font-weight: 600;
   font-size: 24px;
 }
 
-.nav-search,
-.login,
-.signup{
-	flex: 1;
-}
-
-/* Search bar*/
-.nav-search{
+/* search bar */
+.custom-navbar > li:nth-of-type(2){
 	margin-left: 40%;
+	margin-right: 7%;
 }
 
+/* sign in on navbar */
+.custom-navbar > li:nth-of-type(3){
+  margin-left: 2%;
+}
 
-/*search bar*/
+/* signup on navbar */
+.custom-navbar > li:nth-of-type(4){
+	margin-left: 1%;
+	
+}
+
+/* avatar */
+.custom-navbar > li:nth-of-type(5){
+	margin-left: 1%;
+	position: relative;
+	top: 14%;
+}
+
+/* *search bar*/ 
 input[type=search] {
+	-webkit-appearance: none;
 	padding: 2% 5%;
-    border: 0.4px solid #1F3349;
-    border-radius: 10px;
-    -webkit-appearance: none;
+	border: 0.4px solid #1F3349;
+	border-radius: 10px;
 }
 
-/*search icon*/
-.search-icon{
- color: #314CCD;
+.search-login{
+	margin-left: 30%;
 }
 
-.login{
-   margin-left: 10%;
-   margin-right: -2%;
-}
-
-.login, .signup{
-	font-size: 14px;
-}
 /********************************************************/
 /*navbar*/
 /********************************************************/
@@ -80,6 +86,7 @@ input[type=search] {
 .facts{
 	font-weight: 600;
 	line-height: 1.5;
+	padding: 1% 0;
 }
 .facts p{
 	padding-left: 10%;
@@ -102,7 +109,7 @@ input[type=search] {
 
 .banner{
 	height: 600px;
-	background-image: url("../img/round-aboun-1.jpg");
+	background-image: url("../img/forest1.jpg");
 	
 }
 
@@ -122,7 +129,9 @@ input[type=search] {
 }
 
 .platform-description{
-    padding-left: 20%;
+		/* padding-left: 20%; */
+		text-align: center;
+		padding-top: 1%;
 }
 
 .banner p:nth-of-type(1){
@@ -160,17 +169,19 @@ input[type=search] {
 	margin-top: -0.1%;
 	background-color: white;
 	display: flex;
+	justify-content: space-around;
 	padding: 3% 2%;
 
 }
 
-.corruption-figures li{
+.corruption-figures > li{
     list-style-type: none;
     text-align: center;
     margin-right: 1%;
     padding: 2% 2%;
     color: #1F3349;
-    font-weight: 500;
+		font-weight: 500;
+		width: 100%;
 }
 
 .corruption-figures span{
@@ -208,25 +219,17 @@ input[type=search] {
 
 .statistics{
 	display: flex;
-	justify-content: center;
-	/* max-width: 700px; */
-	padding: 2% 2%;
-	margin-top: -0.7%;
-	margin-bottom: -0.7%;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	padding: 2% 10%;
+	margin: -0.7% 0;
 	background-color: #314CCD;
 }
 
-.statistics li{
+.statistics > li{
     list-style-type: none;
     text-align: center;
-    /* mwork in conjunction with statistic max-width to round li elements*/
-    margin-right: 6%; 
-    color: #1F3349;
     font-weight: 500;
-    flex: 1;
-    /* border: 1px solid black; */
-    width: 104px;
-		border-radius: 50%;
 		color: white;
 }
 
@@ -250,39 +253,58 @@ input[type=search] {
 /*sign up  page*/
 /********************************************************/
 .signup-page{
-	margin-top: -1.3%;
+	margin-top: -5%;
 	background-color:  #314CCD;
-	height: 580px;
+	padding-bottom: 3%;
+	padding-top: 4%;
 }
 
 .signup-card{
 	background-color: #ffffff;
 	width: 28%;
-	padding: 3%  3% 4% 8%;
+	padding: 3%  3% 3% 3%;
 	position: relative;
 	top: -1%;
-	left: 30%;
+	left: 32.5%;
 	border-radius: 2%;
 }
 
-.signup-card .singup-header{
+.signup-card > .singup-header{
 	font-weight: 800;
-	margin-bottom: 6%;
+	margin-bottom: 8%;
 	font-size: 23px;
+	margin-left: 35%;
 }
 
 .signup-card label{
 	display: block;
 	font-weight: 800;
+	margin: 1% 8%;
 }
 
-input[type=text],
+/* input[type=text],
 input[type=password]{
 	-webkit-appearance: none;
 	border: 1px solid #1F3349;
 	padding: 1% 1%;
 	border-radius: 10px;
 	font-size: 16px;
+	width: 80%;
+	margin: 1% 7%;
+} */
+
+.input-text{
+	-webkit-appearance: none;
+	border: 1px solid #1F3349;
+	padding: 1% 1%;
+	border-radius: 10px;
+	font-size: 16px;
+	width: 80%;
+	margin: 1% 7%;
+}
+
+.incident-text-area{
+	-webkit-appearance: none;
 }
 
 .signup-card button{
@@ -296,12 +318,17 @@ input[type=password]{
 	color: #ffffff;
 	font-size: 16px;
 	font-weight: 500;
-	margin-left: 4%;
+	margin-left: 35%;
 
 }
 
 .signup-card  a{
 	color: #314CCD ;
+}
+
+.signup-card > p:last-child,
+.forget-pass-para{
+  text-align: center;
 }
 
 /********************************************************/
@@ -451,21 +478,23 @@ input[type=password]{
 /* incident creation*/
 /******************************************************************/
 .avatar{
-	font-size: 30px;
-	margin-right: 5%;
+	/* font-size: 30px;
+	margin-right: 5%; */
 	cursor: pointer;
 	color: white;
 	border-radius: 50%;
 	height: 35px;
 	width: 35px;
+	/* margin-top: 40%; */
 }
 
 .incident-search{
 	margin-right: 13%;
 }
 
-.incident-page{
-  height: 650px;
+.incident-form-header{
+	text-align: center;
+	padding-bottom: 2%;
 }
 
 #incident-card{
@@ -477,14 +506,13 @@ input[type=password]{
 .user-card{
 	padding: 2% 1%;
 	position: absolute;
-	top: 12%;
+	top: 10%;
 	right: 1%;
-	width: 12%;
+	width: 15%;
 	border-radius: 10px;
-	/*border: 1px solid white;*/
-	background-color: rgb(255, 255, 255, 0.9);
+	background-color: #FFEDE5;
 	visibility: hidden;
-	margin-top: -1%;
+	margin-top: 0.5%;
 }
 
 .user-card a {
@@ -499,26 +527,51 @@ input[type=password]{
 
 .select-type{
 	font-weight: 600;
-	margin-bottom: 1.5%;
+	margin-bottom: 4%;
+	margin-left: 8%;
 }
 
 input[type=radio]{
 	-webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
+	-moz-appearance: none;
+	appearance: none;
 
-    border-radius: 50%;
-    width: 16px;
-    height: 16px;
+	border-radius: 50%;
+	width: 16px;
+	height: 16px;
 
-    border: 2px solid #999;
-    transition: 0.2s all linear;
-    outline: none;
-    margin-right: 5px;
+	border: 2px solid #999;
+	transition: 0.2s all linear;
+	outline: none;
+	margin-right: 5px;
 
-    position: relative;
-    top: 22px;
-    left: 45px;
+	/* position: relative;
+	top: 22px;
+	left: 45px; */
+}
+
+/* Red flag radio button */
+#redflag-choice{
+	margin-left: 25%;
+}
+
+/* Red flag label incident form */
+#label-1{
+	margin-left: 1%;
+}
+/* Intervention label in incident form */
+#label-2{
+	margin-left: 1%;
+}
+
+/* title label */
+.incident-title{
+	margin-top: -10;
+}
+
+/* File input */
+.upload-input{
+	margin-left: 8%;
 }
 
 input[type=radio]:checked{
@@ -686,8 +739,8 @@ input[type=radio]:checked{
 .incident-detail-card{
   border: 2px solid black;
 	background-color: #ffffff;
-	width: 600px;
-	border-radius: 10px;
+	width: 99%;
+	border-radius: 0 0 10px 10px;
 	margin: 3% auto;
 }
 
@@ -722,6 +775,10 @@ input[type=radio]:checked{
 .modification .delete{
 	margin-left: 20%;
 	
+}
+
+.edit-detail{
+	margin-left: -4%;
 }
 
 .modification .change-status{
@@ -765,51 +822,61 @@ input[type=radio]:checked{
 }
 
 /* Admin Dashboard */
-.filters{
-	font-size: 12px;
+.admin-filters{
+	font-size: 13px;
+	margin-top: 4%;
+	margin-bottom: -1%;
 }
 
-#input-filter-1{
-	margin-right: 2%;
+.admin-filters{
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	flex-wrap: wrap;
 }
 
-#input-filter-2{
-	margin-right: 2%;
+
+.admin-filters > li{
+	list-style-type: none;
+	margin: 1% 1%;
 }
 
 /* Profile page */
 
 .my-profile-parent{
 	background-color: #314CCD;
-	margin-top: -6%;
+	margin-top: -2%;
 	padding-bottom: 1%;
+	padding-top: 01%;
 }
 
 .my-profile{
-	margin-top: 2%;
 	visibility: visible;
 	border: 3px solid #314CCD;
-	top: 100px;
-	height: 550px;
 	width: 35%;
+	padding-bottom: 4%;
+	padding-top: 4%;
+	border-radius: 10px;
 }
 
 .img-profile{
 	margin-top: 3%;
 	margin-bottom: 3%;
-	margin-left: 15%;
+	margin-left: 25%;
 	border-radius: 50%;
+	width: 50%;
+	height: 50%;
 }
 
 .create-count{
-	margin-left: 70px;
+	margin-left: 18%;
 }
 
 .set{
 	margin-left: 1%;
 }
 .edit-profile{
-	margin-left: 20px;
+	margin-left: 12%;
 }
 
 .profile-settings > a{
@@ -831,9 +898,10 @@ input[type=radio]:checked{
 /* Footer */
 .footer{
 	background-color: #314CCD;
-	padding: 1% 2%;
+	padding: 3% 0 1% 0;
 	text-align: center;
 	color: white;
+	margin-top: -0.5%;
 }
 
 .footer a{
@@ -867,7 +935,7 @@ input[type=radio]:checked{
 /* *************************************************** */
 
 .cards-incidents{
-	background-color: #3C2BE4;
+	background-color: #314CCD;
 	padding-top: 2%;
 	padding-bottom: 2%;
 }
@@ -880,17 +948,18 @@ input[type=radio]:checked{
 .red-flag-cards{
 	display: flex;
 	justify-content: space-around;
-	padding-left: 10%;
-	padding-right: 10%;
+	flex-wrap: wrap;
+	padding-left: 5%;
+	padding-right: 5%;
 }
 
 .red-flag-cards > li{
 	list-style-type: none;
 	border: 1px solid black;
-	border-radius: 10px;
-	margin-right: 1%;
-	margin: 0 2%;
+	border-radius: 0 0 10px 10px;
+	margin: 1% 2%;
 	background-color: white;
+
 	
 }
 
@@ -947,12 +1016,17 @@ input[type=radio]:checked{
 /* Personalise intervetion card */
 
 .cards-interventions{
-	background-color: white;
+	background-color:#314CCD;
+	margin-top: -0.5%;
 }
 
 .intervention-heading{
-	color: #314CCD;
+	color: white;
 }
+
+/* .view-image-prof{
+  margin-top: 35%;
+} */
 
 
 /* *************************************************** */
@@ -966,6 +1040,7 @@ input[type=radio]:checked{
 
 .additionnal-info{
 	margin-top: 10%;
+	font-size: 14px;
 }
 
 .button-map{
@@ -1001,7 +1076,7 @@ input[type=radio]:checked{
 .aside-card-1{
 	border: 1px solid black;
 	margin-top: 10%;
-	border-radius: 5px;
+	border-radius: 0 0 5px 5px;
 }
 
 /* *************************************************** */
@@ -1011,6 +1086,17 @@ input[type=radio]:checked{
 /* *************************************************** */
 /*  */
 /* *************************************************** */
+
+/* Admin inputs */
+.admin-input{
+	-webkit-appearance: none;
+	border: 1px solid #1F3349;
+	padding: 0.5% 3%;
+	border-radius: 10px;
+	font-size: 16px;
+	width: 50%;
+	/* margin-left: 2%; */
+}
 
 .admin-table{
 	margin: 3% 2%;
@@ -1028,7 +1114,7 @@ thead{
 	background-color: #314CCD;
 	color: white;
 }
-
+user-card
 thead th:nth-child(1) {
   width: 10%;
 }
@@ -1051,7 +1137,7 @@ thead th:nth-child(6) {
 }
 
 th, td {
-  padding: 20px;
+  padding: 1.5%;
 }
 
 /* Table body */
@@ -1106,3 +1192,60 @@ tbody tr:nth-child(even) {
 }
 
 .pagination a:hover:not(.active) {background-color: #ddd;}
+
+/* Responsiveness */
+/* For small screen laptop */
+@media (max-width: 1200px) {
+  /* search bar */
+.custom-navbar > li:nth-of-type(2){
+	margin-left: 30%;
+}
+
+/* sign in on navbar */
+.custom-navbar > li:nth-of-type(3){
+  margin-left: 2%;
+}
+
+/* signup on navbar */
+.custom-navbar > li:nth-of-type(5){
+  margin-left: 1%;
+}
+
+}
+
+/* For smaller laptop */
+@media (max-width: 1000px) {
+  /* search bar */
+.custom-navbar > li:nth-of-type(2){
+	margin-left: 35%;
+}
+
+/* sign in on navbar */
+.custom-navbar > li:nth-of-type(4){
+  margin-left: 2%;
+}
+
+/* signup on navbar */
+.custom-navbar > li:nth-of-type(5){
+  margin-left: 1%;
+}
+
+}
+
+@media (max-width: 800px) {
+  /* search bar */
+.custom-navbar > li:nth-of-type(2){
+	margin-left: 20%;
+}
+
+/* sign in on navbar */
+.custom-navbar > li:nth-of-type(4){
+  margin-left: 2%;
+}
+
+/* signup on navbar */
+.custom-navbar > li:nth-of-type(5){
+  margin-left: 1%;
+}
+
+}

@@ -29,7 +29,6 @@ describe('/incidents api route', () => {
           expect(response).to.have.status(200);
 
           const incidents = response.body.data;
-  
           expect(incidents).to.be.an('array');
           expect(incidents.length).to.equal(3);
           expect(incidents[0].type).to.equal(mockData.testIncident.type);
@@ -122,7 +121,6 @@ describe('/incidents api route', () => {
         .send({
           location: '73, Sani Abacha Street, Lagos',
           status: 'Under inquiry'
-         
         })
         .end((err, response) => {
           if (err) { return done(err); }

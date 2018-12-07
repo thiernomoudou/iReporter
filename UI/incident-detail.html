@@ -2,32 +2,42 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">    
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">    
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-   <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
-   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
-   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/index.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" media="all" href="css/index.css">
+	<link rel="stylesheet" media="(min-width: 1400px)" href="css/larger.css" />
+	<link rel="stylesheet" media="(max-width: 780px)" href="css/tablet.css" />
+	<link rel="stylesheet" media="(max-width: 480px)" href="css/largerphone.css" />
+	<link rel="stylesheet" media="(max-width: 375px)" href="css/mediumphone.css" />
+	<link rel="stylesheet" media="(max-width: 340px)" href="css/smallphone.css" />
 	<title>iReporter</title>
 </head>
 <body>
 	<!-- navbar begins -->
-	<section class="custom-navbar">
-		<a class="logo" href="index.html">iReporter</a>
-        <form class="nav-search">
-        	<input type="search" class="search-input"  aria-label="search" placeholder="search"/>
-        </form>
-		<div class="search-icon incident-search"  href=""><i class="fas fa-search"></i></div>
-		<i class="fas fa-user avatar"></i>
+	<ul class="custom-navbar">
+		<li><a class="logo" href="index.html">iReporter</a></li>
+		<li>
+			<form class="nav-search">
+			<input type="search" class="search-input search-login"  aria-label="search" 
+			placeholder="search"/>
+				</form>
+	  </li>
+		<!-- <li><div class="search-icon"  href=""><i class="fas fa-search"></i></div></li> -->
+		<li><a class="login hide" href="login.html">SIGN IN</a></li>
+		<li><a class="signup hide" href="signup.html">SIGN UP</a></li>
+		<li><img src="img/profile.jpeg" class="avatar"	/></li>
 
-	</section>
-	<!-- navbar ends -->
+	</ul>
+	<!-- Navbar end -->
 
 	<div class="user-card" id="user-card-id">
 		<p><a href="admin.html">Admin Dashboard</a></p>
 		<p><a href="profile.html">My profile</a></p>
-		<p><a href="all-incidents.html">Incidents created</a></p>
+		<p><a href="view.html">Incidents created</a></p>
 		<p><a href="">Settings</a></p>
 	</div>
   
@@ -47,7 +57,7 @@
           <span class="status incid-coordinate">Coordinates:</span> -12.9372, 11.3766
         </p>
         <p class="modification">
-          <span class="edit"><a href="">Edit</a><i class="fas fa-pen pen"></i></span>
+          <span class="edit edit-detail"><a href="">Edit</a><i class="fas fa-pen pen"></i></span>
           <span class="change-status"><a href="">Change status</a><i class="fas fa-pen pen"></i></span>
           <span class="delete"><a href="">Delete</a><i class="fas fa-trash-alt trash"></i></span>
           
