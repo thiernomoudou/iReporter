@@ -13,16 +13,19 @@
 </head>
 <body>
 	<!-- navbar begins -->
-	<section class="custom-navbar">
-		<a class="logo" href="index.html">iReporter</a>
-        <form class="nav-search">
-        	<input type="search" class="search-input hide"  aria-label="search" placeholder="search"/>
-        </form>
-		<div class="search-icon hide"  href=""><i class="fas fa-search"></i></div>
-		<a class="login hide" href="login.html">Sign in</a>
-		<a class="signup hide" href="signup.html">Sign up</a>
+	<ul class="custom-navbar">
+		<li><a class="logo" href="index.html">iReporter</a></li>
+				<li>
+			<form class="nav-search">
+			<input type="search" class="search-input hide"  aria-label="search" 
+			placeholder="search"/>
+				</form>
+			</li>
+		<!-- <li><div class="search-icon"  href=""><i class="fas fa-search"></i></div></li> -->
+		<li><a class="login hide" href="login.html">SIGN IN</a></li>
+		<li><a class="signup hide" href="signup.html">SIGN UP</a></li>
 
-	</section>
+	</ul>
 	<!-- navbar ends -->
 
 	<div class="signup-page">
@@ -31,19 +34,19 @@
 			<p  class="singup-header">Sign up</p>
 			<p>
 				<label for="username">Name</label>
-				<input type="text" name="username" id="username">
+				<input type="text" name="username" id="username" class="input-text">
 			</p>
 			<p>
 				<label for="email">Email</label>
-				<input type="text" name="email" id="email">
+				<input type="text" name="email" id="email" class="input-text">
 			</p>
 			<p>
 				<label for="password">Password</label>
-				<input type="password" name="password" id="password">
+				<input type="password" name="password" id="password" class="input-text">
 			</p>
 			<p>
 				<label for="confirm-password"> Confirm password</label>
-				<input type="password" name="confirm_password" id="confirm-password">
+				<input type="password" name="confirm_password" id="confirm-password" class="input-text">
 			</p>
 			<button type="submit" class="submit-button">Get started</button>
 			<p>Already have an Account? <a href="login.html">SIGN IN</a></p>
@@ -51,7 +54,7 @@
 		</form>
 		
 	</div>
-	<footer class="footer second-footer">
+	<footer class="footer">
 		<p class="footer-media">
 			<a href="" class="facebook">FaceBook</a>
 			<a href="" class="twitter">Twitter</a>

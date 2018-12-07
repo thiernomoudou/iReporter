@@ -12,17 +12,23 @@
 	<title>iReporter</title>
 </head>
 <body>
-	<!-- navbar begins -->
-	<section class="custom-navbar">
-		<a class="logo" href="index.html">iReporter</a>
-        <form class="nav-search">
-        	<input type="search" class="search-input"  aria-label="search" placeholder="search"/>
-        </form>
-		<div class="search-icon incident-search"  href=""><i class="fas fa-search"></i></div>
-		<img src="img/profile.jpeg" class="avatar"	/>
+  <!-- navbar begins -->
+	<ul class="custom-navbar">
+		<li><a class="logo" href="index.html">iReporter</a></li>
+		<li>
+			<form class="nav-search">
+			<input type="search" class="search-input search-login"  aria-label="search" 
+			placeholder="search"/>
+				</form>
+	  </li>
+		<!-- <li><div class="search-icon"  href=""><i class="fas fa-search"></i></div></li> -->
+		<li><a class="login hide" href="login.html">SIGN IN</a></li>
+		<li><a class="signup hide" href="signup.html">SIGN UP</a></li>
+		<li><img src="img/profile.jpeg" class="avatar"	/></li>
 
-	</section>
-	<!-- navbar ends -->
+	</ul>
+	<!-- Navbar end -->
+
 
 	<div class="user-card" id="user-card-id">
 		<p><a href="admin.html">Admin Dashboard</a></p>
