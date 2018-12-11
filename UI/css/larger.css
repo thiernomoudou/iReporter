@@ -1,0 +1,46 @@
+/* Larger screen */
+@media (min-width: 1400px){
+	.banner{
+		height: 600px;
+	}
+  .signup-page{
+		padding-bottom: 13%;
+		padding-top: 10%
+	}
+	.signup-card{
+		width: 50%;
+		margin-left: -10%;
+	}
+	.signin-page{
+		padding-bottom: 17%;
+		padding-top: 15%;
+	}
+	.user-card{
+		top: 5%;
+	}
+	.admin-filters{
+		padding-top: 2%;
+	}
+	.admin-table{
+		padding-top: 5%;
+		padding-bottom: 5%;
+	}
+  .pagination{
+		padding-bottom: 5%;
+	}
+
+	.sidebar{
+		padding-bottom: 8%;
+	}
+	.my-profile-parent{
+		padding-top: 7%;
+		padding-bottom: 10%;
+	}
+	.map{
+		height: 730px;
+	}
+	.incident-buttons{
+		padding-top: 2%;
+		padding-bottom: 2%;
+	}
+}
