@@ -17,7 +17,7 @@ export default class PostincidentValidator {
    * Validate the incident
    * @returns {boolean} true or false
    */
-  
+
   isValid() {
     if (this.incident) {
       this.validateType();

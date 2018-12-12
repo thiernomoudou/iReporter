@@ -1,6 +1,8 @@
 /* eslint-disable no-return-assign */
-
+import 'babel-polyfill';
 import { incidentsData } from '../database';
+
+import db from '../database/index';
 
 /**
  * Controller to handle all incidents endpoint routes
@@ -15,7 +17,7 @@ class IncidentsController {
    * @memberof IncidentsController
    */
 
-  getAllIncidents(req, res) {
+  async getAllIncidents(req, res) {
     // return all incidents from the database
     res.send({ status: 200, data: incidentsData });
   }

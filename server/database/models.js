@@ -1,4 +1,4 @@
-// db.js
+/* eslint-disable no-console */
 const { Pool } = require('pg');
 const dotenv = require('dotenv');
 
@@ -19,15 +19,12 @@ const createUserTable = () => {
   const queryText = `CREATE TABLE IF NOT EXISTS
     users(
       id UUID PRIMARY KEY,
-      firstname VARCHAR(32),
-      lastname VARCHAR(32),
-      othernames VARCHAR(32),
+      username VARCHAR(32) NOT NULL UNIQUE,
       email VARCHAR(64) NOT NULL UNIQUE,
-      phone_number VARCHAR(16),
-      username VARCHAR(32) NOT NULL,
+      password VARCHAR(64) NOT NULL,
       registered TIMESTAMP,
-      is_admin BOOLEAN DEFAULT false,
-      modified_date TIMESTAMP
+      modified_date TIMESTAMP,
+      is_admin BOOLEAN DEFAULT false
     )`;
   pool.query(queryText)
     .then((res) => {
@@ -54,8 +51,7 @@ const createIncidentTable = () => {
       images BYTEA[],
       videos BYTEA[],
       comment VARCHAR(256),
-      title VARCHAR(32)
-    )`;
+      title VARCHAR(32))`;
   pool.query(queryText)
     .then((res) => {
       console.log(res);
@@ -92,7 +88,7 @@ const dropIncidentTable = () => {
       pool.end();
     })
     .catch((err) => {
-      console.log(err);
+      console.log(err); 
     });
 };
 pool.on('remove', () => {

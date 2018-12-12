@@ -7,8 +7,19 @@ dotenv.config();
 const env = process.env.NODE_ENV || 'development';
 const config = dbConfig[env];
 
-let pool;
+// const pool = () => {
+//   if (config.connection_uri) {
+//     return new Pool(config.connection_uri);
+//   }
+//   return new Pool({
+//     user: config.username,
+//     database: config.database,
+//     password: config.password,
+//     port: config.port
+//   });
+// };
 
+let pool;
 if (config.connection_uri) {
   pool = new Pool(config.connection_uri);
 } else {
@@ -18,7 +29,7 @@ if (config.connection_uri) {
     password: config.password,
     port: config.port
   });
-}
+} 
 
 const db = {
   /**

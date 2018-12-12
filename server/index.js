@@ -20,7 +20,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/api/v1/incidents', incidentsRoutes);
-app.use('/api/v1/users/', usersRoutes);
+app.use('/api/v1/users', usersRoutes);
 
 // Welcome message
 app.get('/api/v1', (req, res) => {
