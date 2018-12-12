@@ -27,3 +27,4 @@ env:
   - echo TEST_DB_DATABASE=ireportertestdb >> .env
   - echo TEST_DB_HOST='localhost' >> .env
   - echo TEST_DB_HOST=5432 >> .env
+  - echo SECRET=somescret >> .env
