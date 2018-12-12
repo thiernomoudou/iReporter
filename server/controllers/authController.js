@@ -1,5 +1,4 @@
 import moment from 'moment';
-import uuidv4 from 'uuid/v4';
 import db from '../database/index';
 import authHelper from '../helpers/authHelper';
 import 'babel-polyfill';
@@ -23,10 +22,9 @@ export default class AuthController {
     }
     const hashPassword = authHelper.hashPassword(req.body.password);
     const createQuery = `INSERT INTO
-      users(id, username, email, password, registered, modified_date)
-      VALUES($1, $2, $3, $4, $5, $6) returning *`;
+      users(username, email, password, registered, modified_date)
+      VALUES($1, $2, $3, $4, $5) returning *`;
     const values = [
-      uuidv4(),
       req.body.username,
       req.body.email,
       hashPassword,

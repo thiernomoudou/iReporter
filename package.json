@@ -11,7 +11,7 @@
     "start-dev": "babel-watch server/index.js",
     "start-test": "NODE_ENV=test babel-watch server/index.js",
     "start": "node  dist/index.js",
-    "test": "NODE_ENV=test npm run drop-tables && npm run create-tables && nyc --reporter=html --reporter=text mocha tests/**/**.spec.js --exit --compilers js:babel-core/register",
+    "test": "NODE_ENV=test npm run drop-tables && npm run create-tables && npm run insert-user-record && nyc --reporter=html --reporter=text mocha tests/**/**.spec.js --exit --timeout=5000 --compilers js:babel-core/register",
     "lint": "eslint server",
     "lint-fix": "eslint server --fix",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
@@ -22,7 +22,8 @@
     "drop-user-table": "node server/database/models.js dropUserTable",
     "drop-incident-table": "node server/database/models.js dropIncidentTable",
     "create-tables": "npm run create-user-table && npm run create-incident-table",
-    "drop-tables": "npm run drop-user-table && npm run drop-incident-table"
+    "drop-tables": "npm run drop-user-table && npm run drop-incident-table",
+    "insert-user-record": "node server/database/models.js insertUserRecord"
   },
   "repository": {
     "type": "git",

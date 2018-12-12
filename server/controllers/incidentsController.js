@@ -19,7 +19,10 @@ class IncidentsController {
 
   async getAllIncidents(req, res) {
     // return all incidents from the database
-    res.send({ status: 200, data: incidentsData });
+    const queryAllIncidents = 'SELECT * FROM incidents';
+    const { rows } = await db.query(queryAllIncidents);
+    // return all incidents from the database
+    res.json({ status: 200, data: rows });
   }
 
   /**
