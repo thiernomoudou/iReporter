@@ -29,7 +29,7 @@ if (config.connection_uri) {
     password: config.password,
     port: config.port
   });
-} 
+}
 
 const db = {
   /**

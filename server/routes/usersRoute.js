@@ -12,8 +12,9 @@ const authController = new AuthController();
 usersRoutes.get('/:id/incidents', userMiddleware, usersController.getAllUserIncidents);
 // get a user profile
 usersRoutes.get('/:id/profile', userMiddleware, usersController.getUserProfile);
-// signup endpoint
+// signup endpoints
 usersRoutes.post('/signup', authController.signup);
+usersRoutes.post('/signin', authController.signin);
 
 // usersRoutes.post('/', authMiddleware, usersController.getAllUserIncidents);
 

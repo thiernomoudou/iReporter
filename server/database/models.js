@@ -88,7 +88,7 @@ const dropIncidentTable = () => {
       pool.end();
     })
     .catch((err) => {
-      console.log(err); 
+      console.log(err);
     });
 };
 pool.on('remove', () => {
