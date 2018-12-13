@@ -1,6 +1,6 @@
 /* eslint-disable no-return-assign */
 import 'babel-polyfill';
-import { incidentsData } from '../database';
+import moment from 'moment';
 
 import db from '../database/index';
 
@@ -16,13 +16,20 @@ class IncidentsController {
    * @returns {json} json
    * @memberof IncidentsController
    */
-
   async getAllIncidents(req, res) {
-    // return all incidents from the database
-    const queryAllIncidents = 'SELECT * FROM incidents';
-    const { rows } = await db.query(queryAllIncidents);
-    // return all incidents from the database
-    res.json({ status: 200, data: rows });
+    const text = 'SELECT * FROM incidents';
+    try {
+      const { rows } = await db.query(text);
+      if (!rows[0]) {
+        return res.status(404).json({
+          status: 404,
+          error: 'Red-flag or Intervention not found'
+        });
+      }
+      return res.json({ status: 200, data: rows });
+    } catch (error) {
+      return res.status(400).json(error);
+    }
   }
 
   /**
@@ -33,11 +40,20 @@ class IncidentsController {
    * @returns {json} incident
    * @memberof incidentsController
    */
-
-  getSpecificIncident(req, res) {
-    // pick the incident passed to the request by the incident middleware
-    const { incident } = req;
-    res.send({ status: 200, data: [incident] });
+  async getSpecificIncident(req, res) {
+    const text = 'SELECT * FROM incidents WHERE id = $1';
+    try {
+      const { rows } = await db.query(text, [req.params.id]);
+      if (!rows[0]) {
+        return res.status(404).json({
+          status: 404,
+          error: 'Red-flag not found'
+        });
+      }
+      return res.status(200).json({ status: 200, data: [rows[0]] });
+    } catch (error) {
+      return res.status(400).json(error);
+    }
   }
 
   /**
@@ -49,33 +65,37 @@ class IncidentsController {
    * @memberof incidentsController
    */
 
-  createIncident(req, res) {
+  async createIncident(req, res) {
     const reqBody = req.body;
-    const newIncident = {
-      id: reqBody.id,
-      type: reqBody.type,
-      location: reqBody.location,
-      images: reqBody.images,
-      title: reqBody.title,
-      comment: reqBody.comment,
-      status: reqBody.status
-    };
-    // Add the created incident to the database
-    incidentsData.push(newIncident);
-
-    const returnedData = {
-      status: 201,
-      data: [
-        {
-          id: newIncident.id,
-          message: 'Created Redflag record'
-        }
-      ]
-    };
-
-    res.status(201).send(returnedData);
+    const createQuery = `INSERT INTO
+      incidents(type, location, created_by, created_on, status,
+        images, videos, comment, title)
+      VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9)
+      returning *`;
+    const values = [
+      reqBody.type,
+      reqBody.location,
+      req.user.id,
+      moment(new Date()),
+      'Draft',
+      reqBody.images,
+      reqBody.videos,
+      reqBody.comment,
+      reqBody.title
+    ];
+    try {
+      const { rows } = await db.query(createQuery, values);
+      return res.status(201).json({
+        status: 201,
+        data: [{
+          id: rows[0].id,
+          message: `Created ${rows[0].type} record`
+        }]
+      });
+    } catch (error) {
+      return res.status(400).json(error);
+    }
   }
-
   /**
    * Update a specifc incident into the database
    *
@@ -85,65 +105,27 @@ class IncidentsController {
    * @memberof incidentsController
    */
 
-  updateIncident(req, res) {
-    const reqBody = req.body;
-
-    // incident object added by the incident middleware
-    const incidentId = req.incident.id;
-    const currentIncident = incidentsData.filter(item => item.id === incidentId);
-
-    const updatedIncident = {
-      id: incidentId,
-      type: reqBody.type || currentIncident[0].type,
-      location: reqBody.location || currentIncident[0].location,
-      images: reqBody.images || currentIncident[0].images,
-      title: reqBody.title || currentIncident[0].title,
-      comment: reqBody.comment || currentIncident[0].comment,
-      status: reqBody.status || currentIncident[0].status
-    };
-
-    const returnedData = {
-      status: 200,
-      data: [
-        {
-          id: updatedIncident.id,
-          message: 'Redflag updated'
-        }
-      ]
-    };
-
-    res.status(200).send(returnedData);
-  }
-  /**
-   * Patch a specifc incident into the database
-   *
-   * @param {object} req express request object
-   * @param {object} res express response object
-   * @returns {json} json of newly created incident
-   * @memberof incidentsController
-   */
-
-  performantIncidentUpdate(req, res) {
-    const reqBody = req.body;
-
-    // incident object added by the incident middleware
-    const incidentId = req.incident.id;
-    const currentIncident = incidentsData.filter(item => item.id === incidentId);
-    const attributeToUpdate = req.params.attribute;
-    const incidentToPacth = currentIncident[0];
-    // Apply the patch
-    incidentToPacth[attributeToUpdate] = reqBody[attributeToUpdate];
-    const returnedData = {
-      status: 200,
-      data: [
-        {
-          id: incidentToPacth.id,
-          message: `Updated red-flag record’s ${attributeToUpdate}`,
-        }
-      ]
-    };
-
-    res.status(200).send(returnedData);
+  async patchIncident(req, res) {
+    const incidentId = req.params.id;
+    const attributeToPatch = req.params.attribute;
+    const patchQuery = `UPDATE incidents
+      SET ${attributeToPatch}=$1 returning WHERE id=$2 *`;
+    const values = [
+      req.body.attributeToPatch,
+      incidentId
+    ];
+    try {
+      const { rows } = await db.query(patchQuery, values);
+      return res.status(200).json({
+        status: 200,
+        data: [{
+          id: rows[0].id,
+          message: `Updated ${rows[0].type} record ${rows[0][attributeToPatch]}`
+        }]
+      });
+    } catch (error) {
+      return res.status(400).json(error);
+    }
   }
 
   /**
@@ -155,26 +137,21 @@ class IncidentsController {
    * @memberof incidentsController
    */
 
-  deleteIncident(req, res) {
-    // incident object added by the incident middleware
-    const incidentId = req.incident.id;
-
-    // Delete the incident
-    incidentsData.filter(item => item.id !== incidentId);
-
-    const returnedData = {
-      status: 200,
-      data: [
-        {
-          id: incidentId,
-          message: 'red-flag record has been deleted',
+  async deleteIncident(req, res) {
+    const incidentId = req.params.id;
+    const deleteQuery = 'DELETE FROM incidents WHERE id=$1';
+    try {
+      const { rows } = await db.query(deleteQuery, [incidentId]);
+      return res.status(200).json({
+        status: 200,
+        data: {
+          id: rows[0].id,
+          message: `${rows[0].type} has been deleted`
         }
-      ]
-    };
-
-    res.status(200).send(returnedData);
+      });
+    } catch (error) {
+      return res.status(500).json(error);
+    }
   }
 }
-
-
 export default IncidentsController;

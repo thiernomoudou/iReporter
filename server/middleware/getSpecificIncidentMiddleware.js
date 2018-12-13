@@ -1,4 +1,3 @@
-/* eslint-disable prefer-destructuring */
 /* eslint-disable no-return-assign */
 /* eslint-disable no-lonely-if */
 import 'babel-polyfill';
@@ -11,7 +10,7 @@ import db from '../database/index';
 * @returns {function} express next() function
 */
 
-async function incidentMiddleware(req, res, next) {
+async function getSpecificIncidentMiddleware(req, res, next) {
   // Pick the incident from the database;
   const text = 'SELECT * FROM incidents WHERE id = $1';
   try {
@@ -30,4 +29,4 @@ async function incidentMiddleware(req, res, next) {
   }
 }
 
-export default incidentMiddleware;
+export default getSpecificIncidentMiddleware;

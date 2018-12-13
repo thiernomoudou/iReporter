@@ -1,6 +1,8 @@
+import jwt from 'jsonwebtoken';
+
 const authMiddleware = (req, res, next) => {
   // check header or url parameters or post parameters for token
-  const token = req.headers[‘x-access-token’];
+  const token = req.headers['x-access-token'];
   // decode token
   if (token) {
     // verifies secret and checks exp
@@ -22,6 +24,6 @@ const authMiddleware = (req, res, next) => {
       error: 'Unauthorized!, you have to login first',
     });
   }
- };
+};
 
- export default authMiddleware;
+export default authMiddleware;
