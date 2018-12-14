@@ -135,7 +135,7 @@ describe('/incidents api route', () => {
   describe('incident/:id/:attribute /PATCH endpoint', () => {
     it('Should return the updated incident id and a message', (done) => {
       chai.request(app)
-        .patch(`/api/v1/incidents/${mockData.testIncident.id}/comment`)
+        .patch(`/api/v1/incidents/${mockData.incident1.id}/comment`)
         .send({
           comment: 'a really bad road'
         })
@@ -166,7 +166,7 @@ describe('/incidents api route', () => {
   describe('incident/:id /DELETE endpoint', () => {
     it('Should return the updated incident id and a message', (done) => {
       chai.request(app)
-        .delete(`/api/v1/incidents/${mockData.testIncident.id}`)
+        .delete(`/api/v1/incidents/${mockData.incident1.id}`)
         .end((err, response) => {
           if (err) { return done(err); }
           expect(response).to.have.status(200);

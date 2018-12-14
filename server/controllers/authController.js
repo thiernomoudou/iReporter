@@ -22,14 +22,20 @@ export default class AuthController {
     }
     const hashPassword = authHelper.hashPassword(req.body.password);
     const createQuery = `INSERT INTO
-      users(username, email, password, registered, modified_date)
-      VALUES($1, $2, $3, $4, $5) returning *`;
+      users(username, email, password, registered, modified_date, phone_number, first_name,
+        last_name, other_names, is_admin)
+      VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) returning *`;
     const values = [
       req.body.username,
       req.body.email,
       hashPassword,
       moment(new Date()),
-      moment(new Date())
+      moment(new Date()),
+      req.body.phone_number,
+      req.body.first_name,
+      req.body.last_name,
+      req.body.other_names,
+      false
     ];
     try {
       const { rows } = await db.query(createQuery, values);
@@ -39,7 +45,7 @@ export default class AuthController {
       if (error.routine === '_bt_check_unique') {
         return res.status(400).json({ message: 'User with that USERNAME Or EMAIL already exist' });
       }
-      return res.status(400).json(error);
+      return res.status(400).json({ status: 400, error });
     }
   }
 

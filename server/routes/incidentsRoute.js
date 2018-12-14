@@ -2,7 +2,7 @@ import { Router } from 'express';
 import IncidentsController from '../controllers/incidentsController';
 import isOwner from '../middleware/isOwnerMiddleware';
 import authMiddlware from '../middleware/authMiddleware';
-import validation from '../middleware/addIncidentValidatorMiddleware'
+import validation from '../middleware/addIncidentValidatorMiddleware';
 
 const incidentsRoutes = new Router();
 const incidentsController = new IncidentsController();

@@ -28,7 +28,7 @@ class IncidentsController {
       }
       return res.json({ status: 200, data: rows });
     } catch (error) {
-      return res.status(400).json(error);
+      return res.status(400).json({ status: 400, error: 'Bad request' });
     }
   }
 
@@ -52,7 +52,7 @@ class IncidentsController {
       }
       return res.status(200).json({ status: 200, data: [rows[0]] });
     } catch (error) {
-      return res.status(400).json(error);
+      return res.status(400).json({ status: 400, error: 'Bad request'});
     }
   }
 
@@ -75,7 +75,7 @@ class IncidentsController {
     const values = [
       reqBody.type,
       reqBody.location,
-      req.user.id,
+      req.decoded.userId,
       moment(new Date()),
       'Draft',
       reqBody.images,
@@ -106,23 +106,25 @@ class IncidentsController {
    */
 
   async patchIncident(req, res) {
-    const incidentId = req.params.id;
+    const incidentId = parseInt(req.params.id, 10);
     const attributeToPatch = req.params.attribute;
     const patchQuery = `UPDATE incidents
-      SET ${attributeToPatch}=$1 returning WHERE id=$2 *`;
+      SET ${attributeToPatch}=$1 WHERE id=$2`;
     const values = [
-      req.body.attributeToPatch,
+      req.body[attributeToPatch],
       incidentId
     ];
     try {
-      const { rows } = await db.query(patchQuery, values);
-      return res.status(200).json({
-        status: 200,
-        data: [{
-          id: rows[0].id,
-          message: `Updated ${rows[0].type} record ${rows[0][attributeToPatch]}`
-        }]
-      });
+      const result = await db.query(patchQuery, values);
+      if (result) {
+        return res.status(200).json({
+          status: 200,
+          data: [{
+            id: incidentId,
+            message: `Updated Incident record ${attributeToPatch}`
+          }]
+        });
+      }
     } catch (error) {
       return res.status(400).json(error);
     }
@@ -138,6 +140,32 @@ class IncidentsController {
    */
 
   async deleteIncident(req, res) {
+    const incidentId = req.params.id;
+    const deleteQuery = 'DELETE FROM incidents WHERE id=$1';
+    try {
+      const { rows } = await db.query(deleteQuery, [incidentId]);
+      return res.status(200).json({
+        status: 200,
+        data: {
+          id: rows[0].id,
+          message: `${rows[0].type} has been deleted`
+        }
+      });
+    } catch (error) {
+      return res.status(500).json(error);
+    }
+  }
+
+  /**
+   * Delete a specifc incident into the database
+   *
+   * @param {object} req express request object
+   * @param {object} res express response object
+   * @returns {json} json of newly created incident
+   * @memberof incidentsController
+   */
+
+  async changeIncidentStatus(req, res) {
     const incidentId = req.params.id;
     const deleteQuery = 'DELETE FROM incidents WHERE id=$1';
     try {

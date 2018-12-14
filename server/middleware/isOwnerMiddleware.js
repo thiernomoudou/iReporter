@@ -8,16 +8,20 @@ import db from '../database/index';
 */
 
 async function isOwnerMiddleware(req, res, next) {
-  const userId = req.user.id;
-  const query = 'SELECT * FROM incidents where created_by=$1';
+  const incidentId = parseInt(req.params.id, 10);
+  const { userId } = req.decoded;
+  const { isAdmin } = req.decoded;
+  const query = 'SELECT * FROM incidents where id=$1';
   try {
-    const result = await db.query(query, [req.user.id]);
-    if (userId === result.rows[0]) {
+    const result = await db.query(query, [incidentId]);
+    if (isAdmin) {
+      next();
+    } else if (userId === result.rows[0].created_by && req.body.status === 'Draft') {
       next();
     } else {
       res.status(403).json({
         status: 403,
-        error: 'Unauthorized.'
+        error: 'Forbidden.'
       });
     }
   } catch (err) {
