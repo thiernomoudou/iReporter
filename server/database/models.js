@@ -26,6 +26,10 @@ const createUserTable = () => {
       password VARCHAR(64) NOT NULL,
       registered TIMESTAMP,
       modified_date TIMESTAMP,
+      phone_number VARCHAR(32),
+      first_name VARCHAR(32),
+      last_name VARCHAR(20),
+      other_names VARCHAR(30),
       is_admin BOOLEAN DEFAULT false
     )`;
   pool.query(queryText)

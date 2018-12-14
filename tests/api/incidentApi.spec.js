@@ -38,7 +38,7 @@ describe('/incidents api route', () => {
 
     const aUser = mockData.user1;
 
-    mockData.user1.token = authHelper.generateToken(aUser.id, aUser.username, aUser.email);
+    mockData.user1.token = authHelper.generateToken(aUser.id, aUser.username, aUser.email, aUser.is_admin);
   });
 
   describe('GET /api/v1/incidents route', () => {

@@ -39,7 +39,7 @@ export default class AuthController {
     ];
     try {
       const { rows } = await db.query(createQuery, values);
-      const token = authHelper.generateToken(rows[0].id, rows[0].username, rows[0].email);
+      const token = authHelper.generateToken(rows[0].id, rows[0].username, rows[0].email, rows[0].is_admin);
       return res.status(201).json({ status: 201, token });
     } catch (error) {
       if (error.routine === '_bt_check_unique') {
@@ -71,7 +71,7 @@ export default class AuthController {
       if (!authHelper.comparePassword(rows[0].password, req.body.password)) {
         return res.status(400).json({ message: 'The credentials you provided is incorrect' });
       }
-      const token = authHelper.generateToken(rows[0].id, rows[0].username, rows[0].email);
+      const token = authHelper.generateToken(rows[0].id, rows[0].username, rows[0].email, rows[0].is_admin);
       return res.status(200).json({ token });
     } catch (error) {
       return res.status(400).json(error);
