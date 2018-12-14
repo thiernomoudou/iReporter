@@ -155,12 +155,12 @@ class IncidentsController {
     const incidentId = req.params.id;
     const deleteQuery = 'DELETE FROM incidents WHERE id=$1';
     try {
-      const { rows } = await db.query(deleteQuery, [incidentId]);
+      await db.query(deleteQuery, [incidentId]);
       return res.status(200).json({
         status: 200,
         data: {
-          id: rows[0].id,
-          message: `${rows[0].type} has been deleted`
+          id: incidentId,
+          message: 'red flag has been deleted'
         }
       });
     } catch (error) {
