@@ -23,3 +23,5 @@ userCard.addEventListener('mouseleave', () => {
 avatar.addEventListener('mouseleave', () => {
   userCard.style.visibility = 'hidden';
 });
+
+// Responsiveness //

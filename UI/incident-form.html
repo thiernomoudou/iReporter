@@ -8,7 +8,12 @@
    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/index.css">
+	 <link rel="stylesheet" media="all" href="css/index.css">
+	 <link rel="stylesheet" media="(min-width: 1400px)" href="css/larger.css" />
+	 <link rel="stylesheet" media="(max-width: 780px)" href="css/tablet.css" />
+	 <link rel="stylesheet" media="(max-width: 480px)" href="css/largerphone.css" />
+	 <link rel="stylesheet" media="(max-width: 375px)" href="css/mediumphone.css" />
+	 <link rel="stylesheet" media="(max-width: 340px)" href="css/smallphone.css" />
 	<title>iReporter</title>
 </head>
 <body>
@@ -63,6 +68,12 @@
 				<label for="incident-location">Location</label>
 				<input type="text" name="incident_location" id="incident-location" class="input-text">
 			</p>
+			<p>
+					<label for="incident-location">Comment</label>
+					<textarea id="incident-comment" class="input-text" name="incident_comment" rows="5">
+
+					</textarea>
+				</p>
 			<p>
 			    <label for="image_uploads" class="upload-media">Choose images</label>
 			    <input type="file" class="upload-input" id="image_uploads" name="image_uploads" accept=".jpg, .jpeg, .png" multiple>

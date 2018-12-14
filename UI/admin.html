@@ -8,7 +8,12 @@
    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/index.css">
+	 <link rel="stylesheet" media="all" href="css/index.css">
+	 <link rel="stylesheet" media="(min-width: 1400px)" href="css/larger.css" />
+	 <link rel="stylesheet" media="(max-width: 780px)" href="css/tablet.css" />
+	 <link rel="stylesheet" media="(max-width: 480px)" href="css/largerphone.css" />
+	 <link rel="stylesheet" media="(max-width: 375px)" href="css/mediumphone.css" />
+	 <link rel="stylesheet" media="(max-width: 340px)" href="css/smallphone.css" />
 	<title>iReporter</title>
 </head>
 <body>
@@ -38,16 +43,17 @@
 
 	<div class="all-incidents-intro dashboard-intro">
         <p>Hi Souleymane Welcome to the <span>Admin Dashboard</span>.</p>
-	    <p class="filters">
-	    	Filter by user <input type="text" id="input-filter-1" class="admin-input"/> Filter by Date <input type="text" id="input-filter-2" class="admin-input"/>
-	    	Filter by status <input type="text" id="input-filter-3" class="admin-input"/>
+	    <ul class="admin-filters">
+				<li>Filter by user <input type="text" id="input-filter-1" class="admin-input"/> </li>
+				<li>Filter by Date <input type="text" id="input-filter-2" class="admin-input"/></li>
+				<li>Filter by status <input type="text" id="input-filter-3" class="admin-input"/></li>
+			</ul>	
 
-			</p>	
 	</div>
 	<div class="admin-table">
 			<table>
-				<thead>
-						<tr>
+				<thead > 
+						<tr class="admin-table-head">
 								<th>No</th>
 								<th>Title</th>
 								<th>Type</th>
