@@ -93,7 +93,10 @@ class IncidentsController {
         }]
       });
     } catch (error) {
-      return res.status(400).json(error);
+      return res.status(400).json({
+        status: 400,
+        error: 'Incident not created'
+      });
     }
   }
   /**
@@ -106,6 +109,7 @@ class IncidentsController {
    */
 
   async patchIncident(req, res) {
+    const { isAdmin } = req.decoded;
     const incidentId = parseInt(req.params.id, 10);
     const attributeToPatch = req.params.attribute;
     const patchQuery = `UPDATE incidents
@@ -114,6 +118,12 @@ class IncidentsController {
       req.body[attributeToPatch],
       incidentId
     ];
+    if (attributeToPatch === 'status' && isAdmin === false) {
+      return res.status(403).json({
+        status: 403,
+        error: 'Forbidden.'
+      });
+    }
     try {
       const result = await db.query(patchQuery, values);
       if (result) {
@@ -126,7 +136,9 @@ class IncidentsController {
         });
       }
     } catch (error) {
-      return res.status(400).json(error);
+      return res.status(404).json({
+        status: 404, error: 'Id or attribute does not exist'
+      });
     }
   }
 
@@ -152,7 +164,9 @@ class IncidentsController {
         }
       });
     } catch (error) {
-      return res.status(500).json(error);
+      return res.status(404).json({
+        status: 404, error: 'Id or attribute does not exist'
+      });
     }
   }
 
@@ -164,22 +178,5 @@ class IncidentsController {
    * @returns {json} json of newly created incident
    * @memberof incidentsController
    */
-
-  async changeIncidentStatus(req, res) {
-    const incidentId = req.params.id;
-    const deleteQuery = 'DELETE FROM incidents WHERE id=$1';
-    try {
-      const { rows } = await db.query(deleteQuery, [incidentId]);
-      return res.status(200).json({
-        status: 200,
-        data: {
-          id: rows[0].id,
-          message: `${rows[0].type} has been deleted`
-        }
-      });
-    } catch (error) {
-      return res.status(500).json(error);
-    }
-  }
 }
 export default IncidentsController;

@@ -10,7 +10,6 @@ import db from '../database/index';
 async function isOwnerMiddleware(req, res, next) {
   const incidentId = parseInt(req.params.id, 10);
   const { userId } = req.decoded;
-  // const { isAdmin } = req.decoded;
   const query = 'SELECT * FROM incidents where id=$1';
   try {
     const result = await db.query(query, [incidentId]);
