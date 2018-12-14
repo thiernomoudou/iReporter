@@ -152,7 +152,7 @@ class IncidentsController {
    */
 
   async deleteIncident(req, res) {
-    const incidentId = req.params.id;
+    const incidentId = parseInt(req.params.id, 10);
     const deleteQuery = 'DELETE FROM incidents WHERE id=$1';
     try {
       await db.query(deleteQuery, [incidentId]);
