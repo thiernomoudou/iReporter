@@ -57,7 +57,7 @@ export default class AuthController {
    */
   async signin(req, res) {
     if (!req.body.email || !req.body.password) {
-      return res.status(400).json({ message: 'Some values are missing' });
+      return res.status(400).json({ message: 'Email or Password are missing' });
     }
     if (!authHelper.isValidEmail(req.body.email)) {
       return res.status(400).json({ message: 'Please enter a valid email address' });

@@ -10,13 +10,11 @@ import db from '../database/index';
 async function isOwnerMiddleware(req, res, next) {
   const incidentId = parseInt(req.params.id, 10);
   const { userId } = req.decoded;
-  const { isAdmin } = req.decoded;
+  // const { isAdmin } = req.decoded;
   const query = 'SELECT * FROM incidents where id=$1';
   try {
     const result = await db.query(query, [incidentId]);
-    if (isAdmin) {
-      next();
-    } else if (userId === result.rows[0].created_by && req.body.status === 'Draft') {
+    if (userId === result.rows[0].created_by) {
       next();
     } else {
       res.status(403).json({

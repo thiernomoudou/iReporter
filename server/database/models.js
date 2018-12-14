@@ -53,9 +53,9 @@ const createIncidentTable = () => {
       created_by INT REFERENCES users (id) ON DELETE CASCADE,
       type VARCHAR(16) NOT NULL,
       location VARCHAR(48) NOT NULL,
-      status VARCHAR(32) DEFAULT 'draft',
-      images BYTEA[],
-      videos BYTEA[],
+      status VARCHAR(32) DEFAULT 'Draft',
+      images text[],
+      videos text[],
       comment VARCHAR(256),
       title VARCHAR(32))`;
   pool.query(queryText)
