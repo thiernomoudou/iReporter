@@ -17,13 +17,9 @@
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "coveralls": "npm test && nyc --reporter=lcov --reporter=text-lcov",
     "heroku-postbuild": "npm run build",
-    "create-user-table": "node server/database/models.js createUserTable",
-    "create-incident-table": "node server/database/models.js createIncidentTable",
-    "drop-user-table": "node server/database/models.js dropUserTable",
-    "drop-incident-table": "node server/database/models.js dropIncidentTable",
-    "create-tables": "npm run create-user-table && npm run create-incident-table",
-    "drop-tables": "npm run drop-user-table && npm run drop-incident-table",
-    "insert-user-record": "node server/database/models.js insertUserRecord"
+    "insert-user-record": "node server/database/models.js insertUserRecord",
+    "create-tables": "babel-node server/database/createTables",
+    "drop-tables": "babel-node server/database/dropTables"
   },
   "repository": {
     "type": "git",

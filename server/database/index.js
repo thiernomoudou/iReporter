@@ -1,11 +1,28 @@
 import { Pool } from 'pg';
 import dotenv from 'dotenv';
 
+import dbConfig from '../configurations/db';
+
+// Loading environment variables
 dotenv.config();
 
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL
-});
+const env = process.env.NODE_ENV || 'development';
+const config = dbConfig[env];
+
+let pool;
+
+if (config.connection_uri) {
+  pool = new Pool({ connectionString: config.connection_uri });
+} else {
+  pool = new Pool({
+    database: config.database,
+    username: config.username,
+    password: config.password,
+    host: config.host,
+    port: config.port
+  });
+}
+
 
 const db = {
   /**
@@ -24,8 +41,19 @@ const db = {
           reject(err);
         });
     });
-  }
+  },
+
+  endConnection() {
+    return new Promise((resolve, reject) => {
+      pool.end()
+        .then((res) => {
+          resolve(res);
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  },
 };
 
 export default db;
-export { pool };
