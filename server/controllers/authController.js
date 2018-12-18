@@ -1,7 +1,8 @@
 import moment from 'moment';
-import db from '../database/index';
-import authHelper from '../helpers/authHelper';
 import 'babel-polyfill';
+
+import authHelper from '../helpers/authHelper';
+import UserModel from '../database/userModel';
 /**
  * Controls endpoints for authentication
  * @class AuthController
@@ -15,37 +16,50 @@ export default class AuthController {
   */
   async signup(req, res) {
     if (!req.body.email || !req.body.password) {
-      return res.status(400).json({ message: 'Some values are missing' });
+      return res.status(400).json({
+        status: 400,
+        error: 'Email or Password are missing'
+      });
     }
     if (!authHelper.isValidEmail(req.body.email)) {
-      return res.status(400).json({ message: 'Please enter a valid email address' });
+      return res.status(400).json({
+        status: 400, error: 'Please enter a valid email address'
+      });
     }
+    // Hashing the password entered by the user
     const hashPassword = authHelper.hashPassword(req.body.password);
-    const createQuery = `INSERT INTO
-      users(username, email, password, registered, modified_date, phone_number, first_name,
-        last_name, other_names, is_admin)
-      VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) returning *`;
-    const values = [
-      req.body.username,
-      req.body.email,
-      hashPassword,
-      moment(new Date()),
-      moment(new Date()),
-      req.body.phone_number,
-      req.body.first_name,
-      req.body.last_name,
-      req.body.other_names,
-      false
-    ];
+    const userObj = req.body;
+    userObj.password = hashPassword;
+    userObj.registered = moment(new Date());
+    userObj.modifieddate = moment(new Date());
     try {
-      const { rows } = await db.query(createQuery, values);
-      const token = authHelper.generateToken(rows[0].id, rows[0].username, rows[0].email, rows[0].is_admin);
-      return res.status(201).json({ status: 201, token });
+      const user = await UserModel.createUser(userObj);
+      const userToken = {
+        id: user[0].id,
+        username: user[0].username,
+        email: user[0].email,
+        isadmin: user[0].isadmin
+      };
+      const token = authHelper.generateToken(userToken);
+      return res.status(201).json({
+        status: 201,
+        data: [
+          {
+            token,
+            user: userToken,
+          },
+        ],
+      });
     } catch (error) {
       if (error.routine === '_bt_check_unique') {
-        return res.status(400).json({ message: 'User with that USERNAME Or EMAIL already exist' });
+        return res.status(400).json({
+          status: 400, error: 'User with that USERNAME Or EMAIL already exist'
+        });
       }
-      return res.status(400).json({ status: 400, error });
+      return res.status(400).json({
+        status: 400,
+        error
+      });
     }
   }
 
@@ -57,24 +71,50 @@ export default class AuthController {
    */
   async signin(req, res) {
     if (!req.body.email || !req.body.password) {
-      return res.status(400).json({ message: 'Email or Password are missing' });
+      return res.status(400).json({
+        status: 400,
+        error: 'Email or Password are missing'
+      });
     }
     if (!authHelper.isValidEmail(req.body.email)) {
-      return res.status(400).json({ message: 'Please enter a valid email address' });
+      return res.status(400).json({
+        status: 400,
+        error: 'Please enter a valid email address'
+      });
     }
-    const text = 'SELECT * FROM users WHERE email = $1';
     try {
-      const { rows } = await db.query(text, [req.body.email]);
-      if (!rows[0]) {
-        return res.status(400).json({ message: 'The credentials you provided is incorrect' });
+      const user = await UserModel.findByEmail(req.body.email);
+      if (!user[0]) {
+        return res.status(400).json({
+          status: 400,
+          error: 'You do not have an active account. Please signup'
+        });
       }
-      if (!authHelper.comparePassword(rows[0].password, req.body.password)) {
-        return res.status(400).json({ message: 'The credentials you provided is incorrect' });
+      if (!authHelper.comparePassword(user[0].password, req.body.password)) {
+        return res.status(400).json({
+          status: 400,
+          error: 'The credentials you provided are incorrects'
+        });
       }
-      const token = authHelper.generateToken(rows[0].id, rows[0].username, rows[0].email, rows[0].is_admin);
-      return res.status(200).json({ token });
+      const userToken = {
+        id: user[0].id,
+        username: user[0].username,
+        email: user[0].email,
+        isadmin: user[0].isadmin
+      };
+      const token = authHelper.generateToken(userToken);
+      return res.status(200).json({
+        status: 200,
+        data: [{
+          token,
+          user: userToken
+        }]
+      });
     } catch (error) {
-      return res.status(400).json(error);
+      return res.status(400).json({
+        status: 400,
+        error
+      });
     }
   }
 }

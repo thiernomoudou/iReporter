@@ -34,10 +34,10 @@ export default class UserModel {
         password.trim(),
         registered,
         modifieddate,
-        phonenumber.trim(),
-        firstname.trim(),
-        lastname.trim(),
-        othernames.trim(),
+        phonenumber,
+        firstname,
+        lastname,
+        othernames,
         isadmin
       ];
 
@@ -62,6 +62,26 @@ export default class UserModel {
     try {
       const findQuery = 'SELECT * FROM users WHERE id=$1';
       const { rows } = await db.query(findQuery, [id]);
+      return rows;
+    } catch (error) {
+      return error;
+    }
+  }
+
+  /**
+   * @description - Find a user by email
+   * @static
+   *
+   * @param {object} - User email
+   *
+   * @memberof UserModel
+   *
+   * @returns {object} Array
+   * */
+  static async findByEmail(email) {
+    try {
+      const findQuery = 'SELECT * FROM users WHERE email=$1';
+      const { rows } = await db.query(findQuery, [email]);
       return rows;
     } catch (error) {
       return error;

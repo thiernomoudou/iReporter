@@ -9,12 +9,12 @@ export const userTableQuery = `CREATE TABLE IF NOT EXISTS
     email VARCHAR(64) NOT NULL UNIQUE,
     password VARCHAR(64) NOT NULL,
     registered TIMESTAMP,
-    modified_date TIMESTAMP,
-    phone_number VARCHAR(32),
-    first_name VARCHAR(32),
-    last_name VARCHAR(20),
-    other_names VARCHAR(30),
-    is_admin BOOLEAN DEFAULT false
+    modifieddate TIMESTAMP,
+    phonenumber VARCHAR(32),
+    firstname VARCHAR(32),
+    lastname VARCHAR(20),
+    othernames VARCHAR(30),
+    isadmin BOOLEAN DEFAULT false
   )`;
 
 /**
@@ -23,8 +23,8 @@ export const userTableQuery = `CREATE TABLE IF NOT EXISTS
 export const incidentTableQuery = `CREATE TABLE IF NOT EXISTS
   incidents(
   id SERIAL PRIMARY KEY,
-  created_on TIMESTAMP,
-  created_by INT REFERENCES users (id) ON DELETE CASCADE,
+  createdon TIMESTAMP,
+  createdby INT REFERENCES users (id) ON DELETE CASCADE,
   type VARCHAR(16) NOT NULL,
   location VARCHAR(48) NOT NULL,
   status VARCHAR(32) DEFAULT 'Draft',
