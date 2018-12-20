@@ -9,9 +9,9 @@
   "scripts": {
     "build": "babel server -d dist ",
     "start-dev": "babel-watch server/index.js",
-    "start-test": "NODE_ENV=test babel-watch server/index.js",
+    "start-test": "babel-watch server/index.js",
     "start": "node  dist/index.js",
-    "test": "NODE_ENV=test npm run drop-tables && npm run create-tables && npm run insert-user-record && nyc --reporter=html --reporter=text mocha tests/**/**.spec.js --exit --timeout=5000 --compilers js:babel-core/register",
+    "test": "cross-env NODE_ENV=test npm run drop-tables && npm run create-tables && npm run insert-users && npm run insert-incidents && nyc --reporter=html --reporter=text mocha server/tests/**/**.spec.js --exit --timeout=5000 --compilers js:babel-core/register",
     "lint": "eslint server",
     "lint-fix": "eslint server --fix",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
@@ -19,7 +19,9 @@
     "heroku-postbuild": "npm run build",
     "insert-user-record": "node server/database/models.js insertUserRecord",
     "create-tables": "babel-node server/database/createTables",
-    "drop-tables": "babel-node server/database/dropTables"
+    "drop-tables": "babel-node server/database/dropTables",
+    "insert-users": "babel-node server/tests/createTestUsers",
+    "insert-incidents": "babel-node server/tests/createTestIncidents"
   },
   "repository": {
     "type": "git",
@@ -45,6 +47,7 @@
     "chai": "^4.2.0",
     "chai-http": "^4.2.0",
     "coveralls": "^3.0.2",
+    "cross-env": "^5.2.0",
     "eslint": "^5.9.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.14.0",

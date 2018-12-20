@@ -58,7 +58,7 @@ export default class AuthController {
       }
       return res.status(400).json({
         status: 400,
-        error
+        error: 'User with that USERNAME Or EMAIL already exist'
       });
     }
   }

@@ -2,12 +2,9 @@
 import 'babel-polyfill';
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
-import bcrypt from 'bcrypt';
-import jwt from 'jsonwebtoken';
 
 
-import application from '../../server/index';
-import db from '../../server/database/index';
+import application from '../../index';
 
 // Use chai-http to make api requests
 chai.use(chaiHttp);
@@ -28,14 +25,12 @@ const user12 = {
   is_admin: true,
 };
 
-let userToken;
-let adminToken;
 
 describe('/users signup api route', () => {
-  before(async () => {
-    const user = await db.query('select * from users');
-    mockData.user1 = [user.rows];
-  });
+  // before(async () => {
+  //   const user = await db.query('select * from users');
+  //   mockData.user1 = [user.rows];
+  // });
 
   describe('/signup', () => {
     it('Should register a new user', (done) => {
@@ -43,8 +38,19 @@ describe('/users signup api route', () => {
         .post('/api/v1/users/signup')
         .send(user11)
         .end((error, response) => {
-          userToken = response.body.token;
+          // userToken = response.body.token;
           expect(response).to.have.status(201);
+          done();
+        });
+    });
+
+    it('Should return error message if trying to singup two times', (done) => {
+      chai.request(application)
+        .post('/api/v1/users/signup')
+        .send(user11)
+        .end((error, response) => {
+          expect(response).to.have.status(400);
+          expect(response.body.error).to.equal('User with that USERNAME Or EMAIL already exist');
           done();
         });
     });
@@ -57,6 +63,18 @@ describe('/users signup api route', () => {
         .end((error, response) => {
           expect(response).to.have.status(200);
           // const responseData = response.body.data;
+          done();
+        });
+    });
+
+    it('Should return an Error message for invalid user credentials', (done) => {
+      chai.request(application)
+        .post('/api/v1/users/signin')
+        .send(user12)
+        .end((error, response) => {
+          expect(response).to.have.status(400);
+          const responseData = response.body;
+          expect(responseData.error).to.equal('You do not have an active account. Please signup');
           done();
         });
     });
