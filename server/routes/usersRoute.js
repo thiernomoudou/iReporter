@@ -13,7 +13,7 @@ usersRoutes.get('/',  usersController.getAllUsers);
 // Get all incidents for an individual user
 usersRoutes.get('/:id/incidents', authMiddleware, usersController.getAllUserIncidents);
 // get a user profile
-usersRoutes.get('/:id/profile', authMiddleware, usersController.getUserProfile);
+usersRoutes.get('/:id', authMiddleware, usersController.getUserProfile);
 // signup endpoints
 usersRoutes.post('/signup', authController.signup);
 usersRoutes.post('/signin', authController.signin);
