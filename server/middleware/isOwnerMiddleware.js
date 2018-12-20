@@ -9,7 +9,7 @@ import db from '../database/index';
 
 async function isOwnerMiddleware(req, res, next) {
   const incidentId = parseInt(req.params.id, 10);
-  const { id } = req.decoded.id;
+  const { id } = req.user;
   const query = 'SELECT * FROM incidents where id=$1';
   try {
     const result = await db.query(query, [incidentId]);
@@ -19,11 +19,16 @@ async function isOwnerMiddleware(req, res, next) {
     } else {
       res.status(403).json({
         status: 403,
-        error: 'Forbidden. The incident is not yours'
+        error: 'Forbidden. The incident is not yours',
+        id,
+        owner,
       });
     }
   } catch (err) {
-    res.status(404).json({ status: 404, err: 'Red-flag or intervention not found' });
+    res.status(404).json({
+      status: 404,
+      err: 'Red-flag or intervention not found'
+    });
   }
 }
 

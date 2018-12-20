@@ -10,8 +10,7 @@ import application from '../../index';
 chai.use(chaiHttp);
 
 
-const mockData = {};
-// define global object to use inside tests;
+// define mock data for testing;
 const user11 = {
   username: 'normal user',
   email: 'newuser@user.com',
@@ -25,20 +24,13 @@ const user12 = {
   is_admin: true,
 };
 
-
 describe('/users signup api route', () => {
-  // before(async () => {
-  //   const user = await db.query('select * from users');
-  //   mockData.user1 = [user.rows];
-  // });
-
   describe('/signup', () => {
     it('Should register a new user', (done) => {
       chai.request(application)
         .post('/api/v1/users/signup')
         .send(user11)
         .end((error, response) => {
-          // userToken = response.body.token;
           expect(response).to.have.status(201);
           done();
         });
@@ -62,7 +54,6 @@ describe('/users signup api route', () => {
         .send(user11)
         .end((error, response) => {
           expect(response).to.have.status(200);
-          // const responseData = response.body.data;
           done();
         });
     });
