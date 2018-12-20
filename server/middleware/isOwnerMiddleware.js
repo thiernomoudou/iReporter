@@ -23,7 +23,7 @@ async function isOwnerMiddleware(req, res, next) {
       });
     }
   } catch (err) {
-    res.status(500).json({ status: 500, err });
+    res.status(404).json({ status: 404, err: 'Red-flag or intervention not found' });
   }
 }
 

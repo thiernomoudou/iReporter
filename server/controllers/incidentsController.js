@@ -150,11 +150,11 @@ class IncidentsController {
   async deleteIncident(req, res) {
     const incidentId = parseInt(req.params.id, 10);
     try {
-      const incident = await IncidentModel.delete(incidentId);
+      const incidentToDelete = await IncidentModel.delete(incidentId);
       return res.status(200).json({
         status: 200,
         data: [{
-          id: incident.rows[0].id,
+          id: incidentToDelete.rows[0].id,
           message: 'red flag has been deleted'
         }]
       });
