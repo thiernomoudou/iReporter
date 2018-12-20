@@ -1,8 +1,9 @@
 /* eslint-disable no-return-assign */
 import 'babel-polyfill';
 import moment from 'moment';
-
 import db from '../database/index';
+
+import IncidentModel from '../database/incidentModel';
 
 /**
  * Controller to handle all incidents endpoint routes
@@ -17,18 +18,20 @@ class IncidentsController {
    * @memberof IncidentsController
    */
   async getAllIncidents(req, res) {
-    const text = 'SELECT * FROM incidents';
     try {
-      const { rows } = await db.query(text);
-      if (!rows[0]) {
+      const incidents = await IncidentModel.findAllIncidents();
+      if (!incidents) {
         return res.status(404).json({
           status: 404,
           error: 'Red-flag or Intervention not found'
         });
       }
-      return res.json({ status: 200, data: rows });
+      return res.json({ status: 200, data: incidents });
     } catch (error) {
-      return res.status(400).json({ status: 400, error: 'Bad request' });
+      return res.status(400).json({
+        status: 400,
+        error: 'You request contains some errors'
+      });
     }
   }
 
@@ -41,18 +44,18 @@ class IncidentsController {
    * @memberof incidentsController
    */
   async getSpecificIncident(req, res) {
-    const text = 'SELECT * FROM incidents WHERE id = $1';
+    const incidentId = parseInt(req.params.id, 10);
     try {
-      const { rows } = await db.query(text, [req.params.id]);
-      if (!rows[0]) {
+      const incident = await IncidentModel.findOneIncident(incidentId);
+      if (!incident[0]) {
         return res.status(404).json({
           status: 404,
           error: 'Red-flag not found'
         });
       }
-      return res.status(200).json({ status: 200, data: [rows[0]] });
+      return res.status(200).json({ status: 200, data: [incident[0]] });
     } catch (error) {
-      return res.status(400).json({ status: 400, error: 'Bad request'});
+      return res.status(400).json({ status: 400, error: 'Bad request' });
     }
   }
 
@@ -66,30 +69,17 @@ class IncidentsController {
    */
 
   async createIncident(req, res) {
-    const reqBody = req.body;
-    const createQuery = `INSERT INTO
-      incidents(type, location, created_by, created_on, status,
-        images, videos, comment, title)
-      VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9)
-      returning *`;
-    const values = [
-      reqBody.type,
-      reqBody.location,
-      req.decoded.userId,
-      moment(new Date()),
-      'Draft',
-      reqBody.images,
-      reqBody.videos,
-      reqBody.comment,
-      reqBody.title
-    ];
+    const payload = req.body;
+    payload.createdby = req.decoded.id.id;
+    payload.createdon = moment(new Date());
+    payload.status = 'Draft';
     try {
-      const { rows } = await db.query(createQuery, values);
+      const incident = await IncidentModel.createIncident(payload);
       return res.status(201).json({
         status: 201,
         data: [{
-          id: rows[0].id,
-          message: `Created ${rows[0].type} record`
+          id: incident[0].id,
+          message: `Created ${incident[0].type} record`
         }]
       });
     } catch (error) {
@@ -109,7 +99,7 @@ class IncidentsController {
    */
 
   async patchIncident(req, res) {
-    const { isAdmin } = req.decoded;
+    const { isadmin } = req.decoded.id;
     const incidentId = parseInt(req.params.id, 10);
     const attributeToPatch = req.params.attribute;
     const patchQuery = `UPDATE incidents
@@ -118,10 +108,16 @@ class IncidentsController {
       req.body[attributeToPatch],
       incidentId
     ];
-    if (attributeToPatch === 'status' && isAdmin === false) {
+    if (attributeToPatch === 'status' && isadmin === false) {
       return res.status(403).json({
         status: 403,
         error: 'Forbidden.'
+      });
+    }
+    if (!incidentId) {
+      return res.status(404).json({
+        status: 404,
+        error: 'Red-flag not found'
       });
     }
     try {
@@ -153,15 +149,14 @@ class IncidentsController {
 
   async deleteIncident(req, res) {
     const incidentId = parseInt(req.params.id, 10);
-    const deleteQuery = 'DELETE FROM incidents WHERE id=$1';
     try {
-      await db.query(deleteQuery, [incidentId]);
+      const incident = await IncidentModel.delete(incidentId);
       return res.status(200).json({
         status: 200,
-        data: {
-          id: incidentId,
+        data: [{
+          id: incident.rows[0].id,
           message: 'red flag has been deleted'
-        }
+        }]
       });
     } catch (error) {
       return res.status(404).json({
@@ -169,14 +164,5 @@ class IncidentsController {
       });
     }
   }
-
-  /**
-   * Delete a specifc incident into the database
-   *
-   * @param {object} req express request object
-   * @param {object} res express response object
-   * @returns {json} json of newly created incident
-   * @memberof incidentsController
-   */
 }
 export default IncidentsController;

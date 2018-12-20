@@ -9,16 +9,17 @@ import db from '../database/index';
 
 async function isOwnerMiddleware(req, res, next) {
   const incidentId = parseInt(req.params.id, 10);
-  const { userId } = req.decoded;
+  const { id } = req.decoded.id;
   const query = 'SELECT * FROM incidents where id=$1';
   try {
     const result = await db.query(query, [incidentId]);
-    if (userId === result.rows[0].created_by) {
+    const owner = result.rows[0].createdby;
+    if (Number(id) === Number(owner)) {
       next();
     } else {
       res.status(403).json({
         status: 403,
-        error: 'Forbidden.'
+        error: 'Forbidden. The incident is not yours'
       });
     }
   } catch (err) {

@@ -17,7 +17,7 @@ export default class IncidentModel {
    *
    * @returns {object} Array
    * */
-  static async createUser(incidentObject) {
+  static async createIncident(incidentObject) {
     try {
       const {
         type, location, createdby, createdon, status, images, videos,
@@ -39,7 +39,7 @@ export default class IncidentModel {
         images,
         videos,
         comment,
-        title.trim()
+        title
       ];
 
       const { rows } = await db.query(createIncidentQuery, values);
@@ -59,10 +59,10 @@ export default class IncidentModel {
    *
    * @returns {object} Array
    * */
-  static async findById(id) {
+  static async findOneIncident(id) {
     try {
-      const findQuery = 'SELECT * FROM incidents WHERE id=$1';
-      const { rows } = await db.query(findQuery, [id]);
+      const findOneQuery = 'SELECT * FROM incidents WHERE id=$1';
+      const { rows } = await db.query(findOneQuery, [id]);
       return rows;
     } catch (error) {
       return error;
@@ -77,10 +77,10 @@ export default class IncidentModel {
    *
    * @returns {object} Array
    * */
-  static async findAll() {
+  static async findAllIncidents() {
     try {
-      const findQuery = 'SELECT * FROM incidents';
-      const { rows } = await db.query(findQuery);
+      const findAllQuery = 'SELECT * FROM incidents';
+      const { rows } = await db.query(findAllQuery);
       return rows;
     } catch (error) {
       return error;
@@ -123,14 +123,14 @@ export default class IncidentModel {
    *
    * @returns {object} Array
    * */
-  static async deleteById(id) {
+  static async delete(id) {
     try {
-      const query = `
+      const deleteQuery = `
         DELETE FROM incidents
         WHERE id=$1
         RETURNING id
       `;
-      const res = await db.query(query, [id]);
+      const res = await db.query(deleteQuery, [id]);
       return res;
     } catch (error) {
       return error;
