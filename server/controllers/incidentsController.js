@@ -1,6 +1,9 @@
 /* eslint-disable no-return-assign */
+import 'babel-polyfill';
+import moment from 'moment';
+import db from '../database/index';
 
-import { incidentsData } from '../database';
+import IncidentModel from '../database/incidentModel';
 
 /**
  * Controller to handle all incidents endpoint routes
@@ -14,10 +17,22 @@ class IncidentsController {
    * @returns {json} json
    * @memberof IncidentsController
    */
-
-  getAllIncidents(req, res) {
-    // return all incidents from the database
-    res.send({ status: 200, data: incidentsData });
+  async getAllIncidents(req, res) {
+    try {
+      const incidents = await IncidentModel.findAllIncidents();
+      if (!incidents) {
+        return res.status(404).json({
+          status: 404,
+          error: 'Red-flag or Intervention not found'
+        });
+      }
+      return res.json({ status: 200, data: incidents });
+    } catch (error) {
+      return res.status(400).json({
+        status: 400,
+        error: 'You request contains some errors'
+      });
+    }
   }
 
   /**
@@ -28,11 +43,20 @@ class IncidentsController {
    * @returns {json} incident
    * @memberof incidentsController
    */
-
-  getSpecificIncident(req, res) {
-    // pick the incident passed to the request by the incident middleware
-    const { incident } = req;
-    res.send({ status: 200, data: [incident] });
+  async getSpecificIncident(req, res) {
+    const incidentId = parseInt(req.params.id, 10);
+    try {
+      const incident = await IncidentModel.findOneIncident(incidentId);
+      if (!incident[0]) {
+        return res.status(404).json({
+          status: 404,
+          error: 'Red-flag not found'
+        });
+      }
+      return res.status(200).json({ status: 200, data: [incident[0]] });
+    } catch (error) {
+      return res.status(400).json({ status: 400, error: 'Bad request' });
+    }
   }
 
   /**
@@ -44,33 +68,27 @@ class IncidentsController {
    * @memberof incidentsController
    */
 
-  createIncident(req, res) {
-    const reqBody = req.body;
-    const newIncident = {
-      id: reqBody.id,
-      type: reqBody.type,
-      location: reqBody.location,
-      images: reqBody.images,
-      title: reqBody.title,
-      comment: reqBody.comment,
-      status: reqBody.status
-    };
-    // Add the created incident to the database
-    incidentsData.push(newIncident);
-
-    const returnedData = {
-      status: 201,
-      data: [
-        {
-          id: newIncident.id,
-          message: 'Created Redflag record'
-        }
-      ]
-    };
-
-    res.status(201).send(returnedData);
+  async createIncident(req, res) {
+    const payload = req.body;
+    payload.createdby = req.decoded.id;
+    payload.createdon = moment(new Date());
+    payload.status = 'Draft';
+    try {
+      const incident = await IncidentModel.createIncident(payload);
+      return res.status(201).json({
+        status: 201,
+        data: [{
+          id: incident[0].id,
+          message: `Created ${incident[0].type} record`
+        }]
+      });
+    } catch (error) {
+      return res.status(400).json({
+        status: 400,
+        error: 'Incident not created'
+      });
+    }
   }
-
   /**
    * Update a specifc incident into the database
    *
@@ -80,65 +98,44 @@ class IncidentsController {
    * @memberof incidentsController
    */
 
-  updateIncident(req, res) {
-    const reqBody = req.body;
-
-    // incident object added by the incident middleware
-    const incidentId = req.incident.id;
-    const currentIncident = incidentsData.filter(item => item.id === incidentId);
-
-    const updatedIncident = {
-      id: incidentId,
-      type: reqBody.type || currentIncident[0].type,
-      location: reqBody.location || currentIncident[0].location,
-      images: reqBody.images || currentIncident[0].images,
-      title: reqBody.title || currentIncident[0].title,
-      comment: reqBody.comment || currentIncident[0].comment,
-      status: reqBody.status || currentIncident[0].status
-    };
-
-    const returnedData = {
-      status: 200,
-      data: [
-        {
-          id: updatedIncident.id,
-          message: 'Redflag updated'
-        }
-      ]
-    };
-
-    res.status(200).send(returnedData);
-  }
-  /**
-   * Patch a specifc incident into the database
-   *
-   * @param {object} req express request object
-   * @param {object} res express response object
-   * @returns {json} json of newly created incident
-   * @memberof incidentsController
-   */
-
-  performantIncidentUpdate(req, res) {
-    const reqBody = req.body;
-
-    // incident object added by the incident middleware
-    const incidentId = req.incident.id;
-    const currentIncident = incidentsData.filter(item => item.id === incidentId);
-    const attributeToUpdate = req.params.attribute;
-    const incidentToPacth = currentIncident[0];
-    // Apply the patch
-    incidentToPacth[attributeToUpdate] = reqBody[attributeToUpdate];
-    const returnedData = {
-      status: 200,
-      data: [
-        {
-          id: incidentToPacth.id,
-          message: `Updated red-flag record’s ${attributeToUpdate}`,
-        }
-      ]
-    };
-
-    res.status(200).send(returnedData);
+  async patchIncident(req, res) {
+    const { isadmin } = req.decoded.id;
+    const incidentId = parseInt(req.params.id, 10);
+    const attributeToPatch = req.params.attribute;
+    const patchQuery = `UPDATE incidents
+      SET ${attributeToPatch}=$1 WHERE id=$2`;
+    const values = [
+      req.body[attributeToPatch],
+      incidentId
+    ];
+    if (attributeToPatch === 'status' && isadmin === false) {
+      return res.status(403).json({
+        status: 403,
+        error: 'Forbidden.'
+      });
+    }
+    if (!incidentId) {
+      return res.status(404).json({
+        status: 404,
+        error: 'Red-flag not found'
+      });
+    }
+    try {
+      const result = await db.query(patchQuery, values);
+      if (result) {
+        return res.status(200).json({
+          status: 200,
+          data: [{
+            id: incidentId,
+            message: `Updated Incident record ${attributeToPatch}`
+          }]
+        });
+      }
+    } catch (error) {
+      return res.status(404).json({
+        status: 404, error: 'Id or attribute does not exist'
+      });
+    }
   }
 
   /**
@@ -150,26 +147,22 @@ class IncidentsController {
    * @memberof incidentsController
    */
 
-  deleteIncident(req, res) {
-    // incident object added by the incident middleware
-    const incidentId = req.incident.id;
-
-    // Delete the incident
-    incidentsData.filter(item => item.id !== incidentId);
-
-    const returnedData = {
-      status: 200,
-      data: [
-        {
-          id: incidentId,
-          message: 'red-flag record has been deleted',
-        }
-      ]
-    };
-
-    res.status(200).send(returnedData);
+  async deleteIncident(req, res) {
+    const incidentId = parseInt(req.params.id, 10);
+    try {
+      const incidentToDelete = await IncidentModel.delete(incidentId);
+      return res.status(200).json({
+        status: 200,
+        data: [{
+          id: incidentToDelete.rows[0].id,
+          message: 'red flag has been deleted'
+        }]
+      });
+    } catch (error) {
+      return res.status(404).json({
+        status: 404, error: 'Id or attribute does not exist'
+      });
+    }
   }
 }
-
-
 export default IncidentsController;

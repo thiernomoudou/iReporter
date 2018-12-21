@@ -17,7 +17,7 @@ export default class PostincidentValidator {
    * Validate the incident
    * @returns {boolean} true or false
    */
-  
+
   isValid() {
     if (this.incident) {
       this.validateType();
@@ -39,8 +39,10 @@ export default class PostincidentValidator {
    * @returns {null} no return value
    */
   validateType() {
+    const redFlag = 'Red-flag' || 'Redflag' || 'red-flag' || 'redflag' || 'RED-FLAG';
+    const intervention = 'Intervention' || 'intervention' || 'INTERVENTION';
     if (this.incident.type) {
-      if (!(this.incident.type === 'Red-flag' || this.incident.type === 'Intervention')) {
+      if (!(this.incident.type === redFlag.trim() || this.incident.type === intervention.trim())) {
         this.error.push('An incident must be a Red-flag or an Intervention');
       }
     } else {

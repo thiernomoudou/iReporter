@@ -1,4 +1,6 @@
-import { incidentsData } from '../database';
+import 'babel-polyfill';
+
+import db from '../database/index';
 
 /**
  * Controller to handle all users endpoint routes
@@ -6,26 +8,61 @@ import { incidentsData } from '../database';
 
 class UsersController {
   /**
-   * Return a list of all incidents created by a user
+ * Return a list of all users created by a user
+ * @param {object} req express request object
+ * @param {object} res express response object
+ * @returns {json} json
+ * @memberof UsersController
+ */
+  async getAllUsers(req, res) {
+    const text = 'SELECT * FROM users';
+    try {
+      const { rows } = await db.query(text);
+      if (!rows[0]) {
+        return res.status(404).json({
+          status: 404,
+          error: 'User not not found'
+        });
+      }
+      return res.json({ status: 200, data: rows });
+    } catch (error) {
+      return res.status(400).json({ status: 400, error: 'Bad request' });
+    }
+  }
+
+  /**
+   * Return a list of all users created by a user
    * @param {object} req express request object
    * @param {object} res express response object
    * @returns {json} json
    * @memberof UsersController
    */
 
-  getAllUserIncidents(req, res) {
+  async getAllUserIncidents(req, res) {
     // From the userMiddleware
-    const userId = req.user.id;
+    const userId = parseInt(req.params.id, 10);
 
-    const userIncidents = incidentsData.filter(item => item.createdBy === userId);
-
-    if (userIncidents.length === 0) {
-      res.status(404).send({
-        status: 404,
-        error: 'User does not have redflags or interventions yet'
-      });
-    } else {
-      res.send({ status: 200, data: userIncidents });
+    const getQuery = 'SELECT * from users WHERE id=$1';
+    const incidentQuery = 'SELECT * from incidents WHERE createdby=$1';
+    try {
+      const { rows } = await db.query(getQuery, [userId]);
+      if (!rows[0]) {
+        return res.status(404).json({
+          status: 404,
+          error: 'User not found'
+        });
+      }
+      const incidents = await db.query(incidentQuery, [userId]);
+      const records = incidents.rows;
+      if (!records[0]) {
+        return res.status(404).json({
+          status: 400,
+          error: 'User does not have an incident yet'
+        });
+      }
+      return res.json({ status: 200, data: records });
+    } catch (error) {
+      return res.status(400).json({ status: 400, error: 'Bad request' });
     }
   }
 
@@ -36,11 +73,21 @@ class UsersController {
  * @returns {json} json
  * @memberof UsersController
  */
-
-  getUserProfile(req, res) {
-    // getting the user from the userMiddleware
-    const userProfile = req.user;
-    res.send({ status: 200, data: [userProfile] });
+  async getUserProfile(req, res) {
+    const userId = parseInt(req.params.id, 10);
+    const profileQuery = 'SELECT * from users WHERE id=$1';
+    try {
+      const { rows } = await db.query(profileQuery, [userId]);
+      if (!rows[0]) {
+        return res.status(404).json({
+          status: 404,
+          error: 'User not not found'
+        });
+      }
+      return res.json({ status: 200, data: [rows] });
+    } catch (error) {
+      return res.status(400).json({ status: 400, error: 'Bad request' });
+    }
   }
 }
 
