@@ -40,18 +40,27 @@ class UsersController {
 
   async getAllUserIncidents(req, res) {
     // From the userMiddleware
-    const { id } = req.decoded.id;
+    const userId = parseInt(req.params.id, 10);
 
-    const getQuery = 'SELECT * from incidents WHERE createdby=$1';
+    const getQuery = 'SELECT * from users WHERE id=$1';
+    const incidentQuery = 'SELECT * from incidents WHERE createdby=$1';
     try {
-      const { rows } = await db.query(getQuery, [id]);
+      const { rows } = await db.query(getQuery, [userId]);
       if (!rows[0]) {
         return res.status(404).json({
           status: 404,
-          error: 'Incident not found'
+          error: 'User not found'
         });
       }
-      return res.json({ status: 200, data: rows });
+      const incidents = await db.query(incidentQuery, [userId]);
+      const records = incidents.rows;
+      if (!records[0]) {
+        return res.status(404).json({
+          status: 400,
+          error: 'User does not have an incident yet'
+        });
+      }
+      return res.json({ status: 200, data: records });
     } catch (error) {
       return res.status(400).json({ status: 400, error: 'Bad request' });
     }
@@ -65,10 +74,10 @@ class UsersController {
  * @memberof UsersController
  */
   async getUserProfile(req, res) {
-    const { id } = req.decoded.id;
+    const userId = parseInt(req.params.id, 10);
     const profileQuery = 'SELECT * from users WHERE id=$1';
     try {
-      const { rows } = await db.query(profileQuery, [id]);
+      const { rows } = await db.query(profileQuery, [userId]);
       if (!rows[0]) {
         return res.status(404).json({
           status: 404,

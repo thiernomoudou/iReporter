@@ -20,14 +20,23 @@ describe('/incidents api route', () => {
     [mockData.user, mockData.admin] = users.rows;
     // Setting 2 test incidents
     [mockData.incident1, mockData.incident2] = incidents.rows;
-    
+    const userToken = {
+      id: mockData.user.id,
+      username: mockData.user.username,
+      email: mockData.user.email,
+      isadmin: mockData.user.isadmin
+    };
+
+    const adminToken = {
+      id: mockData.admin.id,
+      username: mockData.admin.username,
+      email: mockData.admin.email,
+      isadmin: mockData.admin.isadmin
+    };
+
     // Generating token for test users;
-    mockData.user.token = authHelper.generateToken(
-      mockData.user.id, mockData.user.username, mockData.user.email, mockData.user.isadmin
-    );
-    mockData.admin.token = authHelper.generateToken(
-      mockData.admin.id, mockData.admin.username, mockData.admin.email, mockData.admin.isadmin
-    );
+    mockData.user.token = authHelper.generateToken(userToken);
+    mockData.admin.token = authHelper.generateToken(adminToken);
   });
 
   describe('GET /api/v1/incidents route', () => {

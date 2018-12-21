@@ -8,12 +8,12 @@ const usersRoutes = new Router();
 const usersController = new UsersController();
 const authController = new AuthController();
 
-usersRoutes.get('/',  usersController.getAllUsers);
+usersRoutes.get('/', usersController.getAllUsers);
 // get a user profile
 // Get all incidents for an individual user
-usersRoutes.get('/:id/incidents', authMiddleware, usersController.getAllUserIncidents);
+usersRoutes.get('/:id/incidents', usersController.getAllUserIncidents);
 // get a user profile
-usersRoutes.get('/:id', authMiddleware, usersController.getUserProfile);
+usersRoutes.get('/:id', usersController.getUserProfile);
 // signup endpoints
 usersRoutes.post('/signup', authController.signup);
 usersRoutes.post('/signin', authController.signin);

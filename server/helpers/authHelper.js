@@ -32,14 +32,12 @@ const authHelper = {
    * @param {string} id
    * @returns {string} token
    */
-  generateToken(id, email, username, isadmin) {
-    const token = jwt.sign({
-      id,
-      username,
-      email,
-      isadmin
-    },
-    process.env.JWT_SECRET, { expiresIn: '7d' });
+  generateToken(payload) {
+    const token = jwt.sign(
+      payload,
+      process.env.JWT_SECRET,
+      { expiresIn: '7d' }
+    );
     return token;
   }
 };

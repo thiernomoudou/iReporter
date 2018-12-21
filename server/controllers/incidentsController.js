@@ -70,7 +70,7 @@ class IncidentsController {
 
   async createIncident(req, res) {
     const payload = req.body;
-    payload.createdby = req.decoded.id.id;
+    payload.createdby = req.decoded.id;
     payload.createdon = moment(new Date());
     payload.status = 'Draft';
     try {
