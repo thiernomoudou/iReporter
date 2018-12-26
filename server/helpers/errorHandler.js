@@ -14,7 +14,15 @@ const errorHandler = {
   notFound: {
     status: 404,
     error: 'Red-flag not found'
-  }
+  },
+  inValidCreds: {
+    status: 400,
+    error: 'The credentials you provided are incorrects'
+  },
+  noAccount: {
+    status: 400,
+    error: 'You do not have an active account. Please signup'
+  },
 };
 
 export default errorHandler;
