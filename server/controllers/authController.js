@@ -32,19 +32,12 @@ export default class AuthController {
       const user = await UserModel.createUser(userObj);
       const userToken = authHelper.generateUser(user);
       const token = authHelper.generateToken(userToken);
-      return res.status(201).json({
-        status: 201,
-        data: [
-          {
-            token,
-            user: userToken,
-          },
-        ],
+      res.status(201).json({
+        status: 201, data: [{ token, user: userToken, }],
       });
     } catch (error) {
-      return res.status(400).json({
-        status: 400,
-        error: 'User with that USERNAME Or EMAIL already exist'
+      res.status(400).json({
+        status: 400, error: 'User with that USERNAME Or EMAIL already exist'
       });
     }
   }
@@ -64,32 +57,18 @@ export default class AuthController {
     }
     try {
       const user = await UserModel.findByEmail(req.body.email);
-      if (!user[0]) {
-        return res.status(400).json({
-          status: 400,
-          error: 'You do not have an active account. Please signup'
-        });
-      }
+      if (!user[0]) { return res.status(400).json(errorHandler.noAccount); }
       if (!authHelper.comparePassword(user[0].password, req.body.password)) {
-        return res.status(400).json({
-          status: 400,
-          error: 'The credentials you provided are incorrects'
-        });
+        return res.status(400).json(errorHandler.invalidCreds);
       }
       const userAttributes = authHelper.generateUser(user);
       const token = authHelper.generateToken(userAttributes);
-      return res.status(200).json({
+      res.status(200).json({
         status: 200,
-        data: [{
-          token,
-          user: userAttributes
-        }]
+        data: [{ token, user: userAttributes }]
       });
     } catch (error) {
-      return res.status(400).json({
-        status: 400,
-        error
-      });
+      res.status(400).json({ status: 400, error });
     }
   }
 }

@@ -31,15 +31,8 @@ export default class IncidentModel {
       returning *`;
 
       const values = [
-        type.trim(),
-        location.trim(),
-        createdby,
-        createdon,
-        status.trim(),
-        images,
-        videos,
-        comment,
-        title
+        type.trim(), location.trim(), createdby, createdon, status.trim(),
+        images, videos, comment, title
       ];
 
       const { rows } = await db.query(createIncidentQuery, values);

@@ -22,14 +22,14 @@ class IncidentsController {
     try {
       const incidents = await IncidentModel.findAllIncidents();
       if (!incidents) {
-        return res.status(404).json({
+        res.status(404).json({
           status: 404,
           error: 'Red-flag or Intervention not found'
         });
       }
       return res.json({ status: 200, data: incidents });
     } catch (error) {
-      return res.status(400).json({
+      res.status(400).json({
         status: 400,
         error: 'You request contains some errors'
       });
@@ -54,9 +54,9 @@ class IncidentsController {
           error: 'Red-flag not found'
         });
       }
-      return res.status(200).json({ status: 200, data: [incident[0]] });
+      res.status(200).json({ status: 200, data: [incident[0]] });
     } catch (error) {
-      return res.status(400).json({ status: 400, error: 'Bad request' });
+      res.status(400).json({ status: 400, error: 'Bad request' });
     }
   }
 
@@ -76,7 +76,7 @@ class IncidentsController {
     payload.status = 'Draft';
     try {
       const incident = await IncidentModel.createIncident(payload);
-      return res.status(201).json({
+      res.status(201).json({
         status: 201,
         data: [{
           id: incident[0].id,
@@ -84,7 +84,7 @@ class IncidentsController {
         }]
       });
     } catch (error) {
-      return res.status(400).json({
+      res.status(400).json({
         status: 400,
         error: 'Incident not created'
       });
@@ -107,7 +107,7 @@ class IncidentsController {
       SET ${attributeToPatch}=$1 WHERE id=$2`;
     const values = [req.body[attributeToPatch], incidentId];
     if (attributeToPatch === 'status' && isadmin === false) {
-      return res.status(403).json(errorHandler.adminPermission);
+      res.status(403).json(errorHandler.adminPermission);
     }
     if (!incidentId) { return res.status(404).json(errorHandler.notFound); }
     try {
@@ -119,7 +119,7 @@ class IncidentsController {
         });
       }
     } catch (error) {
-      return res.status(404).json({
+      res.status(404).json({
         status: 404, error: 'Id or attribute does not exist'
       });
     }
@@ -138,7 +138,7 @@ class IncidentsController {
     const incidentId = parseInt(req.params.id, 10);
     try {
       const incidentToDelete = await IncidentModel.delete(incidentId);
-      return res.status(200).json({
+      res.status(200).json({
         status: 200,
         data: [{
           id: incidentToDelete.rows[0].id,
@@ -146,7 +146,7 @@ class IncidentsController {
         }]
       });
     } catch (error) {
-      return res.status(404).json({
+      res.status(404).json({
         status: 404, error: 'Id or attribute does not exist'
       });
     }

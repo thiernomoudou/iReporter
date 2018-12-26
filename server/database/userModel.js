@@ -70,9 +70,9 @@ export default class UserModel {
    * */
   static async findByEmail(email) {
     try {
-      const findQuery = 'SELECT * FROM users WHERE email=$1';
-      const { rows } = await db.query(findQuery, [email]);
-      return rows;
+      const findEmailQuery = 'SELECT * FROM users WHERE email=$1';
+      const user = await db.query(findEmailQuery, [email]);
+      return user.rows;
     } catch (error) {
       return error;
     }
