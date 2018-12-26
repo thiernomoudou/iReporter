@@ -59,11 +59,11 @@ export default class IncidentModel {
    *
    * @returns {object} Array
    * */
-  static async findOneIncident(id) {
+  static async findOneIncident(ident) {
     try {
       const findOneQuery = 'SELECT * FROM incidents WHERE id=$1';
-      const { rows } = await db.query(findOneQuery, [id]);
-      return rows;
+      const incident = await db.query(findOneQuery, [ident]);
+      return incident.rows;
     } catch (error) {
       return error;
     }

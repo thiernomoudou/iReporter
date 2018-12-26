@@ -4,6 +4,7 @@ import moment from 'moment';
 import db from '../database/index';
 
 import IncidentModel from '../database/incidentModel';
+import errorHandler from '../helpers/errorHandler';
 
 /**
  * Controller to handle all incidents endpoint routes
@@ -104,31 +105,17 @@ class IncidentsController {
     const attributeToPatch = req.params.attribute;
     const patchQuery = `UPDATE incidents
       SET ${attributeToPatch}=$1 WHERE id=$2`;
-    const values = [
-      req.body[attributeToPatch],
-      incidentId
-    ];
+    const values = [req.body[attributeToPatch], incidentId];
     if (attributeToPatch === 'status' && isadmin === false) {
-      return res.status(403).json({
-        status: 403,
-        error: 'Forbidden.'
-      });
+      return res.status(403).json(errorHandler.adminPermission);
     }
-    if (!incidentId) {
-      return res.status(404).json({
-        status: 404,
-        error: 'Red-flag not found'
-      });
-    }
+    if (!incidentId) { return res.status(404).json(errorHandler.notFound); }
     try {
       const result = await db.query(patchQuery, values);
       if (result) {
         return res.status(200).json({
           status: 200,
-          data: [{
-            id: incidentId,
-            message: `Updated Incident record ${attributeToPatch}`
-          }]
+          data: [{ id: incidentId, message: `Updated Incident record ${attributeToPatch}` }]
         });
       }
     } catch (error) {

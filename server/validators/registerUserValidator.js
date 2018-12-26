@@ -61,6 +61,4 @@ export default class RegisterUserValidator {
       this.errors.push('The password is required.');
     }
   }
-
-  }
 }
