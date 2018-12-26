@@ -2,6 +2,7 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
 const authHelper = {
+
   /**
    * Hash Password Method
    * @param {string} password
@@ -29,7 +30,7 @@ const authHelper = {
   },
   /**
    * Gnerate Token
-   * @param {string} id
+   * @param {object} id
    * @returns {string} token
    */
   generateToken(payload) {
@@ -39,6 +40,19 @@ const authHelper = {
       { expiresIn: '7d' }
     );
     return token;
+  },
+  /**
+   * User token
+   * @param {object}
+   * @returns {object} user
+   */
+  generateUser(user) {
+    return {
+      id: user[0].id,
+      username: user[0].username,
+      email: user[0].email,
+      isadmin: user[0].isadmin
+    };
   }
 };
 

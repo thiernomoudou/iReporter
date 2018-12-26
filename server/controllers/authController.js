@@ -2,6 +2,7 @@ import moment from 'moment';
 import 'babel-polyfill';
 
 import authHelper from '../helpers/authHelper';
+import errorHandler from '../helpers/errorHandler';
 import UserModel from '../database/userModel';
 /**
  * Controls endpoints for authentication
@@ -16,15 +17,10 @@ export default class AuthController {
   */
   async signup(req, res) {
     if (!req.body.email || !req.body.password) {
-      return res.status(400).json({
-        status: 400,
-        error: 'Email or Password are missing'
-      });
+      return res.status(400).json(errorHandler.emailOrPwordMissing);
     }
     if (!authHelper.isValidEmail(req.body.email)) {
-      return res.status(400).json({
-        status: 400, error: 'Please enter a valid email address'
-      });
+      return res.status(400).json(errorHandler.invalidEmail);
     }
     // Hashing the password entered by the user
     const hashPassword = authHelper.hashPassword(req.body.password);
@@ -34,12 +30,7 @@ export default class AuthController {
     userObj.modifieddate = moment(new Date());
     try {
       const user = await UserModel.createUser(userObj);
-      const userToken = {
-        id: user[0].id,
-        username: user[0].username,
-        email: user[0].email,
-        isadmin: user[0].isadmin
-      };
+      const userToken = authHelper.generateUser(user);
       const token = authHelper.generateToken(userToken);
       return res.status(201).json({
         status: 201,
@@ -51,11 +42,6 @@ export default class AuthController {
         ],
       });
     } catch (error) {
-      if (error.routine === '_bt_check_unique') {
-        return res.status(400).json({
-          status: 400, error: 'User with that USERNAME Or EMAIL already exist'
-        });
-      }
       return res.status(400).json({
         status: 400,
         error: 'User with that USERNAME Or EMAIL already exist'
@@ -71,16 +57,10 @@ export default class AuthController {
    */
   async signin(req, res) {
     if (!req.body.email || !req.body.password) {
-      return res.status(400).json({
-        status: 400,
-        error: 'Email or Password are missing'
-      });
+      return res.status(400).json(errorHandler.emailOrPwordMissing);
     }
     if (!authHelper.isValidEmail(req.body.email)) {
-      return res.status(400).json({
-        status: 400,
-        error: 'Please enter a valid email address'
-      });
+      return res.status(400).json(errorHandler.invalidEmail);
     }
     try {
       const user = await UserModel.findByEmail(req.body.email);
@@ -96,18 +76,13 @@ export default class AuthController {
           error: 'The credentials you provided are incorrects'
         });
       }
-      const userToken = {
-        id: user[0].id,
-        username: user[0].username,
-        email: user[0].email,
-        isadmin: user[0].isadmin
-      };
-      const token = authHelper.generateToken(userToken);
+      const userAttributes = authHelper.generateUser(user);
+      const token = authHelper.generateToken(userAttributes);
       return res.status(200).json({
         status: 200,
         data: [{
           token,
-          user: userToken
+          user: userAttributes
         }]
       });
     } catch (error) {

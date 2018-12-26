@@ -23,24 +23,14 @@ export default class UserModel {
         username, email, password, registered, modifieddate, phonenumber, firstname,
         lastname, othernames, isadmin
       } = userObject;
-
       const createUserQuery = `INSERT INTO
       users(username, email, password, registered, modifieddate, phonenumber, firstname,
         lastname, othernames, isadmin)
       VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) returning *`;
       const values = [
-        username.trim(),
-        email.trim(),
-        password.trim(),
-        registered,
-        modifieddate,
-        phonenumber,
-        firstname,
-        lastname,
-        othernames,
-        isadmin
+        username.trim(), email.trim(), password.trim(), registered,
+        modifieddate, phonenumber, firstname, lastname, othernames, isadmin
       ];
-
       const { rows } = await db.query(createUserQuery, values);
       return rows;
     } catch (error) {
