@@ -111,7 +111,7 @@ class IncidentsController {
     if (attributeToPatch === 'status' && isadmin === false) {
       return res.status(403).json({
         status: 403,
-        error: 'Forbidden.'
+        error: 'Forbidden. You need admin permission to change statuses'
       });
     }
     if (!incidentId) {
