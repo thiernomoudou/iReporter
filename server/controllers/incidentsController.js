@@ -101,21 +101,21 @@ class IncidentsController {
 
   async patchIncident(req, res) {
     const { isadmin } = req.decoded.id;
-    const incidentId = parseInt(req.params.id, 10);
-    const attributeToPatch = req.params.attribute;
-    const patchQuery = `UPDATE incidents
-      SET ${attributeToPatch}=$1 WHERE id=$2`;
-    const values = [req.body[attributeToPatch], incidentId];
-    if (attributeToPatch === 'status' && !isadmin) {
+    const payload = {
+      id: parseInt(req.params.id, 10),
+      attribute: req.params.attribute,
+    };
+    payload.data = req.body[payload.attribute];
+    if (payload.attribute === 'status' && !isadmin) {
       return res.status(403).json(errorHandler.adminPermission);
     }
-    if (!incidentId) { return res.status(404).json(errorHandler.notFound); }
+    if (!payload.id) { return res.status(404).json(errorHandler.notFound); }
     try {
-      const result = await db.query(patchQuery, values);
+      const result = await IncidentModel.update(payload);
       if (result) {
         return res.status(200).json({
           status: 200,
-          data: [{ id: incidentId, message: `Updated Incident record ${attributeToPatch}` }]
+          data: [{ id: payload.id, message: `Updated Incident record ${payload.attribute}` }]
         });
       }
     } catch (error) {

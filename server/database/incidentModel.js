@@ -95,11 +95,11 @@ export default class IncidentModel {
       const { attribute, data, id } = payload;
       const updateQuery = `
         UPDATE incidents
-        SET ${attribute} = '${data}'
-        WHERE id = ${Number(id)}
-        RETURNING *
+        SET ${attribute}=$1
+        WHERE id=$2
       `;
-      const { rows } = await db.query(updateQuery);
+      const values = [data, id];
+      const { rows } = await db.query(updateQuery, values);
       return rows;
     } catch (error) {
       return error;
