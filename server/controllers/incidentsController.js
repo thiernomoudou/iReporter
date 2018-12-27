@@ -106,8 +106,8 @@ class IncidentsController {
     const patchQuery = `UPDATE incidents
       SET ${attributeToPatch}=$1 WHERE id=$2`;
     const values = [req.body[attributeToPatch], incidentId];
-    if (attributeToPatch === 'status' && isadmin === false) {
-      res.status(403).json(errorHandler.adminPermission);
+    if (attributeToPatch === 'status' && !isadmin) {
+      return res.status(403).json(errorHandler.adminPermission);
     }
     if (!incidentId) { return res.status(404).json(errorHandler.notFound); }
     try {

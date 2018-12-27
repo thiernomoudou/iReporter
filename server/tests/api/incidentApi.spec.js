@@ -160,6 +160,20 @@ describe('/incidents api route', () => {
           done();
         });
     });
+
+    it('Should return a 403 if non admin want to change status', (done) => {
+      chai.request(app)
+        .patch(`/api/v1/incidents/${mockData.incident1.id}/status`)
+        .set('x-access-token', mockData.user.token)
+        .send({
+          status: 'Under inquiry'
+        })
+        .end((err, response) => {
+          if (err) { return done(err); }
+          expect(response).to.have.status(403);
+          done();
+        });
+    });
   });
 
   describe('incident/:id /DELETE endpoint', () => {
