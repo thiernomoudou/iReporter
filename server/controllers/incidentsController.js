@@ -31,7 +31,7 @@ class IncidentsController {
     } catch (error) {
       res.status(400).json({
         status: 400,
-        error: 'You request contains some errors'
+        error: 'There is no incident yet'
       });
     }
   }
@@ -51,7 +51,7 @@ class IncidentsController {
       if (!incident[0]) {
         return res.status(404).json({
           status: 404,
-          error: 'Red-flag not found'
+          error: 'Incident not found'
         });
       }
       res.status(200).json({ status: 200, data: [incident[0]] });
@@ -113,9 +113,10 @@ class IncidentsController {
     try {
       const result = await IncidentModel.update(payload);
       if (result) {
+        const { type } = result[0];
         return res.status(200).json({
           status: 200,
-          data: [{ id: payload.id, message: `Updated Incident record ${payload.attribute}` }]
+          data: [{ id: payload.id, message: `Updated ${type} record ${payload.attribute}` }]
         });
       }
     } catch (error) {
@@ -142,7 +143,7 @@ class IncidentsController {
         status: 200,
         data: [{
           id: incidentToDelete.rows[0].id,
-          message: 'red flag has been deleted'
+          message: `${incidentToDelete.rows[0].type} record has been deleted`
         }]
       });
     } catch (error) {

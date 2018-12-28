@@ -96,7 +96,7 @@ export default class IncidentModel {
       const updateQuery = `
         UPDATE incidents
         SET ${attribute}=$1
-        WHERE id=$2
+        WHERE id=$2 returning *
       `;
       const values = [data, id];
       const { rows } = await db.query(updateQuery, values);
@@ -121,7 +121,7 @@ export default class IncidentModel {
       const deleteQuery = `
         DELETE FROM incidents
         WHERE id=$1
-        RETURNING id
+        RETURNING *
       `;
       const res = await db.query(deleteQuery, [id]);
       return res;

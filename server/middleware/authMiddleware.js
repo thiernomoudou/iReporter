@@ -8,7 +8,7 @@ const authMiddleware = (req, res, next) => {
     // verifies secret and checks exp
     jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
       if (err) {
-        return res.json({
+        return res.status(403).json({
           status: 403,
           error: 'Invalid token, you have to login first',
         });
@@ -19,7 +19,7 @@ const authMiddleware = (req, res, next) => {
       return next();
     });
   } else {
-    res.json({
+    res.status(403).json({
       status: 403,
       error: 'Unauthorized!, you have to login first',
     });
