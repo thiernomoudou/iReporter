@@ -2,7 +2,7 @@ import { Router } from 'express';
 import IncidentsController from '../controllers/incidentsController';
 import isOwner from '../middleware/isOwnerMiddleware';
 import authMiddlware from '../middleware/authMiddleware';
-import validation from '../middleware/addIncidentValidatorMiddleware';
+import { validateNewIncident } from '../validators/inputValidator';
 
 const incidentsRoutes = new Router();
 const incidentsController = new IncidentsController();
@@ -14,7 +14,7 @@ incidentsRoutes.get('/', incidentsController.getAllIncidents);
 incidentsRoutes.get('/:id', incidentsController.getSpecificIncident);
 
 // Create an incident
-incidentsRoutes.post('/', authMiddlware, validation, incidentsController.createIncident);
+incidentsRoutes.post('/', authMiddlware, validateNewIncident, incidentsController.createIncident);
 
 // Patch an incident
 incidentsRoutes.patch('/:id/:attribute', authMiddlware, isOwner, incidentsController.patchIncident);

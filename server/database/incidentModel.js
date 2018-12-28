@@ -11,7 +11,7 @@ export default class IncidentModel {
    * @description - create Incident
    * @static
    *
-   * @param {object} - incient data object
+   * @param {object} - incident data object
    *
    * @memberof IncidentModel
    *

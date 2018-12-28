@@ -23,6 +23,10 @@ const errorHandler = {
     status: 400,
     error: 'You do not have an active account. Please signup'
   },
+  postgresError: {
+    code: '23505',
+    message: 'A user with your email or username already exists.',
+  },
 };
 
 export default errorHandler;

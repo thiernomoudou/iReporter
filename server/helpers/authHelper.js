@@ -47,11 +47,14 @@ const authHelper = {
    * @returns {object} user
    */
   generateUser(user) {
+    const {
+      id, username, email, isadmin
+    } = user;
     return {
-      id: user[0].id,
-      username: user[0].username,
-      email: user[0].email,
-      isadmin: user[0].isadmin
+      id,
+      username,
+      email,
+      isadmin
     };
   }
 };

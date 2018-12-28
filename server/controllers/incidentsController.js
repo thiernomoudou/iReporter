@@ -1,10 +1,13 @@
 /* eslint-disable no-return-assign */
 import 'babel-polyfill';
 import moment from 'moment';
-import db from '../database/index';
+import ExpressValidator from 'express-validator/check';
 
 import IncidentModel from '../database/incidentModel';
 import errorHandler from '../helpers/errorHandler';
+
+const { validationResult } = ExpressValidator;
+
 
 /**
  * Controller to handle all incidents endpoint routes
@@ -19,21 +22,14 @@ class IncidentsController {
    * @memberof IncidentsController
    */
   async getAllIncidents(req, res) {
-    try {
-      const incidents = await IncidentModel.findAllIncidents();
-      if (!incidents) {
-        res.status(404).json({
-          status: 404,
-          error: 'Red-flag or Intervention not found'
-        });
-      }
-      return res.json({ status: 200, data: incidents });
-    } catch (error) {
-      res.status(400).json({
-        status: 400,
-        error: 'There is no incident yet'
+    const incidents = await IncidentModel.findAllIncidents();
+    if (!incidents) {
+      return res.status(404).json({
+        status: 404,
+        error: 'Red-flag or Intervention not found'
       });
     }
+    return res.json({ status: 200, data: incidents });
   }
 
   /**
@@ -46,18 +42,14 @@ class IncidentsController {
    */
   async getSpecificIncident(req, res) {
     const incidentId = parseInt(req.params.id, 10);
-    try {
-      const incident = await IncidentModel.findOneIncident(incidentId);
-      if (!incident[0]) {
-        return res.status(404).json({
-          status: 404,
-          error: 'Incident not found'
-        });
-      }
-      res.status(200).json({ status: 200, data: [incident[0]] });
-    } catch (error) {
-      res.status(400).json({ status: 400, error: 'Bad request' });
+    const incident = await IncidentModel.findOneIncident(incidentId);
+    if (!incident[0]) {
+      return res.status(404).json({
+        status: 404,
+        error: 'Incident not found'
+      });
     }
+    res.status(200).json({ status: 200, data: [incident[0]] });
   }
 
   /**
@@ -70,11 +62,13 @@ class IncidentsController {
    */
 
   async createIncident(req, res) {
-    const payload = req.body;
-    payload.createdby = req.decoded.id;
-    payload.createdon = moment(new Date());
-    payload.status = 'Draft';
-    try {
+    // get all errors from express validator
+    const errors = validationResult(req).array().map(error => error.msg);
+    if (errors.length < 1) {
+      const payload = req.body;
+      payload.createdby = req.decoded.id;
+      payload.createdon = moment(new Date());
+      payload.status = 'Draft';
       const incident = await IncidentModel.createIncident(payload);
       res.status(201).json({
         status: 201,
@@ -83,11 +77,8 @@ class IncidentsController {
           message: `Created ${incident[0].type} record`
         }]
       });
-    } catch (error) {
-      res.status(400).json({
-        status: 400,
-        error: 'Incident not created'
-      });
+    } else {
+      res.status(400).json({ status: 400, error: errors, });
     }
   }
   /**
@@ -100,17 +91,18 @@ class IncidentsController {
    */
 
   async patchIncident(req, res) {
-    const { isadmin } = req.decoded.id;
-    const payload = {
-      id: parseInt(req.params.id, 10),
-      attribute: req.params.attribute,
-    };
-    payload.data = req.body[payload.attribute];
-    if (payload.attribute === 'status' && !isadmin) {
-      return res.status(403).json(errorHandler.adminPermission);
-    }
-    if (!payload.id) { return res.status(404).json(errorHandler.notFound); }
-    try {
+    const errors = validationResult(req).array().map(error => error.msg);
+    if (errors.length < 1) {
+      const { isadmin } = req.decoded.id;
+      const payload = {
+        id: parseInt(req.params.id, 10),
+        attribute: req.params.attribute,
+      };
+      payload.data = req.body[payload.attribute];
+      if (payload.attribute === 'status' && !isadmin) {
+        return res.status(403).json(errorHandler.adminPermission);
+      }
+      if (!payload.id) { return res.status(404).json(errorHandler.notFound); }
       const result = await IncidentModel.update(payload);
       if (result) {
         const { type } = result[0];
@@ -119,10 +111,8 @@ class IncidentsController {
           data: [{ id: payload.id, message: `Updated ${type} record ${payload.attribute}` }]
         });
       }
-    } catch (error) {
-      res.status(404).json({
-        status: 404, error: 'Id or attribute does not exist'
-      });
+    } else {
+      res.status(400).json({ status: 400, error: errors, });
     }
   }
 
@@ -137,20 +127,14 @@ class IncidentsController {
 
   async deleteIncident(req, res) {
     const incidentId = parseInt(req.params.id, 10);
-    try {
-      const incidentToDelete = await IncidentModel.delete(incidentId);
-      res.status(200).json({
-        status: 200,
-        data: [{
-          id: incidentToDelete.rows[0].id,
-          message: `${incidentToDelete.rows[0].type} record has been deleted`
-        }]
-      });
-    } catch (error) {
-      res.status(404).json({
-        status: 404, error: 'Id or attribute does not exist'
-      });
-    }
+    const incidentToDelete = await IncidentModel.delete(incidentId);
+    res.status(200).json({
+      status: 200,
+      data: [{
+        id: incidentToDelete.rows[0].id,
+        message: `${incidentToDelete.rows[0].type} record has been deleted`
+      }]
+    });
   }
 }
 export default IncidentsController;
