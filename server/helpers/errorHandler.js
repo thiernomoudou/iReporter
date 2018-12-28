@@ -15,13 +15,17 @@ const errorHandler = {
     status: 404,
     error: 'Red-flag not found'
   },
-  inValidCreds: {
+  incorrectCreds: {
     status: 400,
     error: 'The credentials you provided are incorrects'
   },
   noAccount: {
     status: 400,
     error: 'You do not have an active account. Please signup'
+  },
+  postgresError: {
+    code: '23505',
+    message: 'A user with your email or username already exists.',
   },
 };
 

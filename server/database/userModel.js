@@ -31,8 +31,8 @@ export default class UserModel {
         username.trim(), email.trim(), password.trim(), registered,
         modifieddate, phonenumber, firstname, lastname, othernames, isadmin
       ];
-      const { rows } = await db.query(createUserQuery, values);
-      return rows;
+      const user = await db.query(createUserQuery, values);
+      return user;
     } catch (error) {
       return error;
     }

@@ -11,7 +11,7 @@ export default class IncidentModel {
    * @description - create Incident
    * @static
    *
-   * @param {object} - incient data object
+   * @param {object} - incident data object
    *
    * @memberof IncidentModel
    *
@@ -95,11 +95,11 @@ export default class IncidentModel {
       const { attribute, data, id } = payload;
       const updateQuery = `
         UPDATE incidents
-        SET ${attribute} = '${data}'
-        WHERE id = ${Number(id)}
-        RETURNING *
+        SET ${attribute}=$1
+        WHERE id=$2 returning *
       `;
-      const { rows } = await db.query(updateQuery);
+      const values = [data, id];
+      const { rows } = await db.query(updateQuery, values);
       return rows;
     } catch (error) {
       return error;
@@ -121,7 +121,7 @@ export default class IncidentModel {
       const deleteQuery = `
         DELETE FROM incidents
         WHERE id=$1
-        RETURNING id
+        RETURNING *
       `;
       const res = await db.query(deleteQuery, [id]);
       return res;

@@ -1,8 +1,7 @@
 import { Router } from 'express';
 import UsersController from '../controllers/usersController';
 import AuthController from '../controllers/authController';
-import authMiddleware from '../middleware/authMiddleware';
-// import authMiddleware from '../middleware/authenticate';
+import { validateSignup, validateSignin } from '../validators/inputValidator';
 
 const usersRoutes = new Router();
 const usersController = new UsersController();
@@ -15,9 +14,7 @@ usersRoutes.get('/:id/incidents', usersController.getAllUserIncidents);
 // get a user profile
 usersRoutes.get('/:id', usersController.getUserProfile);
 // signup endpoints
-usersRoutes.post('/signup', authController.signup);
-usersRoutes.post('/signin', authController.signin);
-
-// usersRoutes.post('/', authMiddleware, usersController.getAllUserIncidents);
+usersRoutes.post('/signup', validateSignup, authController.signup);
+usersRoutes.post('/signin', validateSignin, authController.signin);
 
 export default usersRoutes;
