@@ -200,6 +200,20 @@ describe('/incidents api route', () => {
         });
     });
 
+    it('Should return 400 if there is any validation error', (done) => {
+      chai.request(app)
+        .patch(`/api/v1/incidents/${mockData.incident1.id}/comment`)
+        .set('x-access-token', mockData.user.token)
+        .send({
+          comment: 'inv'
+        })
+        .end((err, response) => {
+          if (err) { return done(err); }
+          expect(response).to.have.status(400);
+          done();
+        });
+    });
+
     it('Should return a 403 if a non admin user wants to change status', (done) => {
       chai.request(app)
         .patch(`/api/v1/incidents/${mockData.incident1.id}/status`)

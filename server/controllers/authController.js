@@ -51,17 +51,12 @@ export default class AuthController {
    * @returns {object} signed in user
    */
   async signin(req, res) {
-    if (!req.body.email || !req.body.password) {
-      return res.status(400).json(errorHandler.emailOrPwordMissing);
-    }
-    if (!authHelper.isValidEmail(req.body.email)) {
-      return res.status(400).json(errorHandler.invalidEmail);
-    }
-    try {
+    const errors = validationResult(req).array().map(error => error.msg);
+    if (errors.length < 1) {
       const user = await UserModel.findByEmail(req.body.email);
       if (!user[0]) { return res.status(400).json(errorHandler.noAccount); }
       if (!authHelper.comparePassword(user[0].password, req.body.password)) {
-        return res.status(400).json(errorHandler.invalidCreds);
+        return res.status(400).json(errorHandler.incorrectCreds);
       }
       const userAttributes = authHelper.generateUser(user);
       const token = authHelper.generateToken(userAttributes);
@@ -69,8 +64,8 @@ export default class AuthController {
         status: 200,
         data: [{ token, user: userAttributes }]
       });
-    } catch (error) {
-      res.status(400).json({ status: 400, error });
+    } else {
+      res.status(400).json({ status: 400, error: errors });
     }
   }
 }

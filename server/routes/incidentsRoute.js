@@ -2,7 +2,7 @@ import { Router } from 'express';
 import IncidentsController from '../controllers/incidentsController';
 import isOwner from '../middleware/isOwnerMiddleware';
 import authMiddlware from '../middleware/authMiddleware';
-import { validateNewIncident } from '../validators/inputValidator';
+import { validateNewIncident, validatePatch } from '../validators/inputValidator';
 
 const incidentsRoutes = new Router();
 const incidentsController = new IncidentsController();
@@ -17,7 +17,9 @@ incidentsRoutes.get('/:id', incidentsController.getSpecificIncident);
 incidentsRoutes.post('/', authMiddlware, validateNewIncident, incidentsController.createIncident);
 
 // Patch an incident
-incidentsRoutes.patch('/:id/:attribute', authMiddlware, isOwner, incidentsController.patchIncident);
+incidentsRoutes.patch(
+  '/:id/:attribute', authMiddlware, isOwner, validatePatch, incidentsController.patchIncident
+);
 
 // Delete  an incident
 incidentsRoutes.delete('/:id', authMiddlware, isOwner, incidentsController.deleteIncident);

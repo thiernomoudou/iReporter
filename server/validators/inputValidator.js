@@ -1,7 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 import ExpressValidator from 'express-validator/check';
 
-const { check } = ExpressValidator;
+const { check, oneOf } = ExpressValidator;
 
 export const validateNewIncident = [
   // validate type field
@@ -22,6 +22,14 @@ export const validateNewIncident = [
     .exists().withMessage('location is required')
     .isLength({ min: 5 })
     .withMessage('Location Must be at least 5 characters long'),
+];
+
+export const validatePatch = [
+  oneOf([
+    check('comment').isString().isLength({ min: 10 }),
+    check('location').isString().isLength({ min: 5 }),
+    check('status').isString().isLength({ min: 4 }),
+  ]),
 ];
 
 export const validateSignup = [
@@ -64,7 +72,7 @@ export const validateSignin = [
   check('username')
     .isString().withMessage('Username must be alphabetical characters.')
     .isLength({ min: 4, max: 20 })
-    .withMessage('Username must be at least 5 characters long and not more than 20'),
+    .withMessage('Username must be at least 4 characters long and not more than 20'),
 
   check('password')
     .isString().withMessage('Password must be alphanumeric characters.')

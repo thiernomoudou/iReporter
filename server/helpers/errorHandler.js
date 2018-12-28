@@ -15,7 +15,7 @@ const errorHandler = {
     status: 404,
     error: 'Red-flag not found'
   },
-  inValidCreds: {
+  incorrectCreds: {
     status: 400,
     error: 'The credentials you provided are incorrects'
   },

@@ -24,6 +24,13 @@ const user12 = {
   is_admin: true,
 };
 
+const user13 = {
+  username: 'adm',
+  email: 'adminuser@user.com',
+  password: 'adminuser1secret',
+  is_admin: true,
+};
+
 describe('/users signup api route', () => {
   describe('/signup', () => {
     it('Should register a new user', (done) => {
@@ -46,6 +53,18 @@ describe('/users signup api route', () => {
           done();
         });
     });
+
+    it('Should return validation if the username is less than 5 characters', (done) => {
+      chai.request(application)
+        .post('/api/v1/users/signup')
+        .send(user13)
+        .end((error, response) => {
+          expect(response).to.have.status(400);
+          const res = response.body.error;
+          expect(res[0]).to.equal('Username must be at least 5 characters long');
+          done();
+        });
+    });
   });
   describe('/signin', () => {
     it('Should return auth token for valid user credentials', (done) => {
@@ -58,7 +77,7 @@ describe('/users signup api route', () => {
         });
     });
 
-    it('Should return an Error message for invalid user credentials', (done) => {
+    it('Should return 400 and an Error message if the user does not exist', (done) => {
       chai.request(application)
         .post('/api/v1/users/signin')
         .send(user12)
@@ -66,6 +85,43 @@ describe('/users signup api route', () => {
           expect(response).to.have.status(400);
           const responseData = response.body;
           expect(responseData.error).to.equal('You do not have an active account. Please signup');
+          done();
+        });
+    });
+
+    it('Should return 400 and an Error message for invalid user credentials', (done) => {
+      const invalidPassword = 'invalid password';
+      chai.request(application)
+        .post('/api/v1/users/signin')
+        .send({
+          username: 'normal user',
+          email: 'newuser@user.com',
+          password: invalidPassword,
+          is_admin: false,
+        })
+        .end((error, response) => {
+          expect(response).to.have.status(400);
+          const responseData = response.body;
+          expect(responseData.error).to.equal('The credentials you provided are incorrects');
+          done();
+        });
+    });
+
+    it('Should return 400 and an Error message for invalid input', (done) => {
+      chai.request(application)
+        .post('/api/v1/users/signin')
+        .send({
+          username: 'nor',
+          email: 'newuser@user.com',
+          password: 'user1secret',
+          is_admin: false,
+        })
+        .end((error, response) => {
+          expect(response).to.have.status(400);
+          const responseData = response.body;
+          expect(responseData.error[0]).to.equal(
+            'Username must be at least 4 characters long and not more than 20'
+          );
           done();
         });
     });

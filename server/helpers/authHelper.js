@@ -21,14 +21,6 @@ const authHelper = {
     return bcrypt.compareSync(password, hashPassword);
   },
   /**
-   * isValidEmail helper method
-   * @param {string} email
-   * @returns {Boolean} True or False
-   */
-  isValidEmail(email) {
-    return /\S+@\S+\.\S+/.test(email);
-  },
-  /**
    * Gnerate Token
    * @param {object} id
    * @returns {string} token
