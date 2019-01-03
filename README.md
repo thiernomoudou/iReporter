@@ -37,6 +37,8 @@ contains the project API developed in Node/express
 
 visit the [Api hosted on heroku](https://ireporter-backend.herokuapp.com/api/v1/)
 
+and see the API documentation [here](https://ireporter6.docs.apiary.io)
+
 - Clone repository
 - Install dependencies:
 ```bash
@@ -44,7 +46,7 @@ visit the [Api hosted on heroku](https://ireporter-backend.herokuapp.com/api/v1/
 ```
 - Run server: 
 ```bash
-  npm run start
+  npm run start-dev
 ```
 - Run tests:
 ```bash
