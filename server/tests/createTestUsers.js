@@ -1,6 +1,6 @@
 import 'babel-polyfill';
 import moment from 'moment';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcrypt-nodejs';
 
 import db from '../database/index';
 import { user1Query, user2Query } from './testRecords';
